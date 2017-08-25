@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="itemtype">
+        <item >支出</item>
+        <item >收入</item>
+        <item >借出</item>
+        <item >还入</item>
+        <item >借入</item>
+        <item >还出</item>
+    </string-array>
+    
+</resources>

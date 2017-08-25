@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="hometype">
+        <item >请选择</item>
+        <item >本月支出</item>
+        <item >本月收入</item>
+        <item >本月结存</item>
+    </string-array>
+    
+</resources>

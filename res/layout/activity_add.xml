@@ -1,0 +1,471 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    tools:context=".AddActivity" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_title_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_back"
+            android:src="@drawable/ic_title_left" />
+
+        <TextView
+            android:id="@+id/tv_add_title"
+            style="@style/title_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/txt_tab_add" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/txt_empty" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout1"
+        android:background="@color/color_item_bg" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_large" >
+
+            <LinearLayout style="@style/lay_add" >
+
+                <TextView
+                    android:id="@+id/tv_itemtype"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_add_itemtype" />
+
+                <RadioGroup
+                    android:id="@+id/rg_itemtype"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/radio_zhichu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="@string/txt_type_zhichu"
+                        android:textColor="@color/color_text" />
+
+                    <RadioButton
+                        android:id="@+id/radio_jiechu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/txt_type_jiechu"
+                        android:textColor="@color/color_text" />
+
+                    <RadioButton
+                        android:id="@+id/radio_huanchu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/txt_type_huanchu"
+                        android:textColor="@color/color_text" />
+
+                </RadioGroup>
+
+                <Spinner
+                    android:id="@+id/sp_itemtype"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_empty" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/lay_add" >
+
+                <TextView
+                    android:id="@+id/tv_cattype"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_add_cattype" />
+
+                <Spinner
+                    android:id="@+id/sp_add_cattype"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:minHeight="@dimen/edit_min_height" />
+
+                <ImageButton
+                    android:id="@+id/btn_add_catedit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/title_btn_selector"
+                    android:contentDescription="@string/txt_add_cattype"
+                    android:src="@drawable/ic_add_catedit" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/lay_add" >
+
+                <TextView
+                    android:id="@+id/tv_itemname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_add_itemname" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/et_add_itemname"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:completionThreshold="1"
+                    android:ems="10"
+                    android:imeOptions="actionNext"
+                    android:inputType="textAutoComplete"
+                    android:maxLength="20"
+                    android:textColor="@color/color_text" />
+
+                <ImageButton
+                    android:id="@+id/btn_add_voice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/title_btn_selector"
+                    android:contentDescription="@string/txt_add_itemname"
+                    android:src="@drawable/ic_add_voice" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/lay_add" >
+
+                <TextView
+                    android:id="@+id/tv_itemprice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_add_itemprice" />
+
+                <EditText
+                    android:id="@+id/et_add_itemprice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberDecimal|numberSigned"
+                    android:maxLength="10"
+                    android:textColor="@color/color_text" />
+
+                <ImageButton
+                    android:id="@+id/btn_title_calc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/title_btn_selector"
+                    android:contentDescription="@string/txt_calculator"
+                    android:src="@drawable/ic_add_calculator" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/lay_add" >
+
+                <TextView
+                    android:id="@+id/tv_region"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_add_region" />
+
+                <Spinner
+                    android:id="@+id/sp_regiontype"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:minHeight="@dimen/edit_min_height" />
+
+                <ImageButton
+                    android:id="@+id/btn_add_region"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/title_btn_selector"
+                    android:contentDescription="@string/txt_add_region"
+                    android:src="@drawable/ic_about_help" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/lay_add" >
+
+                <TextView
+                    android:id="@+id/tv_itembuydate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_add_itembuydate" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    tools:ignore="NestedWeights" >
+
+                    <EditText
+                        android:id="@+id/et_add_itembuydate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="date"
+                        android:textColor="@color/color_text" />
+
+                    <TextView
+                        android:id="@+id/tv_region_to"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/txt_add_reg_to"
+                        android:visibility="gone" />
+
+                    <EditText
+                        android:id="@+id/et_add_itembuydate2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="date"
+                        android:textColor="@color/color_text"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btn_add_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/title_btn_selector"
+                    android:contentDescription="@string/txt_add_zhuanti"
+                    android:src="@drawable/ic_add_datechoose" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/lay_add" >
+
+                <TextView
+                    android:id="@+id/tv_zhuanti"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_add_zhuanti" />
+
+                <Spinner
+                    android:id="@+id/sp_zhuanti"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:minHeight="@dimen/edit_min_height" />
+
+                <ImageButton
+                    android:id="@+id/btn_add_zhuanti"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/title_btn_selector"
+                    android:contentDescription="@string/txt_add_zhuanti"
+                    android:src="@drawable/ic_add_zhuanti" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/lay_add"
+                android:layout_width="match_parent" >
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_add_money" />
+
+                <Spinner
+                    android:id="@+id/spinner_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:minHeight="@dimen/edit_min_height" />
+
+                <ImageButton
+                    android:id="@+id/btn_add_money"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/title_btn_selector"
+                    android:contentDescription="@string/txt_add_money"
+                    android:src="@drawable/ic_user_moneyedit" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small" >
+
+                <Button
+                    android:id="@+id/btn_add_continue"
+                    style="@style/btn_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@drawable/main_btn_selector"
+                    android:drawableLeft="@drawable/ic_add_continue"
+                    android:text="@string/txt_add_addcontinue" />
+
+                <Button
+                    android:id="@+id/btn_add_same"
+                    style="@style/btn_base"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/second_btn_selector"
+                    android:text="@string/txt_add_addsame" />
+
+                <Button
+                    android:id="@+id/btn_add_back"
+                    style="@style/btn_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@drawable/main_btn_selector"
+                    android:drawableLeft="@drawable/ic_add_back"
+                    android:text="@string/txt_add_addback" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:visibility="gone" >
+
+                <Button
+                    android:id="@+id/btn_day_delete"
+                    style="@style/btn_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/padding_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/main_btn_selector"
+                    android:drawableLeft="@drawable/ic_add_delete"
+                    android:text="@string/txt_day_delete" />
+
+                <Button
+                    android:id="@+id/btn_day_edit"
+                    style="@style/btn_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_small"
+                    android:layout_weight="1"
+                    android:background="@drawable/main_btn_selector"
+                    android:drawableLeft="@drawable/ic_add_continue"
+                    android:text="@string/txt_day_edit" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <SlidingDrawer
+        android:id="@+id/slidingDrawer1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/smart_padding_top"
+        android:content="@+id/list_content"
+        android:handle="@+id/btn_handle"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_handle"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="@dimen/smart_handle_width"
+            android:layout_height="@dimen/smart_handle_height"
+            android:background="@drawable/smart_btn_selector"
+            android:text="@string/txt_empty" />
+
+        <RelativeLayout
+            android:id="@+id/list_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_back2_main"
+            android:gravity="center|top"
+            android:paddingBottom="@dimen/smart_padding_space"
+            android:paddingLeft="@dimen/smart_padding_space"
+            android:paddingTop="@dimen/smart_padding_space" >
+
+            <ListView
+                android:id="@+id/list_add_smart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/smart_back_button"
+                android:background="@android:color/white" >
+            </ListView>
+
+            <LinearLayout
+                android:id="@+id/lay_smart_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_line_height"
+                    android:background="@color/color_title_bg"
+                    android:orientation="vertical" >
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_smart_back"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/smart_back_button"
+                    android:background="@drawable/smart_back_selector"
+                    android:text="@string/txt_add_smartback" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </SlidingDrawer>
+
+</RelativeLayout>

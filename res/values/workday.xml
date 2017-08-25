@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="workday">
+        <item >只周一上班</item>
+        <item >一到二上班</item>
+        <item >一到三上班</item>
+        <item >一到四上班</item>
+        <item >周末双休</item>
+        <item >周末单休</item>
+        <item >全周无休</item>
+    </string-array>
+    
+</resources>

@@ -1,0 +1,142 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    tools:context=".ZhuanTiActivity" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_title_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_back"
+            android:src="@drawable/ic_title_left" />
+
+        <TextView
+            android:id="@+id/tv_title_zhuanti"
+            style="@style/title_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/txt_tab_zhuanti" />
+
+        <TextView
+            android:id="@+id/tv_title_empty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_empty" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        style="@style/lay_item"
+        android:layout_below="@+id/LinearLayout1"
+        android:background="@android:color/white" >
+
+        <TextView
+            android:id="@+id/tv_title_name"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="2"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_zhuanti_name" />
+
+        <TextView
+            android:id="@+id/tv_title_date"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="3"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_zhuanti_date" />
+
+        <TextView
+            android:id="@+id/tv_title_jiecun"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/list_border_size"
+            android:layout_weight="2"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_zhuanti_jiecun" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_zhuanti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout2"
+        android:layout_marginBottom="@dimen/cat_list_height"
+        android:background="@android:color/white"
+        android:descendantFocusability="blocksDescendants"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent" >
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/lay_noitem"
+        style="@style/lay_item"
+        android:layout_below="@+id/LinearLayout2"
+        android:background="@color/color_item_bg"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/tv_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/txt_nozhuanti" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cat_list_height"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white" >
+
+        <EditText
+            android:id="@+id/et_zhuanti_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:ems="10"
+            android:hint="@string/txt_tab_zhuanti_name"
+            android:imeOptions="actionDone"
+            android:inputType="textNoSuggestions"
+            android:maxLength="20"
+            android:textColor="@color/color_text"
+            android:textColorHint="@color/color_text_hint"
+            android:textSize="@dimen/text_size_medium" />
+
+        <Button
+            android:id="@+id/btn_zhuanti_save"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/main_btn_selector"
+            android:text="@string/txt_cat_save"
+            android:textSize="@dimen/text_size_medium" />
+    </LinearLayout>
+
+</RelativeLayout>

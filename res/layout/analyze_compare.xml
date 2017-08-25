@@ -1,0 +1,155 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        style="@style/lay_item"
+        android:background="@android:color/white" >
+
+        <TextView
+            android:id="@+id/tv_title_catname"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_analyze_catname" />
+
+        <TextView
+            android:id="@+id/tv_title_shoupricecur"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_analyze_shoupricecur" />
+
+        <TextView
+            android:id="@+id/tv_title_zhipricecur"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_analyze_zhipricecur" />
+
+        <TextView
+            android:id="@+id/tv_title_shoupriceprev"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_analyze_shoupriceprev" />
+
+        <TextView
+            android:id="@+id/tv_title_zhipriceprev"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_analyze_zhipriceprev" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_analyzecompare"
+        style="@style/list_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout1"
+        android:background="@android:color/white"
+        android:descendantFocusability="blocksDescendants"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent" >
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/lay_noitem"
+        style="@style/lay_item"
+        android:layout_below="@+id/LinearLayout1"
+        android:background="@color/color_item_bg"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/tv_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/txt_nocategory" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_analyze_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_line_height"
+            android:background="@color/color_title_bg"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/lay_total"
+            android:layout_width="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/tv_total_label"
+                style="@style/tv_item"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/list_border_size"
+                android:layout_marginLeft="@dimen/list_border_size"
+                android:layout_weight="1"
+                android:background="@color/color_item_bg"
+                android:text="@string/txt_analyze_jiecunprice" />
+
+            <TextView
+                android:id="@+id/tv_total_curprice"
+                style="@style/tv_item_price2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/list_border_size"
+                android:layout_marginLeft="@dimen/list_border_size"
+                android:layout_weight="2"
+                android:background="@color/color_item_bg"
+                android:text="@string/txt_analyze_curprice" />
+
+            <TextView
+                android:id="@+id/tv_total_prevprice"
+                style="@style/tv_item_price2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/list_border_size"
+                android:layout_marginLeft="@dimen/list_border_size"
+                android:layout_marginRight="@dimen/list_border_size"
+                android:layout_weight="2"
+                android:background="@color/color_item_bg"
+                android:text="@string/txt_analyze_prevprice" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

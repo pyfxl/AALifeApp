@@ -1,0 +1,186 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    tools:context=".CardActivity" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_title_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_back"
+            android:src="@drawable/ic_title_left" />
+
+        <TextView
+            android:id="@+id/tv_title_card"
+            style="@style/title_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/txt_tab_card" />
+
+        <ImageButton
+            android:id="@+id/btn_title_trans"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_card_zhangdetail"
+            android:src="@drawable/ic_title_translate_detail" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        style="@style/lay_item"
+        android:layout_below="@+id/LinearLayout1"
+        android:background="@android:color/white" >
+
+        <TextView
+            android:id="@+id/tv_title_detail"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="2"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_card_detail" />
+
+        <TextView
+            android:id="@+id/tv_title_cardname"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="3"
+            android:background="@color/color_title_bg"
+            android:drawableRight="@drawable/ic_card_translate"
+            android:text="@string/txt_card_name" />
+
+        <TextView
+            android:id="@+id/tv_title_cardmoney"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="3"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_card_moneyset" />
+
+        <TextView
+            android:id="@+id/tv_title_operate"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/list_border_size"
+            android:layout_weight="2"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_card_operate" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout2"
+        android:layout_marginBottom="@dimen/cat_list_height"
+        android:background="@android:color/white"
+        android:descendantFocusability="blocksDescendants"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent" >
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/lay_noitem"
+        style="@style/lay_item"
+        android:layout_below="@+id/LinearLayout2"
+        android:background="@color/color_item_bg"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/tv_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/txt_nocard" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cat_list_height"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white" >
+
+        <EditText
+            android:id="@+id/et_card_name"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:ems="10"
+            android:hint="@string/txt_card_name"
+            android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions"
+            android:maxLength="20"
+            android:textColor="@color/color_text"
+            android:textColorHint="@color/color_text_hint"
+            android:textSize="@dimen/text_size_medium" />
+
+        <EditText
+            android:id="@+id/et_card_money"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:ems="10"
+            android:gravity="center|right"
+            android:hint="@string/txt_card_money"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal|numberSigned"
+            android:maxLength="10"
+            android:textColor="@color/color_text"
+            android:textColorHint="@color/color_text_hint"
+            android:textSize="@dimen/text_size_medium" />
+
+        <TextView
+            android:id="@+id/tv_card_moneystart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_card_zero"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_card_moneybalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_card_zero"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_card_save"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="@drawable/main_btn_selector"
+            android:text="@string/txt_cat_save"
+            android:textSize="@dimen/text_size_medium" />
+    </LinearLayout>
+
+</RelativeLayout>

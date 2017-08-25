@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/ic_bg"
+    tools:context=".AnalyzeActivity" >
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_title_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_back"
+            android:src="@drawable/ic_title_left" />
+
+        <TextView
+            android:id="@+id/tv_title_analyze"
+            style="@style/title_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/txt_tab_analyze" />
+
+        <ImageButton
+            android:id="@+id/btn_title_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_date"
+            android:src="@drawable/ic_title_date" />
+
+        <ImageButton
+            android:id="@+id/btn_title_add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_add"
+            android:src="@drawable/ic_title_add"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/btn_title_refresh"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_refresh"
+            android:src="@drawable/ic_title_refresh"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <LinearLayout style="@style/lay_item" >
+
+        <TextView
+            android:id="@+id/tv_nav_compare"
+            style="@style/tv_item_nav_rank"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/nav_border_sub"
+            android:clickable="true"
+            android:text="@string/txt_tab_analyzecompare"
+            android:textColor="@drawable/nav_btn_selector" />
+
+        <TextView
+            android:id="@+id/tv_nav_shouzhi"
+            style="@style/tv_item_nav_rank"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/nav_border_sub"
+            android:clickable="true"
+            android:text="@string/txt_tab_analyzeshouzhi"
+            android:textColor="@drawable/nav_btn_selector" />
+
+        <TextView
+            android:id="@+id/tv_nav_jiehuan"
+            style="@style/tv_item_nav_rank"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/nav_border_sub"
+            android:clickable="true"
+            android:text="@string/txt_tab_analyzejiehuan"
+            android:textColor="@drawable/nav_btn_selector" />
+
+        <TextView
+            android:id="@+id/tv_nav_tongji"
+            style="@style/tv_item_nav_rank"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/nav_border_sub"
+            android:clickable="true"
+            android:text="@string/txt_tab_analyzetongji"
+            android:textColor="@drawable/nav_btn_selector" />
+    </LinearLayout>
+    
+	<android.support.v4.view.ViewPager
+	    android:id="@+id/viewPager"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" />
+    
+</LinearLayout>

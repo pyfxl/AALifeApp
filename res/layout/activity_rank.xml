@@ -1,0 +1,135 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    tools:context=".RankActivity" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_title_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_back"
+            android:src="@drawable/ic_title_left" />
+
+        <TextView
+            android:id="@+id/tv_title_rank"
+            style="@style/title_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/txt_tab_rank" />
+
+        <ImageButton
+            android:id="@+id/btn_title_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_date"
+            android:src="@drawable/ic_title_date" />
+
+        <TextView
+            android:id="@+id/tv_title_empty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_empty"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/hsv_rank_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout1"
+        android:background="@android:color/white"
+        android:scrollbars="none" >
+
+        <LinearLayout style="@style/lay_item" >
+
+            <TextView
+                android:id="@+id/tv_nav_cat"
+                style="@style/tv_item_nav_rank"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/nav_border_sub"
+                android:clickable="true"
+                android:text="@string/txt_tab_rankcat"
+                android:textColor="@drawable/nav_btn_selector" />
+
+            <TextView
+                android:id="@+id/tv_nav_count"
+                style="@style/tv_item_nav_rank"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/nav_border_sub"
+                android:clickable="true"
+                android:text="@string/txt_tab_rankcount"
+                android:textColor="@drawable/nav_btn_selector" />
+
+            <TextView
+                android:id="@+id/tv_nav_price"
+                style="@style/tv_item_nav_rank"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/nav_border_sub"
+                android:clickable="true"
+                android:text="@string/txt_tab_rankprice"
+                android:textColor="@drawable/nav_btn_selector" />
+
+            <TextView
+                android:id="@+id/tv_nav_date"
+                style="@style/tv_item_nav_rank"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/nav_border_sub"
+                android:clickable="true"
+                android:text="@string/txt_tab_rankdate"
+                android:textColor="@drawable/nav_btn_selector" />
+
+            <TextView
+                android:id="@+id/tv_nav_region"
+                style="@style/tv_item_nav_rank"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/nav_border_sub"
+                android:clickable="true"
+                android:text="@string/txt_tab_rankregion"
+                android:textColor="@drawable/nav_btn_selector" />
+
+            <TextView
+                android:id="@+id/tv_nav_recommend"
+                style="@style/tv_item_nav_rank"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/nav_border_sub"
+                android:clickable="true"
+                android:text="@string/txt_tab_rankrecommend"
+                android:textColor="@drawable/nav_btn_selector" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/hsv_rank_title" />
+
+</RelativeLayout>

@@ -1,0 +1,386 @@
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_title_aboutus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_aboutus"
+            android:src="@drawable/ic_title_aboutus" />
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/title_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/txt_title_home" />
+
+        <ImageButton
+            android:id="@+id/btn_title_sync"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_sync"
+            android:src="@drawable/ic_title_uservip" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_dian"
+        android:layout_width="@dimen/dian_height"
+        android:layout_height="@dimen/dian_height"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/padding_medium"
+        android:layout_marginTop="@dimen/padding_medium"
+        android:background="@drawable/home_dian"
+        android:text="@string/txt_empty"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_usermoney_height"
+        android:layout_below="@+id/LinearLayout1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_usermoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/txt_home_usermoney"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/home_usermoney_size" />
+
+        <Spinner
+            android:id="@+id/spinner_type"
+            style="@style/spinner_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" />
+
+        <Spinner
+            android:id="@+id/spinner_card"
+            style="@style/spinner_style"
+            android:layout_width="@dimen/home_usermoney_width"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true" />
+
+        <ImageButton
+            android:id="@+id/btn_moneyedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/spinner_card"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_card_moneymanage"
+            android:src="@drawable/ic_user_moneyedit" />
+
+        <ImageButton
+            android:id="@+id/btn_about_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/spinner_type"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_about_notes"
+            android:src="@drawable/ic_about_help"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RelativeLayout1" >
+
+        <Button
+            android:id="@+id/btn_home_shouru"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/list_item_height"
+            android:layout_weight="1"
+            android:background="@drawable/second_btn_selector"
+            android:text="@string/txt_home_shouru" />
+
+        <Button
+            android:id="@+id/btn_home_zhichu"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/list_item_height"
+            android:layout_weight="1"
+            android:background="@drawable/main_btn_selector"
+            android:text="@string/txt_home_zhichu" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_line_height"
+        android:layout_below="@+id/LinearLayout5"
+        android:background="@color/color_title_bg"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout3"
+        style="@style/lay_item"
+        android:layout_below="@+id/LinearLayout6"
+        android:background="@drawable/nav_border_sub" >
+
+        <TextView
+            android:id="@+id/tv_title_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@drawable/ic_sync_hometotal"
+            android:gravity="center"
+            android:text="@string/txt_title_total" />
+
+        <TextView
+            android:id="@+id/tv_date_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:drawableRight="@drawable/ic_add_datechoose"
+            android:gravity="center"
+            android:text="@string/txt_day_nav_main"
+            android:textColor="@drawable/nav_btn_selector" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/LinearLayout2"
+        android:layout_below="@+id/RelativeLayout3" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:background="@color/color_item_bg"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_all"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_home_radioall" />
+
+                <RadioButton
+                    android:id="@+id/radio_year"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_home_radioyear" />
+
+                <RadioButton
+                    android:id="@+id/radio_month"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/txt_home_radiomonth" />
+
+                <RadioButton
+                    android:id="@+id/radio_day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_home_radioday" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_line_height"
+                android:background="@color/color_title_bg"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <com.aalife.android.MyListView
+                android:id="@+id/list_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:listSelector="@android:color/transparent" >
+            </com.aalife.android.MyListView>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout9"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_line_height"
+                android:background="@color/color_title_bg"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout10"
+                style="@style/lay_item"
+                android:layout_width="match_parent" >
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    style="@style/tv_item"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/color_item2_bg"
+                    android:text="@string/txt_analyze_weihuan"
+                    android:textColor="@color/color_main" />
+
+                <TextView
+                    android:id="@+id/tv_home_weihuan"
+                    style="@style/tv_item_price"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@color/color_item_bg"
+                    android:text="@string/txt_empty"
+                    android:textColor="@color/color_main" />
+
+                <TextView
+                    android:id="@+id/TextView04"
+                    style="@style/tv_item"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/color_item2_bg"
+                    android:text="@string/txt_analyze_qianhuan"
+                    android:textColor="@color/color_main" />
+
+                <TextView
+                    android:id="@+id/tv_home_qianhuan"
+                    style="@style/tv_item_price"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@color/color_item_bg"
+                    android:text="@string/txt_empty"
+                    android:textColor="@color/color_main" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout8"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/layout_line_height"
+                android:background="@color/color_title_bg"
+                android:orientation="vertical" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout4"
+                style="@style/lay_item"
+                android:layout_width="match_parent" >
+
+                <TextView
+                    android:id="@+id/TextView03"
+                    style="@style/tv_item"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/color_item2_bg"
+                    android:text="@string/txt_empty" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    style="@style/tv_item"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@color/color_item_bg"
+                    android:text="@string/txt_empty" />
+
+                <TextView
+                    android:id="@+id/tv_title_jiecun"
+                    style="@style/tv_item"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/color_item2_bg"
+                    android:text="@string/txt_home_jiecun" />
+
+                <TextView
+                    android:id="@+id/tv_total_jiecun"
+                    style="@style/tv_item_price"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:background="@color/color_item_bg"
+                    android:text="@string/txt_empty" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/tab_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_tab_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_tab_day"
+            android:src="@drawable/ic_tab_day" />
+
+        <ImageButton
+            android:id="@+id/btn_tab_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_tab_month"
+            android:src="@drawable/ic_tab_month" />
+
+        <ImageButton
+            android:id="@+id/btn_tab_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_tab_rank"
+            android:src="@drawable/ic_tab_rank" />
+
+        <ImageButton
+            android:id="@+id/btn_tab_analyze"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_tab_analyze"
+            android:src="@drawable/ic_tab_analyze" />
+    </LinearLayout>
+
+</RelativeLayout>

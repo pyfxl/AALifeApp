@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/lay_item"
+        android:background="@android:color/white" >
+
+        <TextView
+            android:id="@+id/tv_title_date"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_month_date" />
+
+        <TextView
+            android:id="@+id/tv_title_shouruprice"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_month_shouruprice" />
+
+        <TextView
+            android:id="@+id/tv_title_zhichuprice"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_month_zhichuprice" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_month"
+        style="@style/list_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent" >
+    </ListView>
+
+</LinearLayout>

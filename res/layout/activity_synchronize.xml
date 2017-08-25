@@ -1,0 +1,401 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    android:orientation="vertical"
+    tools:context=".SynchronizeActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_title_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_back"
+            android:src="@drawable/ic_title_left" />
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/title_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/txt_tab_synchronize" />
+
+        <ImageButton
+            android:id="@+id/btn_user_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_user_newuser"
+            android:src="@drawable/ic_title_userlogin" />
+
+        <ImageButton
+            android:id="@+id/btn_user_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_user_edit"
+            android:src="@drawable/ic_title_useredit"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            style="@style/layout_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_item_bg"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tv_sync_user"
+                    style="@style/edit_title_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_user_username"
+                    android:text="@string/txt_sync_user" />
+
+                <TextView
+                    android:id="@+id/tv_user_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_sync_user"
+                    android:layout_alignBottom="@+id/tv_sync_user"
+                    android:layout_marginLeft="@dimen/padding_large"
+                    android:layout_toRightOf="@+id/tv_sync_user"
+                    android:clickable="true"
+                    android:text="@string/txt_sync_user_logout"
+                    android:textColor="@drawable/nav_btn_selector"
+                    android:textSize="@dimen/text_size_sync_subtitle" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_sync_user_text"
+                style="@style/more_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_sync_user_text" />
+
+            <TextView
+                android:id="@+id/tv_sync_user_honor"
+                style="@style/more_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="0dp"
+                android:text="@string/txt_sync_user_honor"
+                android:textColor="@color/color_back3_main" />
+
+            <ImageView
+                android:id="@+id/iv_userimage"
+                style="@style/sync_img_style"
+                android:contentDescription="@string/txt_user_userimage"
+                android:src="@drawable/ic_user_image"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_user_bound"
+                style="@style/btn_style_noimg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_btn_selector"
+                android:text="@string/txt_sync_user_bound"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small" >
+
+                <TextView
+                    android:id="@+id/tv_sync_title"
+                    style="@style/edit_title_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_sync_synchronize"
+                    android:text="@string/txt_sync_title" />
+
+                <TextView
+                    android:id="@+id/tv_sync_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/tv_sync_title"
+                    android:layout_alignBottom="@+id/tv_sync_title"
+                    android:layout_marginLeft="@dimen/padding_large"
+                    android:layout_toRightOf="@+id/tv_sync_title"
+                    android:clickable="true"
+                    android:text="@string/txt_sync_cancel"
+                    android:textColor="@drawable/nav_btn_selector"
+                    android:textSize="@dimen/text_size_sync_subtitle" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_lab_status"
+                style="@style/more_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_home_nosync" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/btn_home_sync"
+                    style="@style/btn_style_noimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/main_btn_selector"
+                    android:text="@string/txt_sync_button" />
+
+                <ProgressBar
+                    android:id="@+id/pb_home_sync"
+                    style="@style/home_syncing"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/btn_home_sync"
+                    android:background="@color/color_item_bg"
+                    android:indeterminateDrawable="@drawable/sync_bg"
+                    android:indeterminateOnly="true"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_zhuanti"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:drawableLeft="@drawable/ic_add_zhuanti"
+                android:text="@string/txt_zhuanti" />
+
+            <TextView
+                android:id="@+id/tv_zhuanti_text"
+                style="@style/more_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_zhuanti_text" />
+
+            <Button
+                android:id="@+id/btn_zhuanti_go"
+                style="@style/btn_style_noimg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/second_btn_selector"
+                android:text="@string/txt_zhuanti_button" />
+
+            <TextView
+                android:id="@+id/tv_search"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:drawableLeft="@drawable/ic_sync_search"
+                android:text="@string/txt_search" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/et_search_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:ems="10"
+                    android:imeOptions="actionDone"
+                    android:inputType="textNoSuggestions"
+                    android:maxLength="20"
+                    android:textColor="@color/color_text" />
+
+                <Button
+                    android:id="@+id/btn_search_go"
+                    style="@style/btn_style_noimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/et_search_key"
+                    android:background="@drawable/main_btn_selector"
+                    android:text="@string/txt_tab_search" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_restore_title"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:drawableLeft="@drawable/ic_sync_restore"
+                android:text="@string/txt_restore_title" />
+
+            <TextView
+                android:id="@+id/tv_restore_text"
+                style="@style/more_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_restore_text" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/btn_backup_go"
+                    style="@style/btn_style_noimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/main_btn_selector"
+                    android:text="@string/txt_backup_button" />
+
+                <Button
+                    android:id="@+id/btn_restore_go"
+                    style="@style/btn_style_noimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_small"
+                    android:layout_toRightOf="@+id/btn_backup_go"
+                    android:background="@drawable/main_btn_selector"
+                    android:text="@string/txt_restore_button" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_cloud_title"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:drawableLeft="@drawable/ic_sync_update"
+                android:text="@string/txt_cloud_title" />
+
+            <TextView
+                android:id="@+id/tv_cloud_text"
+                style="@style/more_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_cloud_text" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/btn_cloud_up"
+                    style="@style/btn_style_noimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/second_btn_selector"
+                    android:text="@string/txt_cloud_up" />
+
+                <Button
+                    android:id="@+id/btn_cloud_down"
+                    style="@style/btn_style_noimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_small"
+                    android:layout_marginRight="@dimen/padding_small"
+                    android:layout_toRightOf="@+id/btn_cloud_up"
+                    android:background="@drawable/second_btn_selector"
+                    android:text="@string/txt_cloud_down" />
+
+                <ProgressBar
+                    android:id="@+id/pb_cloud_sync"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/btn_cloud_down"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_data_title"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:drawableLeft="@drawable/ic_user_moneyedit"
+                android:text="@string/txt_data_title" />
+
+            <TextView
+                android:id="@+id/tv_data_text"
+                style="@style/more_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_data_text" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/et_data_date1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="13"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="date"
+                    android:textColor="@color/color_text" />
+
+                <TextView
+                    android:id="@+id/tv_region_to"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/txt_data_to"
+                    android:textColor="@color/color_text" />
+
+                <EditText
+                    android:id="@+id/et_data_date2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="13"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:imeOptions="actionDone"
+                    android:inputType="date"
+                    android:textColor="@color/color_text" />
+
+                <Button
+                    android:id="@+id/btn_data_export"
+                    style="@style/btn_style_noimg"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:background="@drawable/main_btn_selector"
+                    android:text="@string/txt_data_export" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/txt_empty" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

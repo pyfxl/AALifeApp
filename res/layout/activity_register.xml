@@ -1,0 +1,175 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    tools:context=".RegisterActivity" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_title_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_back"
+            android:src="@drawable/ic_title_left" />
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/title_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/txt_tab_register" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/txt_empty" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout1" >
+
+        <LinearLayout
+            style="@style/layout_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_item_bg"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_user_username"
+                android:text="@string/txt_user_username" />
+
+            <EditText
+                android:id="@+id/et_user_name"
+                style="@style/edit_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:imeOptions="actionNext"
+                android:inputType="textNoSuggestions"
+                android:maxLength="12"
+                android:textColor="@color/color_text" />
+
+            <TextView
+                android:id="@+id/tv_user_pass"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_user_userpass"
+                android:text="@string/txt_user_userpass" />
+
+            <EditText
+                android:id="@+id/et_user_pass"
+                style="@style/edit_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLength="12"
+                android:textColor="@color/color_text" />
+
+            <TextView
+                android:id="@+id/tv_user_nickname"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_user_nickname"
+                android:text="@string/txt_user_nickname" />
+
+            <EditText
+                android:id="@+id/et_user_nickname"
+                style="@style/edit_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:imeOptions="actionNext"
+                android:inputType="textNoSuggestions"
+                android:maxLength="50"
+                android:textColor="@color/color_text" />
+
+            <TextView
+                android:id="@+id/tv_user_email"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_user_email"
+                android:text="@string/txt_user_email" />
+
+            <EditText
+                android:id="@+id/et_user_email"
+                style="@style/edit_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailAddress"
+                android:maxLength="100"
+                android:textColor="@color/color_text" />
+
+            <TextView
+                android:id="@+id/tv_user_workday"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_add_datechoose"
+                android:text="@string/txt_user_workday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Spinner
+                    android:id="@+id/sp_workday"
+                    style="@style/spinner_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_empty" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_user_add"
+                style="@style/btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:background="@drawable/main_btn_selector"
+                android:text="@string/txt_user_add" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/pb_user_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

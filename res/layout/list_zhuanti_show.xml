@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/lay_item"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/tv_day_itemtype"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="2"
+        android:background="@color/color_item_bg"
+        android:text="@string/txt_day_itemtype" />
+
+    <TextView
+        android:id="@+id/tv_day_itemname"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="3"
+        android:background="@color/color_item_bg"
+        android:text="@string/txt_day_itemname" />
+
+    <TextView
+        android:id="@+id/tv_day_itembuydate"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="2"
+        android:background="@color/color_item_bg"
+        android:text="@string/txt_day_itembuydate" />
+
+    <TextView
+        android:id="@+id/tv_day_itemprice"
+        style="@style/tv_item_price2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_marginRight="@dimen/list_border_size"
+        android:layout_weight="3"
+        android:background="@color/color_item_bg"
+        android:text="@string/txt_day_itemprice" />
+
+</LinearLayout>

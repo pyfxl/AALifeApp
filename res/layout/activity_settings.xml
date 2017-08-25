@@ -1,0 +1,211 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    android:orientation="vertical"
+    tools:context=".SettingsActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_title_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_back"
+            android:src="@drawable/ic_title_left" />
+
+        <TextView
+            android:id="@+id/textView1"
+            style="@style/title_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/txt_tab_settings" />
+
+        <ImageButton
+            android:id="@+id/btn_title_clock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_back"
+            android:src="@drawable/ic_title_clock" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            style="@style/layout_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_item_bg"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_set_lock"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_user_userlock"
+                android:text="@string/txt_set_lock" />
+
+            <EditText
+                android:id="@+id/et_set_lock"
+                style="@style/edit_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/txt_set_lockempty"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:maxLength="10"
+                android:textColor="@color/color_text"
+                android:textColorHint="@color/color_text_hint" />
+
+            <TextView
+                android:id="@+id/tv_set_welcome"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_sync_hometotal"
+                android:text="@string/txt_set_welcome" />
+
+            <EditText
+                android:id="@+id/et_set_welcome"
+                style="@style/edit_text_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="15"
+                android:imeOptions="actionNext"
+                android:inputType="textNoSuggestions"
+                android:maxLength="15"
+                android:textColor="@color/color_text" />
+
+            <TextView
+                android:id="@+id/tv_set_sync"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:drawableLeft="@drawable/ic_sync_synchronize"
+                android:text="@string/txt_sync_title" />
+
+            <CheckBox
+                android:id="@+id/cb_set_sync"
+                style="@style/edit_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/txt_set_synctext"
+                android:textColor="@color/color_text" />
+
+            <TextView
+                android:id="@+id/tv_set_readtips"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_small"
+                android:drawableLeft="@drawable/ic_about_help"
+                android:text="@string/txt_set_readtips" />
+
+            <CheckBox
+                android:id="@+id/cb_set_readtips"
+                style="@style/edit_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/txt_set_readtips_text"
+                android:textColor="@color/color_text" />
+
+            <TextView
+                android:id="@+id/tv_user_workday"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_add_datechoose"
+                android:text="@string/txt_user_workday" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/padding_small" >
+
+                <Spinner
+                    android:id="@+id/sp_workday"
+                    style="@style/spinner_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2" />
+
+                <TextView
+                    android:id="@+id/TextView01"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_empty" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_set_fixmoney"
+                style="@style/edit_title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_user_moneyedit"
+                android:text="@string/txt_set_fixmoney_title" />
+
+            <RadioGroup
+                android:id="@+id/rg_fixmoney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/padding_medium"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_yue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/txt_set_fixmoney_yue"
+                    android:textColor="@color/color_text" />
+
+                <RadioButton
+                    android:id="@+id/radio_bujide"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_set_fixmoney_bujide"
+                    android:textColor="@color/color_text" />
+                
+                <RadioButton
+                    android:id="@+id/radio_chazhang"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_set_fixmoney_chazhang"
+                    android:textColor="@color/color_text" />
+                
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_set_sure"
+                style="@style/btn_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_btn_selector"
+                android:text="@string/txt_lock_sure" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

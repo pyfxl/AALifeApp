@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/lay_item"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_nav_main"
+        style="@style/tv_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/nav_border_sub"
+        android:text="@string/txt_month_nav_main"
+        android:textColor="@drawable/nav_btn_selector" />
+
+</LinearLayout>

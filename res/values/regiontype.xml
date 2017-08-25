@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="regiontype">
+        <item >请选择</item>
+        <item >每天</item>
+        <item >每周</item>
+        <item >每月</item>
+        <item >每季</item>
+        <item >每年</item>
+        <item >工作日</item>
+    </string-array>
+    
+</resources>

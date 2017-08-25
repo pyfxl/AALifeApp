@@ -1,0 +1,181 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
+    tools:context=".ZhuanTiShowActivity" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_title_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_back"
+            android:src="@drawable/ic_title_left" />
+
+        <TextView
+            android:id="@+id/tv_title_zhuanti_show"
+            style="@style/title_style"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="@string/txt_tab_zhuanti_show" />
+
+        <ImageButton
+            android:id="@+id/btn_title_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/title_btn_selector"
+            android:contentDescription="@string/txt_title_date"
+            android:src="@drawable/ic_title_date" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        style="@style/lay_item"
+        android:layout_below="@+id/LinearLayout1"
+        android:background="@android:color/white" >
+
+        <TextView
+            android:id="@+id/tv_title_itemtype"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="2"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_day_itemtypebig" />
+
+        <TextView
+            android:id="@+id/tv_title_itemname"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="3"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_day_itemname" />
+
+        <TextView
+            android:id="@+id/tv_title_itembuydate"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="2"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_day_itembuydate" />
+
+        <TextView
+            android:id="@+id/tv_title_itemprice"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/list_border_size"
+            android:layout_weight="3"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_day_itemprice" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_zhuanti_show"
+        style="@style/list_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout2"
+        android:background="@android:color/white"
+        android:descendantFocusability="blocksDescendants"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
+        android:fastScrollEnabled="true" >
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/lay_noitem"
+        style="@style/lay_item"
+        android:layout_below="@+id/LinearLayout2"
+        android:background="@color/color_item_bg"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/tv_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/txt_noitem" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_zhuanti_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_line_height"
+            android:background="@color/color_title_bg"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/lay_total"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/tv_total_shouruprice"
+                style="@style/tv_item_price2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/list_border_size"
+                android:layout_marginLeft="@dimen/list_border_size"
+                android:layout_weight="1"
+                android:background="@color/color_item_bg"
+                android:text="@string/txt_zhuanti_shouru" />
+
+            <TextView
+                android:id="@+id/tv_total_zhichuprice"
+                style="@style/tv_item_price2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/list_border_size"
+                android:layout_marginLeft="@dimen/list_border_size"
+                android:layout_weight="1"
+                android:background="@color/color_item_bg"
+                android:text="@string/txt_zhuanti_zhichu" />
+
+            <TextView
+                android:id="@+id/tv_total_jiecunprice"
+                style="@style/tv_item_price2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/list_border_size"
+                android:layout_marginLeft="@dimen/list_border_size"
+                android:layout_marginRight="@dimen/list_border_size"
+                android:layout_weight="1"
+                android:background="@color/color_item_bg"
+                android:text="@string/txt_zhuanti_jiecun" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

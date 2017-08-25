@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/lay_item"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/lay_day_select"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="2"
+        android:background="@color/color_item_bg"
+        android:orientation="vertical" >
+
+        <CheckBox
+            android:id="@+id/cb_day_select"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:checked="true"
+            android:focusable="false" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_day_itemtype"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="2"
+        android:background="@color/color_item_bg"
+        android:focusable="false"
+        android:text="@string/txt_day_itemtypebig" />
+
+    <TextView
+        android:id="@+id/tv_day_itemtypevalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_day_itemtypebig"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/lay_day_itemname"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="4"
+        android:background="@color/color_item_bg" >
+
+        <TextView
+            android:id="@+id/tv_day_regiontype"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@color/color_main"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="@string/txt_day_regionname"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_region" />
+
+        <TextView
+            android:id="@+id/tv_day_zhuanti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@color/color_purple"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="@string/txt_day_zhuanti"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_region"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_day_itemname"
+            style="@style/tv_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:text="@string/txt_day_itemname" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_day_itemprice"
+        style="@style/tv_item_price"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="4"
+        android:background="@color/color_item_bg"
+        android:focusable="false"
+        android:text="@string/txt_day_itemprice" />
+
+    <TextView
+        android:id="@+id/tv_day_pricevalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_zero"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/lay_day_recommend"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_marginRight="@dimen/list_border_size"
+        android:layout_weight="2"
+        android:background="@color/color_item_bg"
+        android:orientation="vertical" >
+
+        <CheckBox
+            android:id="@+id/cb_day_recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:focusable="false" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_day_itemid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_day_id"
+        android:visibility="gone" />
+
+</LinearLayout>

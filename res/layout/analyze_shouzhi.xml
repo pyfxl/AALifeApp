@@ -1,0 +1,145 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        style="@style/lay_item"
+        android:background="@android:color/white" >
+
+        <TextView
+            android:id="@+id/tv_title_itembuydate"
+            style="@style/tv_item"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_analyze_itembuydate" />
+
+        <TextView
+            android:id="@+id/tv_title_shouru"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_analyze_shouruprice" />
+
+        <TextView
+            android:id="@+id/tv_title_zhichu"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/list_border_size"
+            android:layout_marginLeft="@dimen/list_border_size"
+            android:layout_marginTop="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_analyze_zhichuprice" />
+
+        <TextView
+            android:id="@+id/tv_title_jiecun"
+            style="@style/tv_item_price2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/list_border_size"
+            android:layout_weight="1"
+            android:background="@color/color_title_bg"
+            android:text="@string/txt_analyze_jiecunprice" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list_analyzeshouzhi"
+        style="@style/list_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LinearLayout1"
+        android:background="@android:color/white"
+        android:descendantFocusability="blocksDescendants"
+        android:divider="@android:color/transparent"
+        android:listSelector="@android:color/transparent" >
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/lay_noitem"
+        style="@style/lay_item"
+        android:layout_below="@+id/LinearLayout1"
+        android:background="@color/color_item_bg"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/tv_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/txt_noitem" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lay_analyze_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_line_height"
+            android:background="@color/color_title_bg"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/lay_total"
+            android:layout_width="match_parent"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/tv_total_shouruprice"
+                style="@style/tv_item_price2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/list_border_size"
+                android:layout_marginLeft="@dimen/list_border_size"
+                android:layout_weight="1"
+                android:background="@color/color_item_bg"
+                android:text="@string/txt_month_shou" />
+
+            <TextView
+                android:id="@+id/tv_total_zhichuprice"
+                style="@style/tv_item_price2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/list_border_size"
+                android:layout_marginLeft="@dimen/list_border_size"
+                android:layout_weight="1"
+                android:background="@color/color_item_bg"
+                android:text="@string/txt_month_zhi" />
+
+            <TextView
+                android:id="@+id/tv_total_jiecunprice"
+                style="@style/tv_item_price2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/list_border_size"
+                android:layout_marginLeft="@dimen/list_border_size"
+                android:layout_marginRight="@dimen/list_border_size"
+                android:layout_weight="1"
+                android:background="@color/color_item_bg"
+                android:text="@string/txt_month_cun" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

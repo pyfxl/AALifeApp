@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_item_bg"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:padding="@dimen/padding_medium" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/calctext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:ellipsize="start"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center_vertical|right"
+            android:hint="@string/txt_calc_0"
+            android:inputType="textNoSuggestions"
+            android:textSize="@dimen/calc_text_size" />
+
+    </LinearLayout>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttonclear"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_clear" />
+
+        <TextView style="@style/calc_btn_style" />
+
+        <Button
+            android:id="@+id/buttonback"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_back" />
+
+        <Button
+            android:id="@+id/buttonok"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_ok" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/button1"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_1" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_2" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_3" />
+
+        <Button
+            android:id="@+id/buttonjia"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_jia" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_4" />
+
+        <Button
+            android:id="@+id/button5"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_5" />
+
+        <Button
+            android:id="@+id/button6"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_6" />
+
+        <Button
+            android:id="@+id/buttonjian"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_jian" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/button7"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_7" />
+
+        <Button
+            android:id="@+id/button8"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_8" />
+
+        <Button
+            android:id="@+id/button9"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_9" />
+
+        <Button
+            android:id="@+id/buttonchen"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_chen" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/buttondian"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_dian" />
+
+        <Button
+            android:id="@+id/button0"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_0" />
+
+        <Button
+            android:id="@+id/buttonden"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_den" />
+
+        <Button
+            android:id="@+id/buttonchu"
+            style="@style/calc_btn_style"
+            android:background="@drawable/calc_btn_selector"
+            android:text="@string/txt_calc_chu" />
+
+    </TableRow>
+
+</TableLayout>

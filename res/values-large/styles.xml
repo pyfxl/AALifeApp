@@ -1,0 +1,143 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.NoActionBar">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:textSize">21sp</item>
+    </style>
+        
+    <style name="title_style">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">31sp</item>
+    </style>
+        
+    <style name="btn_base">
+        <item name="android:textSize">23sp</item>
+        <item name="android:minHeight">@dimen/layout_add_height</item>
+    </style>
+    
+    <style name="btn_style" parent="btn_base">
+        <item name="android:paddingLeft">@dimen/padding_small</item>
+        <item name="android:paddingRight">@dimen/padding_small</item>
+    </style>
+    
+    <style name="btn_style_noimg" parent="btn_style">
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:paddingRight">@dimen/padding_large</item>
+    </style>
+
+    <style name="layout_style">
+        <item name="android:padding">@dimen/padding_large</item>
+    </style>
+        
+    <style name="sync_img_style">
+        <item name="android:layout_width">72dp</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="android:paddingLeft">@dimen/padding_small</item>
+        <item name="android:paddingRight">@dimen/padding_small</item>
+        <item name="android:paddingBottom">@dimen/padding_small</item>
+    </style>
+    
+    <style name="lay_item">
+        <item name="android:gravity">center</item>
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">@dimen/list_item_height</item>
+    </style>
+    
+    <style name="lay_total" parent="lay_item">
+		<item name="android:layout_height">@dimen/list_total_height</item>
+    </style>
+    
+    <style name="lay_add">
+        <item name="android:gravity">center</item>
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">@dimen/layout_add_height</item>
+        <item name="android:layout_marginBottom">@dimen/padding_small</item>
+    </style>
+    <style name="tv_item">
+        <item name="android:gravity">center</item>
+    </style>
+        
+    <style name="tv_item_nav_rank">
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">@dimen/title_text_padding</item>
+        <item name="android:paddingRight">@dimen/title_text_padding</item>
+    </style>
+        
+    <style name="tv_item_price">
+        <item name="android:gravity">center|right</item>
+        <item name="android:paddingRight">@dimen/padding_medium</item>
+    </style>
+    
+    <style name="tv_item_price2">
+        <item name="android:gravity">center|right</item>
+        <item name="android:paddingRight">@dimen/padding_small</item>
+    </style>
+    
+    <style name="tv_item_date">
+        <item name="android:gravity">center|left</item>
+        <item name="android:paddingLeft">@dimen/padding_medium</item>
+    </style>
+    
+    <style name="list_bottom">
+        <item name="android:layout_marginBottom">@dimen/list_item_height</item>
+    </style>
+    
+    <style name="calc_btn_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">63dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+    
+    <style name="start_lock_style">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginLeft">108dp</item>
+        <item name="android:layout_marginRight">108dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+    
+    <style name="edit_title_style"> 
+        <item name="android:gravity">center|left</item>      
+    </style>
+    
+    <style name="edit_text_style">
+        <item name="android:minHeight">@dimen/edit_min_height</item>
+        <item name="android:layout_marginBottom">@dimen/padding_small</item>  
+    </style>
+    
+    <style name="spinner_style">
+        <item name="android:minHeight">@dimen/edit_min_height</item>
+    </style>
+    
+    <style name="more_text_style">
+        <item name="android:lineSpacingExtra">@dimen/padding_small</item>
+        <item name="android:paddingTop">@dimen/padding_small</item>
+        <item name="android:paddingBottom">@dimen/padding_small</item>
+        <item name="android:textColor">@color/color_text</item>  
+    </style>
+    <style name="home_shouzhi_style">
+        <item name="android:textSize">44sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    
+    <style name="home_syncing">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+    </style>
+    
+</resources>

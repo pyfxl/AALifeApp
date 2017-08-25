@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/lay_item"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/tv_zhang_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_zhang_id"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_zhang_from"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="1"
+        android:background="@color/color_item_bg"
+        android:text="@string/txt_zhang_from" />
+
+    <TextView
+        android:id="@+id/tv_zhang_to"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="1"
+        android:background="@color/color_item_bg"
+        android:text="@string/txt_zhang_to" />
+
+    <TextView
+        android:id="@+id/tv_zhang_money"
+        style="@style/tv_item_price2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="1"
+        android:background="@color/color_item_bg"
+        android:text="@string/txt_zhang_money" />
+
+    <TextView
+        android:id="@+id/tv_zhang_moneyvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_zhang_money"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_zhang_date"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/list_border_size"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_marginRight="@dimen/list_border_size"
+        android:layout_weight="1"
+        android:background="@color/color_item_bg"
+        android:text="@string/txt_zhang_date" />
+
+</LinearLayout>

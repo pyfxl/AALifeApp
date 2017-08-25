@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/lay_item"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/tv_total_label"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_weight="1"
+        android:background="@color/color_item_bg"
+        android:text="@string/txt_month_total" />
+
+    <TextView
+        android:id="@+id/tv_total_price"
+        style="@style/tv_item"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_marginLeft="@dimen/list_border_size"
+        android:layout_weight="1"
+        android:background="@color/color_item_bg"
+        android:text="@string/txt_month_price" />
+
+</LinearLayout>

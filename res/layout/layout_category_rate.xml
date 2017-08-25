@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_medium" >
+
+    <TextView
+        style="@style/edit_title_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_add_dot"
+        android:text="@string/txt_rank_catsetting" />
+
+    <EditText
+        android:id="@+id/et_category_rate"
+        style="@style/edit_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:imeOptions="actionDone"
+        android:inputType="number"
+        android:maxLength="10"
+        android:textColor="@color/color_text" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        style="@style/edit_title_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_add_dot"
+        android:text="@string/txt_rank_catnote" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_medium"
+        android:text="@string/txt_rank_denrate"
+        android:textColor="@color/color_text" />
+
+</LinearLayout>

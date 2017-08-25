@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <color name="color_main">#FFE84620</color>
+    <color name="color_tran3_main">#8FE84620</color>
+    <color name="color_tran_main">#4FE84620</color>
+    <color name="color_tran2_main">#2FE84620</color>
+    <color name="color_item_bg">#FFFAFAFA</color>
+    <color name="color_item2_bg">#FFF4F4F4</color>
+    <color name="color_title_bg">#FFEAEAEA</color>
+    <color name="color_tran_white">#6FFFFFFF</color>
+    <color name="color_tran2_white">#BFFFFFFF</color>
+    <color name="color_back_main">#FF0099CC</color>
+    <color name="color_back2_main">#8F0099CC</color>
+    <color name="color_back3_main">#BF0099CC</color>
+    <color name="color_back2_white">#FF6EC4E0</color>
+    <color name="color_border">#FFDEDEDE</color>
+    <color name="color_text">#FF999999</color>
+    <color name="color_text_hint">#FFCCCCCC</color>
+    <color name="color_text_disabled">#FFDDDDDD</color>
+    <color name="color_second">#FF0087BD</color>
+    <color name="color_tran3_second">#8F0087BD</color>
+    <color name="color_tran_second">#4F0087BD</color>
+    <color name="color_purple">#FF800080</color>
+    <color name="color_red">#AFDB4437</color>
+    <color name="color_yellow">#AFF4B400</color>
+    <color name="color_green">#AF53A93F</color>
+    <color name="color_grey">#AFD9DADB</color>
+    <color name="color_dian">#FFFF0000</color>
+    
+</resources>

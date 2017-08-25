@@ -1,0 +1,46 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="list_item_height">40dp</dimen>
+    <dimen name="list_total_height">39dp</dimen>
+    <dimen name="layout_add_height">48dp</dimen>
+    <dimen name="title_text_padding">10dp</dimen>
+    <dimen name="user_image_size">72dp</dimen>
+    <dimen name="dian_height">6dp</dimen>    
+    
+    <dimen name="smart_handle_width">14dp</dimen>
+    <dimen name="smart_handle_height">144dp</dimen>
+    <dimen name="smart_padding_space">2dp</dimen>
+    <dimen name="smart_padding_top">48dp</dimen>
+    <dimen name="smart_back_button">47dp</dimen>
+    
+    <dimen name="padding_small">5dp</dimen>
+    <dimen name="padding_medium">10dp</dimen>
+    <dimen name="padding_large">15dp</dimen>  
+    
+    <dimen name="start_text_size">18sp</dimen>
+    <dimen name="start_logo_top">72dp</dimen>
+    <dimen name="start_text_top">144dp</dimen>    
+    
+    <dimen name="layout_line_height">1dp</dimen>
+    <dimen name="list_border_size">1dp</dimen>
+    
+    <dimen name="nav_main_height">2dp</dimen>
+    <dimen name="nav_cur_height">4dp</dimen>    
+    
+    <dimen name="calc_text_size">18sp</dimen>    
+    <dimen name="cat_list_height">48dp</dimen>  
+    <dimen name="text_size_medium">18sp</dimen>    
+    <dimen name="cat_den_height">18dp</dimen>
+       
+    <dimen name="home_usermoney_width">120dp</dimen>
+    <dimen name="home_usermoney_height">154dp</dimen>
+    <dimen name="home_usermoney_size">48sp</dimen>
+    
+    <dimen name="text_size_region">12sp</dimen>
+    <dimen name="edit_min_height">34dp</dimen>
+    
+    <dimen name="about_text_line">3dp</dimen>
+    <dimen name="text_size_sync_subtitle">12sp</dimen>
+
+</resources>

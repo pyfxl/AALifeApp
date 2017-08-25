@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/lay_item"
+        android:background="@android:color/transparent" >
+
+        <TextView
+            android:id="@+id/tv_day_itembuydate"
+            style="@style/tv_item_date"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:background="@color/color_tran_main"
+            android:text="@string/txt_day_itembuydate" />
+
+        <TextView
+            android:id="@+id/tv_day_totalprice_shou"
+            style="@style/tv_item_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@color/color_tran_main"
+            android:text="@string/txt_day_totalprice" />
+
+        <TextView
+            android:id="@+id/tv_day_totalprice_zhi"
+            style="@style/tv_item_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@color/color_tran_main"
+            android:text="@string/txt_day_totalprice" />
+
+    </LinearLayout>
+
+    <com.aalife.android.MyListView
+        android:id="@+id/list_day_sub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:descendantFocusability="blocksDescendants"
+        android:listSelector="@android:color/transparent" >
+    </com.aalife.android.MyListView>
+
+</LinearLayout>
