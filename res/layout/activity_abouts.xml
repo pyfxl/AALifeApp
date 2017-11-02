@@ -157,6 +157,7 @@
                 android:lineSpacingExtra="@dimen/padding_small"
                 android:padding="@dimen/padding_medium"
                 android:text="@string/txt_about_authortext"
+                android:gravity="center"
                 android:textColor="@color/color_text" />
 
             <LinearLayout

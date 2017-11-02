@@ -23,6 +23,7 @@ public class SettingsActivity extends Activity {
 	private EditText etSetLock = null;
 	private EditText etSetWelcome = null;
 	private CheckBox cbSetSync = null;
+	private CheckBox cbSetAutoSync = null;
 	private CheckBox cbSetReadTips = null;
 	private Spinner spWorkDay = null;
 	private ArrayAdapter<CharSequence> workDayAdapter = null;
@@ -63,6 +64,7 @@ public class SettingsActivity extends Activity {
 		etSetLock = (EditText) super.findViewById(R.id.et_set_lock);
 		etSetWelcome = (EditText) super.findViewById(R.id.et_set_welcome);
 		cbSetSync = (CheckBox) super.findViewById(R.id.cb_set_sync);
+		cbSetAutoSync = (CheckBox) super.findViewById(R.id.cb_set_autosync);
 		cbSetReadTips = (CheckBox) super.findViewById(R.id.cb_set_readtips);
 		
 		//初始Radio
@@ -80,6 +82,9 @@ public class SettingsActivity extends Activity {
 		//checkbox值
 		if(!sharedHelper.getAllowSync()) {
 			cbSetSync.setChecked(false);
+		}
+		if(!sharedHelper.getAutoSync()) {
+			cbSetAutoSync.setChecked(false);
 		}
 		if(sharedHelper.getReadTips()) {
 			cbSetReadTips.setChecked(true);
@@ -166,12 +171,21 @@ public class SettingsActivity extends Activity {
 				String welcome = etSetWelcome.getText().toString().trim();
 				sharedHelper.setWelcomeText(welcome);
 
+				//允许同步
 				if(cbSetSync.isChecked()) {
 					sharedHelper.setAllowSync(true);
 				} else {
 					sharedHelper.setAllowSync(false);
 				}
 
+				//自动同步
+				if(cbSetAutoSync.isChecked()) {
+					sharedHelper.setAutoSync(true);
+				} else {
+					sharedHelper.setAutoSync(false);
+				}
+
+				//显示tips
 				if(cbSetReadTips.isChecked()) {
 					sharedHelper.setReadTips(true);
 				} else {

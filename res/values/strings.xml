@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="app_name">AA生活记账</string>
-    <string name="app_version">5.8.0</string>
-    <string name="app_client">web</string>
-    <string name="app_description">AA生活记账是一款记录收入、支出、借还消费，使用简单的手机记账应用。包括类别排行、次数排行、单价排行、日期排行、区间统计、推荐统计，比较分析、收支分析、借还分析、趣味统计，和区间记账、专题记账、语音记账、数据同步、数据导出、云备份，我的钱包、钱包转账、转账明细、类别预警、搜索等实用功能。</string>
+    <string name="app_version">5.9.0</string>
+    <string name="app_client">upd</string>
+    <string name="app_description">AA生活记账是一款记录收入、支出、借还消费，使用简单的手机记账APP。包括类别排行、次数排行、单价排行、日期排行、区间统计、推荐统计，比较分析、收支分析、借还分析、趣味统计，和区间记账、专题记账、语音记账、数据同步、数据导出、云备份，我的钱包、钱包转账、转账明细、类别预警、搜索等实用功能。</string>
     <string name="app_keywords">简单记账，AA生活记账。</string>
     <string name="app_website">www.fxlweb.com</string>
     <string name="app_author">2017</string>
-    <string name="app_thanks">鸣谢：raindropmemory（图标）\n源码：https://github.com/pyfxl/fxlandroid</string>
+    <string name="app_thanks">鸣谢：raindropmemory（图标）\n源码：https://github.com/pyfxl/AALifeWebApp</string>
     <string name="action_abouts">关于</string>
     <string name="action_settings">设置</string>
     <string name="action_exits">退出</string>
@@ -105,7 +105,7 @@
     <string name="txt_home_radiomonth">本月</string>
     <string name="txt_home_radioday">今日</string>
     <string name="txt_restore_title">备份数据</string>
-    <string name="txt_restore_text">应用退出时会自动备份数据，您也可以手动备份和恢复数据，然后上传到云端。</string>
+    <string name="txt_restore_text">退出时会自动备份数据，您也可以手动备份和恢复数据，然后上传到云端。</string>
     <string name="txt_restore_success">数据恢复成功。</string>
     <string name="txt_restore_error">数据恢复失败！</string>
     <string name="txt_restore_nodata">没有要恢复的数据。</string>
@@ -142,6 +142,8 @@
     <string name="txt_sync_button">开始同步</string>
     <string name="txt_sync_cancel">[取消同步]</string>
     <string name="txt_sync_cancelnote">数据同步已取消。</string>
+    <string name="txt_sync_autosync_ok">自动同步成功。</string>
+    <string name="txt_sync_autosync_error">自动同步失败！。</string>
     <string name="txt_search">消费搜索</string>
     <string name="txt_search_keyempty">搜索关键字不能为空。</string>
     <string name="txt_day_select">选择</string>
@@ -288,7 +290,7 @@
     <string name="txt_add_addsame">X2</string>
     <string name="txt_add_adderror">添加失败！</string>
     <string name="txt_add_addsuccess">添加成功。</string>
-    <string name="txt_add_smartback">&amp;lt;&amp;lt; 返回</string>
+    <string name="txt_add_smartback">&lt;&lt; 返回</string>
     <string name="txt_edit_editerror">编辑失败！</string>
     <string name="txt_edit_editsuccess">编辑成功。</string>
     <string name="txt_nonull">不能为空。</string>
@@ -307,7 +309,7 @@
     <string name="txt_about_notes">公告</string>
     <string name="txt_about_notesread">我知道了</string>
     <string name="txt_about_notesempty">没有公告。</string>
-    <string name="txt_about_authortext">感谢您使用AA生活记账，谢谢！！</string>
+    <string name="txt_about_authortext">感谢您使用AA生活记账！！\n有问题请联系作者QQ：67936108</string>
     <string name="txt_user_username">用户名</string>
     <string name="txt_user_userpass">密    码</string>
     <string name="txt_user_nickname">昵    称  </string>
@@ -338,17 +340,18 @@
     <string name="txt_set_lockempty">未设置</string>
     <string name="txt_set_lock">登录密锁</string>
     <string name="txt_set_welcome">欢迎文字</string>
-    <string name="txt_set_synctext">允许应用同步数据到网格？</string>
+    <string name="txt_set_synctext">允许APP同步数据到网格</string>
+    <string name="txt_set_autosynctext">允许APP退出时自动同步数据</string>
     <string name="txt_set_clockerror">打开系统闹钟失败，请手动设置！</string>
     <string name="txt_set_categorytext">预算率不能为空。</string>
     <string name="txt_set_categoryerror">预算率不能大于100！</string>
     <string name="txt_set_readtips">显示贴士</string>
-    <string name="txt_set_readtips_text">允许应用在公告中显示贴士？</string>
+    <string name="txt_set_readtips_text">允许APP在公告中显示贴士</string>
     <string name="txt_set_fixmoney_title">钱包余额修改</string>
     <string name="txt_set_fixmoney_yue">修改余额</string>
-    <string name="txt_set_fixmoney_bujide">加1笔不记得</string>
+    <string name="txt_set_fixmoney_bujide">加笔不记得</string>
     <string name="txt_set_fixmoney_bujide_val">不记得了</string>
-    <string name="txt_set_fixmoney_chazhang">加1笔差账</string>
+    <string name="txt_set_fixmoney_chazhang">加笔差账</string>
     <string name="txt_set_fixmoney_chazhang_val">差账</string>
     <string name="txt_lock">请输入密匙</string>
     <string name="txt_lock_error">密匙不正确</string>

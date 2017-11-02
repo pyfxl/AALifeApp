@@ -244,6 +244,15 @@ public class SharedHelper {
 		setting.edit().putBoolean("allowsync", flag).commit();
 	}
 
+	//自动同步
+	public boolean getAutoSync() {
+		return setting.getBoolean("autosync", true);
+	}
+
+	public void setAutoSync(Boolean flag) {
+		setting.edit().putBoolean("autosync", flag).commit();
+	}
+
 	//本地同步
 	public boolean getLocalSync() {
 		return setting.getBoolean("localsync", false);

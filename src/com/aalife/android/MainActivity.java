@@ -38,6 +38,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	private SQLiteOpenHelper sqlHelper = null;
 	private SharedHelper sharedHelper = null;
+	private SyncHelper syncHelper = null;
 	private MyHandler myHandler = new MyHandler(this);
 	private ItemTableAccess itemAccess = null;
 	private ListView listTotal = null;
@@ -90,6 +91,7 @@ public class MainActivity extends Activity {
 		textPaint.setFakeBoldText(true);
 		
 		//初始化
+		syncHelper = new SyncHelper(this);
 		sharedHelper = new SharedHelper(this);
 		listTotal = (ListView) super.findViewById(R.id.list_total);
 		tvUserMoney = (TextView) super.findViewById(R.id.tv_usermoney);
@@ -463,10 +465,26 @@ public class MainActivity extends Activity {
 	//关闭this
 	protected void close() {
 		this.finish();
+		
 		new Thread(new Runnable(){
 			@Override
 			public void run() {
 				UtilityHelper.startBackup(MainActivity.this, "aalife.bak");
+				
+				//自动同步
+				if(sharedHelper.getAutoSync()) {
+					String syncStatus = "";
+					try {								
+						sharedHelper.setSyncing(true);
+						syncHelper.Start();						
+						syncStatus = getString(R.string.txt_sync_autosync_ok);
+					} catch (Exception e) {
+						syncStatus = getString(R.string.txt_sync_autosync_error);
+						e.printStackTrace();
+					}
+					sharedHelper.setSyncStatus(syncStatus);
+					sharedHelper.setSyncing(false);
+				}				
 			}
 		}).start();
 	}

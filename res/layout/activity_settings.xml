@@ -109,6 +109,15 @@
                 android:text="@string/txt_set_synctext"
                 android:textColor="@color/color_text" />
 
+            <CheckBox
+                android:id="@+id/cb_set_autosync"
+                style="@style/edit_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/txt_set_autosynctext"
+                android:textColor="@color/color_text" />
+            
             <TextView
                 android:id="@+id/tv_set_readtips"
                 style="@style/edit_title_style"
