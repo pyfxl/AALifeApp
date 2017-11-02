@@ -197,7 +197,7 @@ public class SyncHelper {
 		String url = WEBURL +  "/AALifeWeb/SyncUserInfo.aspx";
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("userid", userId));
-		params.add(new BasicNameValuePair("userfrom", context.getString(R.string.app_version) + context.getString(R.string.app_client)));
+		params.add(new BasicNameValuePair("userfrom", context.getString(R.string.app_client)));
 		params.add(new BasicNameValuePair("usermoney", userMoney));
 		params.add(new BasicNameValuePair("userworkday", userWorkDay));
 		params.add(new BasicNameValuePair("categoryrate", categoryRate));

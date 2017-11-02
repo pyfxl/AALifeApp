@@ -104,7 +104,7 @@ public class RegisterActivity extends Activity {
 				
 				final String userNickName = etUserNickName.getText().toString().trim();				
 				final String userWorkDay = String.valueOf(spWorkDay.getSelectedItemPosition() + 1);				
-				final String userFrom = getString(R.string.app_version) + getString(R.string.app_client);
+				final String userFrom = getString(R.string.app_client);
 				final String userMoney = sharedHelper.getUserMoney();
 				final String categoryRate = sharedHelper.getCategoryRate();
 				

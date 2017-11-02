@@ -156,8 +156,8 @@ public class LoginActivity extends Activity {
 		try {
 			myInfo.openId = values.getString("openid");
 			myInfo.accessToken = values.getString("access_token");
-			myInfo.oAuthFrom = "sjqq" + getString(R.string.app_client);
-			myInfo.userFrom = getString(R.string.app_version) + getString(R.string.app_client);
+			myInfo.oAuthFrom = "sjqq";
+			myInfo.userFrom = getString(R.string.app_client);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

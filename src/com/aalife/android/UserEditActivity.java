@@ -150,7 +150,7 @@ public class UserEditActivity extends Activity {
 				final int userId = sharedHelper.getUserId();		
 				final String userNickName = etUserNickName.getText().toString().trim();				
 				final String userImage = (!sharedHelper.getUserQQImage().equals("") ? sharedHelper.getUserQQImage() : sharedHelper.getUserImage());
-				final String userFrom = getString(R.string.app_version) + getString(R.string.app_client);		
+				final String userFrom = getString(R.string.app_client);		
 				final String userWorkDay = String.valueOf(spWorkDay.getSelectedItemPosition() + 1);
 				
 				pbUserLoading.setVisibility(View.VISIBLE);
