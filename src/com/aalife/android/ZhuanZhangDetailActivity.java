@@ -49,7 +49,7 @@ public class ZhuanZhangDetailActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_zhuanzhang_detail);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvZhangFrom = (TextView) super.findViewById(R.id.tv_title_zhangfrom);
@@ -126,7 +126,7 @@ public class ZhuanZhangDetailActivity extends Activity {
 							} else {
 								type = "all";
 							}
-							
+
 							setListData(curDate, type);
 						}
 					}).setNegativeButton(R.string.txt_cancel, new DialogInterface.OnClickListener() {

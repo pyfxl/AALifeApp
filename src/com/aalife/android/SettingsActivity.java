@@ -37,7 +37,7 @@ public class SettingsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvSetLock = (TextView) super.findViewById(R.id.tv_set_lock);

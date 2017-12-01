@@ -451,6 +451,7 @@ public class RankActivity extends Activity {
 					@Override
 					public void onDateSet(DatePicker view, int year, int month, int day) {
 						String date = UtilityHelper.formatDate(year + "-" + (month + 1) + "-" + day, "");
+						
 						setListData(date);
 					}					
 				}, Integer.parseInt(array[0]), Integer.parseInt(array[1]) - 1, Integer.parseInt(array[2]));
@@ -568,10 +569,10 @@ public class RankActivity extends Activity {
 						tvTitleEmpty.setVisibility(View.VISIBLE);
 						
 						break;
-				}
+				}			
 			}			
 		});
-		
+
 		setListData(curDate);
 	}
 

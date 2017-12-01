@@ -69,7 +69,7 @@ public class CardDetailActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_card_detail);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvItemName = (TextView) super.findViewById(R.id.tv_title_itemname);
@@ -128,7 +128,7 @@ public class CardDetailActivity extends Activity {
 				@SuppressWarnings("unchecked")
 				Map<String, String> map = (Map<String, String>) lv.getItemAtPosition(position);
 		        String itemBuyDate = map.get("itembuydate");
-
+		        
 		        TextView tvItemBuyDate = (TextView) view.findViewById(R.id.tv_day_itembuydate);
 		        tvItemBuyDate.setBackgroundColor(CardDetailActivity.this.getResources().getColor(R.color.color_tran_main));
 		        TextView tvItemType = (TextView) view.findViewById(R.id.tv_day_itemtype);
@@ -221,7 +221,7 @@ public class CardDetailActivity extends Activity {
 					.setPositiveButton(R.string.txt_sure, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int whichButton) {							
 							curDate = UtilityHelper.formatDate(datePicker.getYear() + "-" + (datePicker.getMonth()+1) + "-" + datePicker.getDayOfMonth(), "yyyy-MM-dd");
-
+														
 							if(radioYear.isChecked()) {
 							    type = "year";
 							} else if (radioMonth.isChecked()) {

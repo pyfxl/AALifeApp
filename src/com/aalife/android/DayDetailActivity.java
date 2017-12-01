@@ -51,7 +51,7 @@ public class DayDetailActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_day_detail);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvTitleSelect = (TextView) super.findViewById(R.id.tv_title_select);
@@ -104,6 +104,7 @@ public class DayDetailActivity extends Activity {
 				@SuppressWarnings("unchecked")
 				Map<String, String> map = (Map<String, String>) lv.getItemAtPosition(position);
 		        int itemId = Integer.parseInt(map.get("itemid"));
+		        //String itemName = map.get("itemname");
 		        
 		        final LinearLayout laySelect = (LinearLayout) view.findViewById(R.id.lay_day_select);
 		        laySelect.setBackgroundColor(DayDetailActivity.this.getResources().getColor(R.color.color_tran_main));

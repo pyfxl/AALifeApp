@@ -45,7 +45,7 @@ public class ZhuanTiActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_zhuanti);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvTitleName = (TextView) super.findViewById(R.id.tv_title_name);
@@ -136,7 +136,7 @@ public class ZhuanTiActivity extends Activity {
 				final String ztName = map.get("ztname");
 				final int ztId = Integer.parseInt(map.get("ztid"));
             	ZhuanTiActivity.this.position = position;
-            	           	
+            	        	
                 Dialog dialog = new AlertDialog.Builder(ZhuanTiActivity.this)
                     .setTitle(R.string.txt_tips)
                     .setMessage(R.string.txt_zhuanti_message)

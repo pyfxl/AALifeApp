@@ -55,7 +55,7 @@ public class ZhuanTiShowActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_zhuanti_show);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvItemName = (TextView) super.findViewById(R.id.tv_title_itemname);
@@ -112,7 +112,7 @@ public class ZhuanTiShowActivity extends Activity {
 				@SuppressWarnings("unchecked")
 				Map<String, String> map = (Map<String, String>) lv.getItemAtPosition(position);
 		        String itemBuyDate = map.get("itembuydate");
-
+		        
 		        TextView tvItemBuyDate = (TextView) view.findViewById(R.id.tv_day_itembuydate);
 		        tvItemBuyDate.setBackgroundColor(ZhuanTiShowActivity.this.getResources().getColor(R.color.color_tran_main));
 		        TextView tvItemType = (TextView) view.findViewById(R.id.tv_day_itemtype);
@@ -173,7 +173,7 @@ public class ZhuanTiShowActivity extends Activity {
 							} else {
 								type = "all";
 							}
-							
+
 							setListData(curDate, type);
 						}
 					}).setNegativeButton(R.string.txt_cancel, new DialogInterface.OnClickListener() {

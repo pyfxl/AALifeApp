@@ -18,6 +18,7 @@ public class SyncHelper {
 	private SharedHelper sharedHelper = null;
 	private Context context = null;
 	private SQLiteOpenHelper sqlHelper = null;
+	//private static final String WEBURL = "http://192.168.1.102:81";
 	//private static final String WEBURL = "http://10.0.2.2:81";
 	private static final String WEBURL = "http://www.fxlweb.com";
 	
@@ -76,6 +77,18 @@ public class SyncHelper {
 			if(list.size() > 0) {
 				try {
 					syncCard(list);
+				} catch(Exception e) {
+					throw new Exception();
+				}
+			}
+
+			//查看
+			ViewTableAccess viewAccess = new ViewTableAccess(sqlHelper.getReadableDatabase());			
+			list = viewAccess.findAllSyncView();
+			viewAccess.close();
+			if(list.size() > 0) {
+				try {
+					syncView(list);
 				} catch(Exception e) {
 					throw new Exception();
 				}
@@ -422,13 +435,60 @@ public class SyncHelper {
 			}
 			
 			if(result.equals("ok")) {
-				int ztId = Integer.parseInt(map.get("cardid"));
-				cardAccess.updateSyncStatus(ztId);
+				int cdId = Integer.parseInt(map.get("cardid"));
+				cardAccess.updateSyncStatus(cdId);
 			} else {
 				syncFlag = true;
 			}
 		}
 		cardAccess.close();
+		
+		if(syncFlag) {
+			throw new Exception();
+		}
+	}
+
+	//同步查看
+	public void syncView(List<Map<String, String>> list) throws Exception {
+		boolean syncFlag = false;
+		ViewTableAccess viewAccess = new ViewTableAccess(sqlHelper.getReadableDatabase());
+		String userId = String.valueOf(sharedHelper.getUserId());
+		String result = "";
+		String url = WEBURL +  "/AALifeWeb/SyncView.aspx";
+		Iterator<Map<String, String>> it = list.iterator();
+		while(it.hasNext()) {
+			Map<String, String> map = it.next();
+			List<NameValuePair> params = new ArrayList<NameValuePair>();
+			params.add(new BasicNameValuePair("pageid", map.get("pageid")));
+			params.add(new BasicNameValuePair("datestart", map.get("datestart")));
+			params.add(new BasicNameValuePair("dateend", map.get("dateend")));
+			params.add(new BasicNameValuePair("portal", map.get("portal")));
+			params.add(new BasicNameValuePair("version", map.get("version")));
+			params.add(new BasicNameValuePair("browser", map.get("browser")));
+			params.add(new BasicNameValuePair("width", map.get("width")));
+			params.add(new BasicNameValuePair("height", map.get("height")));
+			params.add(new BasicNameValuePair("remark", map.get("remark")));
+			params.add(new BasicNameValuePair("userid", userId));
+			params.add(new BasicNameValuePair("network", map.get("network")));
+	
+			try {
+				JSONObject jsonObject = new JSONObject(HttpHelper.post(url, params));
+				if(jsonObject.length() > 0) {
+					result = jsonObject.getString("result");
+				}
+			} catch(Exception e) {
+				syncFlag = true;
+				continue;
+			}
+			
+			if(result.equals("ok")) {
+				int viewId = Integer.parseInt(map.get("viewid"));
+				viewAccess.updateSyncStatus(viewId);
+			} else {
+				syncFlag = true;
+			}
+		}
+		viewAccess.close();
 		
 		if(syncFlag) {
 			throw new Exception();

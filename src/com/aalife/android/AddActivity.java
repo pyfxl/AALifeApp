@@ -38,6 +38,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SimpleAdapter;
 import android.widget.SlidingDrawer;
+import android.widget.SlidingDrawer.OnDrawerCloseListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -124,7 +125,7 @@ public class AddActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvCatType = (TextView) super.findViewById(R.id.tv_cattype);
@@ -307,6 +308,13 @@ public class AddActivity extends Activity {
 			}
 		});
 
+		//AddSmart关闭
+		sdAddSmart.setOnDrawerCloseListener(new OnDrawerCloseListener(){
+			@Override
+			public void onDrawerClosed() {
+			}			
+		});
+		
 		//ListSmart点击
 		listAddSmart.setOnItemClickListener(new OnItemClickListener(){
 			@Override
@@ -547,12 +555,9 @@ public class AddActivity extends Activity {
 					regionType = "";
 				    regionId = 0;
 	        	    monthRegion = 0;
-					//spZhuanTi.setEnabled(true);
 				} else {
 					etAddItemBuyDate2.setVisibility(View.VISIBLE);
 					tvRegionTo.setVisibility(View.VISIBLE);
-					//spZhuanTi.setSelection(0);
-					//spZhuanTi.setEnabled(false);
 					switch(position) {
 						case 1:
 							regionType = "d";

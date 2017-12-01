@@ -47,7 +47,7 @@ public class UserEditActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_edit);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvUserName = (TextView) super.findViewById(R.id.tv_user_name);
@@ -92,7 +92,7 @@ public class UserEditActivity extends Activity {
 		ivUserImage.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
-			    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+				Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 			    startActivityForResult(intent, RESULT_LOAD_IMAGE);
 			}			
 		});
@@ -102,7 +102,7 @@ public class UserEditActivity extends Activity {
 		ivImageEdit.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
-			    Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+				Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 			    startActivityForResult(intent, RESULT_LOAD_IMAGE);
 			}			
 		});

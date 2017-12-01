@@ -38,7 +38,7 @@ public class AboutsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_abouts);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvAboutEmail = (TextView) super.findViewById(R.id.tv_about_email);
@@ -112,7 +112,7 @@ public class AboutsActivity extends Activity {
 					Toast.makeText(AboutsActivity.this, getString(R.string.txt_about_empty), Toast.LENGTH_SHORT).show();
 					return;
 				}
-
+				
 				btnSend.setEnabled(false);	
 				new Thread(new Runnable(){
 					@Override

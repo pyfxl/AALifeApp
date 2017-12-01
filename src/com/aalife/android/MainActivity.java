@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);		
-		
+
 		//虚拟按键菜单
 		UtilityHelper.showMenuButton(this);
 
@@ -302,15 +302,18 @@ public class MainActivity extends Activity {
 		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 			@Override
 			public void onCheckedChanged(RadioGroup group, int radioId) {
+				String type = "";
 				if(radioAll.getId() == radioId) {
-					setListData(fromDate, "all");
+					type = "all";
 				} else if(radioYear.getId() == radioId) {
-					setListData(fromDate, "year");
+					type = "year";
 				} else if(radioMonth.getId() == radioId) {
-					setListData(fromDate, "month");
+					type = "month";
 				} else if(radioDay.getId() == radioId) {
-					setListData(fromDate, "day");
+					type = "day";
 				}
+
+				setListData(fromDate, type);
 			}			
 		});
 				
@@ -404,25 +407,26 @@ public class MainActivity extends Activity {
 		adapter = new SimpleAdapter(this, list, R.layout.list_home_total, new String[] { "shourulabel", "shouruprice", "zhichulabel", "zhichuprice" }, new int[] { R.id.tv_shourulabel, R.id.tv_shouruprice, R.id.tv_zhichulabel, R.id.tv_zhichuprice });
 		listTotal.setAdapter(adapter);
 		
-		//结存
-		Map<String, String> map = list.get(0);
-		double shouRu = Double.parseDouble(map.get("shouruvalue"));
-		double zhiChu = Double.parseDouble(map.get("zhichuvalue"));
-		tvTotalJieCun.setText(getString(R.string.txt_price) + " " + UtilityHelper.formatDouble(shouRu - zhiChu, "0.0##"));
+		Map<String, String> map0 = list.get(0);
+		Map<String, String> map1 = list.get(1);
+		Map<String, String> map2 = list.get(2);
 		
 		//未还=借出-还入
-		map = list.get(1);
-		double huanRu = Double.parseDouble(map.get("shouruvalue"));
-		double jieChu = Double.parseDouble(map.get("zhichuvalue"));
+		double huanRu = Double.parseDouble(map1.get("shouruvalue"));
+		double jieChu = Double.parseDouble(map1.get("zhichuvalue"));
 		TextView tvHoneWeiHuan = (TextView) super.findViewById(R.id.tv_home_weihuan);
 		tvHoneWeiHuan.setText(getString(R.string.txt_price) + " " + UtilityHelper.formatDouble(jieChu - huanRu, "0.0##"));
 		
 		//欠还=借入-还出
-		map = list.get(2);
-		double jieRu = Double.parseDouble(map.get("shouruvalue"));
-		double huanChu = Double.parseDouble(map.get("zhichuvalue"));
+		double jieRu = Double.parseDouble(map2.get("shouruvalue"));
+		double huanChu = Double.parseDouble(map2.get("zhichuvalue"));
 		TextView tvHoneQianHuan = (TextView) super.findViewById(R.id.tv_home_qianhuan);
 		tvHoneQianHuan.setText(getString(R.string.txt_price) + " " + UtilityHelper.formatDouble(jieRu - huanChu, "0.0##"));
+		
+		//结存
+		double shouRu = Double.parseDouble(map0.get("shouruvalue"));
+		double zhiChu = Double.parseDouble(map0.get("zhichuvalue"));
+		tvTotalJieCun.setText(getString(R.string.txt_price) + " " + UtilityHelper.formatDouble(shouRu + huanRu + jieRu - zhiChu - jieChu - huanChu, "0.0##"));
 		
 		//钱包
 		cardAccess = new CardTableAccess(sqlHelper.getReadableDatabase());
@@ -472,7 +476,7 @@ public class MainActivity extends Activity {
 				UtilityHelper.startBackup(MainActivity.this, "aalife.bak");
 				
 				//自动同步
-				if(sharedHelper.getAutoSync()) {
+				if(sharedHelper.getAutoSync() && sharedHelper.getLogin() && sharedHelper.getAllowSync()) {
 					String syncStatus = "";
 					try {								
 						sharedHelper.setSyncing(true);

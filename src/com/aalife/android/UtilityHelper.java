@@ -47,11 +47,13 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Vibrator;
 import android.telephony.TelephonyManager;
+import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 
 
 public class UtilityHelper {
+	//private static final String WEBURL = "http://192.168.1.102:81";
 	//private static final String WEBURL = "http://10.0.2.2:81";
 	private static final String WEBURL = "http://www.fxlweb.com";
 	
@@ -1498,8 +1500,52 @@ public class UtilityHelper {
 	//设置振动
 	public static void setVibrator(Context context) {
         Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-        vibrator.vibrate(1300);
+        vibrator.vibrate(new long[]{ 0, 100, 1300 }, 1);
         vibrator.cancel();
     }
+	
+	//添加查看
+	public static void addView(Context context, int pageId, String dateStart, String remark) {
+		try {
+			DisplayMetrics dm = context.getResources().getDisplayMetrics();  
+			int screenWidth = dm.widthPixels;
+			int screenHeight = dm.heightPixels;
+			String version = android.os.Build.VERSION.RELEASE;
+			String model = android.os.Build.MODEL;
+			String brand = android.os.Build.BRAND;
+			String network = getNetwork(context);
+			
+			if(remark.indexOf(",")==0) {
+				remark = remark.substring(1, remark.length());
+			}
+			
+			ViewTableAccess viewAccess = new ViewTableAccess(new DatabaseHelper(context).getReadableDatabase());
+			viewAccess.addView(pageId, dateStart, brand, version, model, screenWidth, screenHeight, "", network, remark);
+			viewAccess.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//取网络类型
+	public static String getNetwork(Context context) {
+		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo info = cm.getActiveNetworkInfo();
+		String type = "";
+		if(info != null && info.isConnected()) {
+			if(info.getType() == ConnectivityManager.TYPE_WIFI) {
+				type = "WIFI";
+			} else if (info.getType() == ConnectivityManager.TYPE_MOBILE) {
+				if(info.getSubtype() == TelephonyManager.NETWORK_TYPE_EDGE || info.getSubtype() == TelephonyManager.NETWORK_TYPE_GPRS || info.getSubtype() == TelephonyManager.NETWORK_TYPE_CDMA) {
+					type = "2G";
+				} else if(info.getSubtype() == TelephonyManager.NETWORK_TYPE_LTE) {
+					type = "4G";
+				} else {
+					type = "3G";
+				}
+			}
+		}
+		return type;
+	}
 	
 }

@@ -67,7 +67,7 @@ public class CardActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_card);
-	
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvTitleDetail = (TextView) super.findViewById(R.id.tv_title_detail);
@@ -128,6 +128,7 @@ public class CardActivity extends Activity {
 		//计算总价
 		double totalMoney = 0;
 		for(Map<String, String> map : list) {
+			//总金额跟首页结存不相同，因为没减去初始金额
 			totalMoney += Double.parseDouble(map.get("cardmoneyvalue"));
 		}
 		tvTotalPrice.setText(getString(R.string.txt_price) + " " + UtilityHelper.formatDouble(totalMoney, "0.0##"));

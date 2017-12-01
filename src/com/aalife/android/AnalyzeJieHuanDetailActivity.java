@@ -33,7 +33,7 @@ public class AnalyzeJieHuanDetailActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_analyze_jiehuan_detail);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvTitleItemBuyDate = (TextView) super.findViewById(R.id.tv_title_itembuydate);
@@ -72,7 +72,7 @@ public class AnalyzeJieHuanDetailActivity extends Activity {
 				@SuppressWarnings("unchecked")
 				Map<String, String> map = (Map<String, String>) lv.getItemAtPosition(position);
 				String date = map.get("datevalue");
-
+				
 		        TextView tvItemBuyDate = (TextView) view.findViewById(R.id.tv_analyze_itembuydate);
 		        tvItemBuyDate.setBackgroundColor(AnalyzeJieHuanDetailActivity.this.getResources().getColor(R.color.color_tran_main));
 		        TextView tvJieChuPrice = (TextView) view.findViewById(R.id.tv_analyze_jiechu);

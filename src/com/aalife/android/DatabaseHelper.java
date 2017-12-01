@@ -6,13 +6,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String DATABASENAME = "aalife.db";
-	private static final int DATABASEVERSION = 22;
+	private static final int DATABASEVERSION = 25;
 	private static final String ITEMTABNAME = "ItemTable";
 	private static final String CATTABNAME = "CategoryTable";
 	private static final String DELTABNAME = "DeleteTable";
 	private static final String ZTTABNAME = "ZhuanTiTable";
 	private static final String CARDTABNAME = "CardTable";
 	private static final String ZZTABNAME = "ZhuanZhangTable";
+	private static final String VIEWTABNAME = "ViewTable";
 
 	public DatabaseHelper(Context context) {
 		super(context, DATABASENAME, null, DATABASEVERSION);
@@ -92,6 +93,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				+ "DeleteID         INTEGER          PRIMARY KEY, "
 				+ "ItemID           INTEGER, "
 				+ "ItemWebID        INTEGER)");
+		
+		//查看表
+		createViewTab(db);
 	}
 
 	@Override
@@ -147,9 +151,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 							+ "ZhangNote        VARCHAR(100), "
 							+ "ZhangLive        INTEGER          DEFAULT 1)");
 					break;
+				case 22://5.9.1
+					createViewTab(db);
+					break;
+				case 23:
+					try {
+					    db.execSQL("ALTER TABLE " + VIEWTABNAME + " ADD Network VARCHAR(10)");
+					} catch (Exception e){						
+					}
+					break;
+				case 24:
+					db.execSQL("DROP TABLE IF EXISTS " + VIEWTABNAME);
+					break;
 				}
 			}
 		}
 	}
 	
+	//查看表	
+	private void createViewTab(SQLiteDatabase db) {
+		db.execSQL("CREATE TABLE " + VIEWTABNAME + " ("
+				+ "ViewID           INTEGER          PRIMARY KEY, "
+				+ "PageID           INTEGER          NOT NULL, "
+				+ "DateStart        DATE, "
+				+ "DateEnd          DATE             DEFAULT (datetime('now', '+8 hour')), "
+				+ "Portal           VARCHAR(10), "
+				+ "Version          VARCHAR(10), "
+				+ "Browser          VARCHAR(10), "
+				+ "Width            INTEGER, "
+				+ "Height           INTEGER, "
+				+ "IP               VARCHAR(50), "
+				+ "Synchronize      INTEGER          DEFAULT 1, "
+				+ "Network          VARCHAR(10), "
+				+ "Remark           VARCHAR(100))");
+	}
 }

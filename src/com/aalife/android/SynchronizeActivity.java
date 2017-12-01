@@ -70,7 +70,7 @@ public class SynchronizeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_synchronize);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvRestoreTitle = (TextView) super.findViewById(R.id.tv_restore_title);

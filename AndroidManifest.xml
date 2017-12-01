@@ -2,12 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.aalife.android"
-    android:versionCode="591"
-    android:versionName="5.9.1" >
+    android:versionCode="596"
+    android:versionName="5.9.6" >
 
     <uses-sdk
         android:minSdkVersion="15"
-        android:targetSdkVersion="22"
+        android:targetSdkVersion="15"
         tools:ignore="OldTargetApi" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

@@ -34,7 +34,7 @@ public class RankCatDetailActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rank_cat_detail);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvTitleItemType = (TextView) super.findViewById(R.id.tv_title_itemtype);

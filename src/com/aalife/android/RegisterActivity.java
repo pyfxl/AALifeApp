@@ -35,7 +35,7 @@ public class RegisterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvUserName = (TextView) super.findViewById(R.id.tv_user_name);
