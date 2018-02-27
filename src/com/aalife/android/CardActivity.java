@@ -375,6 +375,10 @@ public class CardActivity extends Activity {
 						cardAccess.close();
 					}
 					
+					if(saveId > 0) {
+						result = true;
+					}
+					
 					//差账金额等于新的减去当前
 					newMoney = Math.abs(Double.parseDouble(cardMoney) - Double.parseDouble(cardMoneyBalance));
 					if(newMoney > 0) {
