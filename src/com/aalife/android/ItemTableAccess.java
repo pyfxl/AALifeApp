@@ -1055,7 +1055,7 @@ public class ItemTableAccess {
 	//添加消费
 	public boolean addItem(String itemType, String itemName, String itemPrice, String itemBuyDate, int catId, int recommend, int regionId, String regionType, int zhuanTiId, int cardId) {
 		String sql = " INSERT INTO " + ITEMTABNAME + "(ItemType, ItemName, ItemPrice, ItemBuyDate, CategoryID, Synchronize, Recommend, RegionId, RegionType, ZhuanTiID, CardID)"
-			   	   + " VALUES ('" + itemType + "', '" + itemName + "', '" + itemPrice + "', '" + itemBuyDate + "', '" + catId + "', '1', '" + recommend + "', '" + regionId + "', '" + regionType + "', '" + zhuanTiId + "', '" + cardId + "')";
+			   	   + " VALUES ('" + itemType + "', '" + UtilityHelper.replaceLine(itemName) + "', '" + itemPrice + "', '" + itemBuyDate + "', '" + catId + "', '1', '" + recommend + "', '" + regionId + "', '" + regionType + "', '" + zhuanTiId + "', '" + cardId + "')";
 		try {
 		    this.db.execSQL(sql);
 		} catch (Exception e) {
@@ -1939,7 +1939,7 @@ public class ItemTableAccess {
 			while (result.moveToNext()) {
 				list.add("INSERT INTO " + ITEMTABNAME + " (ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Recommend, Synchronize, RegionID, RegionType, ItemType, ZhuanTiID, CardID, ItemWebID) VALUES ('" 
 			             + result.getString(0)+ "', '" 
-						 + result.getString(1) + "', '"
+						 + UtilityHelper.replaceLine(result.getString(1)) + "', '"
 					     + result.getString(2) + "', '" 
 						 + result.getString(3) + "', '" 
 					     + result.getString(4) + "', '" 
@@ -1962,7 +1962,7 @@ public class ItemTableAccess {
 			while (result.moveToNext()) {
 				list.add("INSERT INTO " + CATTABNAME + " (CategoryID, CategoryName, CategoryPrice, CategoryRank, CategoryDisplay, CategoryLive, Synchronize) VALUES ('" 
 			             + result.getString(0)+ "', '" 
-						 + result.getString(1) + "', '"
+						 + UtilityHelper.replaceLine(result.getString(1)) + "', '"
 					     + result.getString(2) + "', '" 
 						 + result.getString(3) + "', '" 
 						 + result.getString(4) + "', '" 
@@ -1979,7 +1979,7 @@ public class ItemTableAccess {
 			while (result.moveToNext()) {
 				list.add("INSERT INTO " + ZTTABNAME + " (ZTID, ZhuanTiName, ZhuanTiImage, ZhuanTiLive, Synchronize) VALUES ('" 
 			             + result.getString(0)+ "', '" 
-						 + result.getString(1) + "', '"
+						 + UtilityHelper.replaceLine(result.getString(1)) + "', '"
 					     + result.getString(2) + "', '" 
 						 + result.getString(3) + "', '" 
 					     + result.getString(4) + "');");
@@ -2012,7 +2012,7 @@ public class ItemTableAccess {
 			while (result.moveToNext()) {
 				list.add("INSERT INTO " + CARDTABNAME + " (CDID, CardName, CardMoney, CardLive, Synchronize, CardNumber, CardImage) VALUES ('" 
 			             + result.getString(0)+ "', '" 
-						 + result.getString(1) + "', '"
+						 + UtilityHelper.replaceLine(result.getString(1)) + "', '"
 					     + result.getString(2) + "', '" 
 						 + result.getString(3) + "', '" 
 					     + result.getString(4) + "', '" 
@@ -2120,7 +2120,7 @@ public class ItemTableAccess {
 		String empty = "";
 		dot = dot.equals("") ? " " : dot;
 		try {
-			int len = str.getBytes("GBK").length;
+			int len = str.getBytes("GBK").length;//getStringLength(str);//
 			int count = num - len;
 			for(int i=0; i<count; i++) {
 				empty += dot;
@@ -2132,4 +2132,18 @@ public class ItemTableAccess {
 		return empty;
 	}
 	
+	//取长度
+	protected static int getStringLength(String value) {
+		int valueLength = 0;
+		String chinese = "[\u4e00-\u9fa5]";
+		for (int i = 0; i < value.length(); i++) {
+		    String temp = value.substring(i, i + 1);
+		    if (temp.matches(chinese)) {
+			    valueLength += 2;
+			} else {
+			    valueLength += 1;
+			}
+		}
+		return valueLength;
+	}
 }

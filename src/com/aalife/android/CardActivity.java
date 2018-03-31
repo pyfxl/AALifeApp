@@ -383,7 +383,7 @@ public class CardActivity extends Activity {
 					newMoney = Math.abs(Double.parseDouble(cardMoney) - Double.parseDouble(cardMoneyBalance));
 					if(newMoney > 0) {
 						String itemType = Double.parseDouble(cardMoney) > Double.parseDouble(cardMoneyBalance) ? "sr" : "zc";
-						String itemName = fixMoneyText;
+						String itemName = fixMoneyText + "（" + cardName + "）";
 						String itemPrice = String.valueOf(newMoney);
 						String itemBuyDate = UtilityHelper.getCurDateTime();
 		

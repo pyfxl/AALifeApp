@@ -554,7 +554,7 @@ public class MainActivity extends Activity {
 			myHandler.removeCallbacks(runnable);
 		}	
 		
-		//首页主位置
+		//首页主位置，money等于=收入-支出
 		if(hasTypeId()) {
 			updateUserMoney(sharedHelper.getTypeId(), "left");
 		} else {

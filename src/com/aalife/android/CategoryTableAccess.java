@@ -289,10 +289,10 @@ public class CategoryTableAccess {
 			if(saveId == 0) {
 				catId = getMaxCategoryId();
 				sql = "INSERT INTO " + CATTABNAME + "(CategoryID, CategoryName, CategoryPrice, Synchronize, CategoryRank) "
-				   	+ "VALUES ('" + catId + "', '" + catName + "', '" + catPrice + "', '1', '" + catId + "')";
+				   	+ "VALUES ('" + catId + "', '" + UtilityHelper.replaceLine(catName) + "', '" + catPrice + "', '1', '" + catId + "')";
 			} else {
 				catId = saveId;
-				sql = "UPDATE " + CATTABNAME + " SET CategoryName = '" + catName + "', CategoryPrice = '" + catPrice + "', Synchronize = '1', IsDefault = '0' WHERE CategoryID = " + catId;
+				sql = "UPDATE " + CATTABNAME + " SET CategoryName = '" + UtilityHelper.replaceLine(catName) + "', CategoryPrice = '" + catPrice + "', Synchronize = '1', IsDefault = '0' WHERE CategoryID = " + catId;
 			}
 		    this.db.execSQL(sql);
 		} catch (Exception e) {

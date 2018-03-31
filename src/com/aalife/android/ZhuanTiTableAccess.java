@@ -28,9 +28,9 @@ public class ZhuanTiTableAccess {
 			if(saveId == 0) {
 				int ztId = getMaxZhuanTiId();
 				sql = "INSERT INTO " + ZTTABNAME + "(ZTID, ZhuanTiName, ZhuanTiImage, Synchronize, ZhuanTiLive) "
-				   	+ "VALUES ('" + ztId + "', '" + ztName + "', '" + ztImage + "', '1', '1')";
+				   	+ "VALUES ('" + ztId + "', '" + UtilityHelper.replaceLine(ztName) + "', '" + ztImage + "', '1', '1')";
 			} else {
-				sql = "UPDATE " + ZTTABNAME + " SET ZhuanTiName = '" + ztName + "', Synchronize = '1', ZhuanTiLive = '1' WHERE ZTID = " + saveId;
+				sql = "UPDATE " + ZTTABNAME + " SET ZhuanTiName = '" + UtilityHelper.replaceLine(ztName) + "', Synchronize = '1', ZhuanTiLive = '1' WHERE ZTID = " + saveId;
 			}
 		    this.db.execSQL(sql);
 		} catch (Exception e) {

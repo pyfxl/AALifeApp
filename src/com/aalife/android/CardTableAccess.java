@@ -163,11 +163,11 @@ public class CardTableAccess {
 			if(saveId == -1) {
 				int cdId = getMaxCardId();
 				sql = "INSERT INTO " + CARDTABNAME + "(CDID, CardName, CardMoney, Synchronize, CardLive) "
-				   	+ "VALUES ('" + cdId + "', '" + cardName + "', '" + cardMoney + "', '1', '1')";
+				   	+ "VALUES ('" + cdId + "', '" + UtilityHelper.replaceLine(cardName) + "', '" + cardMoney + "', '1', '1')";
 			} else if(saveId == 0) {
 				sharedHelper.setUserMoney(cardMoney);
 			} else {
-				sql = "UPDATE " + CARDTABNAME + " SET CardName = '" + cardName + "', CardMoney = '" + cardMoney + "', Synchronize = '1', CardLive = '1' WHERE CDID = " + saveId;
+				sql = "UPDATE " + CARDTABNAME + " SET CardName = '" + UtilityHelper.replaceLine(cardName) + "', CardMoney = '" + cardMoney + "', Synchronize = '1', CardLive = '1' WHERE CDID = " + saveId;
 			}
 			if(!sql.equals("")) {
 		        this.db.execSQL(sql);

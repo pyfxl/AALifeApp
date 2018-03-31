@@ -18,7 +18,7 @@ public class SyncHelper {
 	private SharedHelper sharedHelper = null;
 	private Context context = null;
 	private SQLiteOpenHelper sqlHelper = null;
-	//private static final String WEBURL = "http://192.168.1.100:81";
+	//private static final String WEBURL = "http://192.168.1.105:81";
 	//private static final String WEBURL = "http://10.0.2.2:81";
 	private static final String WEBURL = "http://www.fxlweb.com";
 	

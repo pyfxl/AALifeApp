@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -53,7 +54,7 @@ import android.view.WindowManager;
 
 
 public class UtilityHelper {
-	//private static final String WEBURL = "http://192.168.1.100:81";
+	//private static final String WEBURL = "http://192.168.1.105:81";
 	//private static final String WEBURL = "http://10.0.2.2:81";
 	private static final String WEBURL = "http://www.fxlweb.com";
 	
@@ -391,8 +392,9 @@ public class UtilityHelper {
 			} else {
 				output = context.openFileOutput(name, Activity.MODE_PRIVATE);
 			}
-
-			PrintStream out = new PrintStream(output);
+			//添加头,使之成为utf-8+bom
+			output.write(new byte[]{(byte)0xEF, (byte)0xBB, (byte)0xBF});
+			PrintWriter out = new PrintWriter(output);
 			Iterator<CharSequence> it = list.iterator();
 			while(it.hasNext()) {
 				out.println(it.next());
@@ -1461,6 +1463,11 @@ public class UtilityHelper {
 		key = key.replace("'", "");
 		
 		return key;
+	}
+	
+	//替换行
+	public static String replaceLine(String str) {
+		return str.replace("\n", "");
 	}
 	
 	//预警灯
