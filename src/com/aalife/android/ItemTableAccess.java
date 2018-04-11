@@ -48,7 +48,7 @@ public class ItemTableAccess {
 	public Map<String, String> findItemById(int itemId) {
 		Map<String, String> map = new HashMap<String, String>();
 		
-		String sql = " SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, ItemWebID, Recommend, RegionID, RegionType, IFNULL(ItemType,'zc'), ZhuanTiID, IFNULL(CardID,'0') FROM " + ITEMTABNAME 
+		String sql = " SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, ItemWebID, Recommend, RegionID, RegionType, IFNULL(ItemType,'zc'), ZhuanTiID, IFNULL(CardID,'0'), IFNULL(Remark,'') FROM " + ITEMTABNAME 
 				   + " WHERE itemId = " + itemId;
 		Cursor result = null;
 		try {
@@ -67,6 +67,7 @@ public class ItemTableAccess {
 				map.put("itemtype", result.getString(9));
 				map.put("ztid", result.getString(10).equals("") ? "0" : result.getString(10));
 				map.put("cardid", result.getString(11));
+				map.put("itemremark", result.getString(12));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -156,7 +157,7 @@ public class ItemTableAccess {
 	public List<Map<String, String>> findItemByDate(String date, int type) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		
-		String sql = " SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Recommend, RegionID, CASE WHEN RegionID<>0 AND IFNULL(RegionType,'')='' THEN 'm' ELSE IFNULL(RegionType,'') END, IFNULL(ItemType,'zc'), IFNULL(ZhuanTiID,0) FROM " + ITEMTABNAME
+		String sql = " SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Recommend, RegionID, CASE WHEN RegionID<>0 AND IFNULL(RegionType,'')='' THEN 'm' ELSE IFNULL(RegionType,'') END, IFNULL(ItemType,'zc'), IFNULL(ZhuanTiID,0), IFNULL(Remark,'') FROM " + ITEMTABNAME
 				   + " WHERE STRFTIME('%Y-%m-%d', ItemBuyDate) = '" + date + "' ORDER BY ItemID ASC";
 		Cursor result = null;
 		try {
@@ -165,7 +166,7 @@ public class ItemTableAccess {
 				Map<String, String> map = new HashMap<String, String>();
 				//map.put("id", String.valueOf(result.getPosition() + 1));
 				map.put("itemid", result.getString(0));
-				map.put("itemname", result.getString(1));
+				map.put("itemname", result.getString(1) + getItemRemark(result.getString(10)));
 				map.put("itemprice", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
 				map.put("zhiprice", getItemPrice("zc", result.getString(8), UtilityHelper.formatDouble(result.getDouble(2), "0.0##")));
 				map.put("shouprice", getItemPrice("sr", result.getString(8), UtilityHelper.formatDouble(result.getDouble(2), "0.0##")));
@@ -196,7 +197,7 @@ public class ItemTableAccess {
 	public List<CharSequence> exportDataByDate(String beginDate, String endDate) {
 		List<CharSequence> list = new ArrayList<CharSequence>();
 		
-		String sql = " SELECT IFNULL(ItemType,'zc'), CategoryName, ItemName, ItemPrice, ItemBuyDate, IFNULL(Recommend, 0), IFNULL(zt.ZhuanTiName, ''), IFNULL(cd.CardName, '我的钱包') FROM " + ITEMTABNAME + " it"
+		String sql = " SELECT IFNULL(ItemType,'zc'), CategoryName, ItemName, ItemPrice, ItemBuyDate, IFNULL(Recommend, 0), IFNULL(zt.ZhuanTiName, ''), IFNULL(cd.CardName, '我的钱包'), IFNULL(Remark,'') FROM " + ITEMTABNAME + " it"
 				    + " INNER JOIN " + CATTABNAME + " ct ON it.CategoryID = ct.CategoryID AND ct.CategoryLive = 1"
 				    + " LEFT JOIN " + ZTTABNAME + " zt ON it.ZhuanTiID = zt.ZTID AND zt.ZhuanTiLive = 1"
 				    + " LEFT JOIN " + CARDTABNAME + " cd ON it.CardID = cd.CDID AND cd.CardLive = 1"
@@ -214,7 +215,8 @@ public class ItemTableAccess {
 					getExportString(7, "日期", "") +
 					getExportString(8, "推荐否", "") +
 					getExportString(9, "专题", "") +
-					getExportString(10, "钱包", ""));
+					getExportString(10, "钱包", "") +
+					getExportString(11, "备注", ""));
 			//分割线
 			list.add(getExportString(1, "-", "-") +
 					getExportString(2, "-", "-") +
@@ -225,7 +227,8 @@ public class ItemTableAccess {
 					getExportString(7, "-", "-") +
 					getExportString(8, "-", "-") +
 					getExportString(9, "-", "-") +
-					getExportString(10, "-", "-"));
+					getExportString(10, "-", "-") +
+					getExportString(11, "-", "-"));
 			
 			String tempDate = "";
 			double shouRuTotal = 0d;
@@ -251,7 +254,8 @@ public class ItemTableAccess {
 						getExportString(7, UtilityHelper.formatDate(result.getString(4), "y-m-d"), "") +
 						getExportString(8, result.getString(5).equals("1") ? "是" : "", "") +
 						getExportString(9, result.getString(6), "") +
-						getExportString(10, result.getString(7), ""));
+						getExportString(10, result.getString(7), "") +
+						getExportString(11, result.getString(8), ""));
 			}
 			
 			//分割线
@@ -265,7 +269,8 @@ public class ItemTableAccess {
 					getExportString(7, "-", "-") +
 					getExportString(8, "-", "-") +
 					getExportString(9, "-", "-") +
-					getExportString(10, "-", "-"));
+					getExportString(10, "-", "-") +
+					getExportString(11, "-", "-"));
 			//合计
 			list.add(getExportString(1, "总计", "") +
 					getExportString(2, "", "") +
@@ -276,6 +281,7 @@ public class ItemTableAccess {
 					getExportString(7, "结存", "") +
 					getExportString(8, "", "") +
 					getExportString(9, "", "") +
+					getExportString(10, "", "") +
 					getExportString(10, "", ""));
 			list.add(getExportString(1, "", "") +
 					getExportString(2, "", "") +
@@ -286,6 +292,7 @@ public class ItemTableAccess {
 					getExportString(7, UtilityHelper.formatDouble(shouRuTotal-zhiChuTotal, "0.0##"), "") +
 					getExportString(8, "", "") +
 					getExportString(9, "", "") +
+					getExportString(10, "", "") +
 					getExportString(10, "", ""));
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -440,7 +447,7 @@ public class ItemTableAccess {
 			query = "STRFTIME('%Y-%m',ItemBuyDate)=STRFTIME('%Y-%m','" + curDate + "')";
 		}
 		
-		String sql = " SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Recommend, RegionID, CASE WHEN RegionID<>0 AND IFNULL(RegionType,'')='' THEN 'm' ELSE IFNULL(RegionType,'') END, IFNULL(ItemType,'zc'), IFNULL(ZhuanTiID,0) FROM " + ITEMTABNAME
+		String sql = " SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Recommend, RegionID, CASE WHEN RegionID<>0 AND IFNULL(RegionType,'')='' THEN 'm' ELSE IFNULL(RegionType,'') END, IFNULL(ItemType,'zc'), IFNULL(ZhuanTiID,0), IFNULL(Remark,'') FROM " + ITEMTABNAME
 				   + " WHERE ZhuanTiID = '" + ztId + "' AND " + query + " ORDER BY ItemBuyDate DESC";
 		Cursor result = null;
 		try {
@@ -488,7 +495,7 @@ public class ItemTableAccess {
 			query = "STRFTIME('%Y-%m',ItemBuyDate)=STRFTIME('%Y-%m','" + curDate + "')";
 		}
 		
-		String sql = " SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, IFNULL(ItemType,'zc') FROM " + ITEMTABNAME
+		String sql = " SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, IFNULL(ItemType,'zc'), IFNULL(Remark,'') FROM " + ITEMTABNAME
 				   + " WHERE (CASE IFNULL(CardID,'') WHEN '' THEN 0 ELSE CardID END) = " + cdId + " AND " + query 
 				   + " ORDER BY ItemBuyDate DESC LIMIT " + num + " OFFSET " + start;
 		Cursor result = null;
@@ -940,7 +947,7 @@ public class ItemTableAccess {
 	public List<Map<String, String>> findSyncItem() {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		
-		String sql = " SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, ItemWebID, Recommend, RegionID, RegionType, IFNULL(ItemType,'zc'), ZhuanTiID, IFNULL(CardID,0) FROM " + ITEMTABNAME 
+		String sql = " SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, ItemWebID, Recommend, RegionID, RegionType, IFNULL(ItemType,'zc'), ZhuanTiID, IFNULL(CardID,0), IFNULL(Remark,'') FROM " + ITEMTABNAME 
 				   + " WHERE Synchronize = '1'";
 		Cursor result = null;
 		try {
@@ -960,6 +967,7 @@ public class ItemTableAccess {
 				map.put("itemtype", result.getString(9));
 				map.put("ztid", result.getString(10).equals("") ? "0" : result.getString(10));
 				map.put("cardid", result.getString(11).equals("") ? "0" : result.getString(11));
+				map.put("remark", result.getString(12));
 				list.add(map);
 			}
 		} catch(Exception e) {
@@ -1053,9 +1061,9 @@ public class ItemTableAccess {
 	}
 
 	//添加消费
-	public boolean addItem(String itemType, String itemName, String itemPrice, String itemBuyDate, int catId, int recommend, int regionId, String regionType, int zhuanTiId, int cardId) {
-		String sql = " INSERT INTO " + ITEMTABNAME + "(ItemType, ItemName, ItemPrice, ItemBuyDate, CategoryID, Synchronize, Recommend, RegionId, RegionType, ZhuanTiID, CardID)"
-			   	   + " VALUES ('" + itemType + "', '" + UtilityHelper.replaceLine(itemName) + "', '" + itemPrice + "', '" + itemBuyDate + "', '" + catId + "', '1', '" + recommend + "', '" + regionId + "', '" + regionType + "', '" + zhuanTiId + "', '" + cardId + "')";
+	public boolean addItem(String itemType, String itemName, String itemPrice, String itemBuyDate, int catId, int recommend, int regionId, String regionType, int zhuanTiId, int cardId, String itemRemark) {
+		String sql = " INSERT INTO " + ITEMTABNAME + "(ItemType, ItemName, ItemPrice, ItemBuyDate, CategoryID, Synchronize, Recommend, RegionId, RegionType, ZhuanTiID, CardID, Remark)"
+			   	   + " VALUES ('" + itemType + "', '" + UtilityHelper.replaceLine(itemName) + "', '" + itemPrice + "', '" + itemBuyDate + "', '" + catId + "', '1', '" + recommend + "', '" + regionId + "', '" + regionType + "', '" + zhuanTiId + "', '" + cardId + "', '" + itemRemark + "')";
 		try {
 		    this.db.execSQL(sql);
 		} catch (Exception e) {
@@ -1110,20 +1118,20 @@ public class ItemTableAccess {
 	}
 
 	//添加网络消费
-	public boolean addWebItem(int itemId, int itemAppId, String itemName, String itemPrice, String itemBuyDate, int catId, int recommend, int regionId, String regionType, String itemType, int ztId, int cardId) {
+	public boolean addWebItem(int itemId, int itemAppId, String itemName, String itemPrice, String itemBuyDate, int catId, int recommend, int regionId, String regionType, String itemType, int ztId, int cardId, String remark) {
 		String sql = "SELECT ItemID FROM " + ITEMTABNAME + " WHERE ItemWebID = " + itemId;
 		Cursor result = null;
 		try {
 			result = this.db.rawQuery(sql, null);
 			if(result.moveToFirst()) {
-				sql = " UPDATE " + ITEMTABNAME + " SET ItemName = '" + itemName + "', ItemPrice = '" + itemPrice + "', ItemBuyDate = '" + itemBuyDate + "', CategoryID = '" + catId + "', Synchronize = '0', Recommend = '" + recommend + "', RegionID = '" + regionId + "', RegionType = '" + regionType + "', ItemType = '" + itemType + "', ZhuanTiID = '" + ztId + "', CardID = '" + cardId + "'"
+				sql = " UPDATE " + ITEMTABNAME + " SET ItemName = '" + itemName + "', ItemPrice = '" + itemPrice + "', ItemBuyDate = '" + itemBuyDate + "', CategoryID = '" + catId + "', Synchronize = '0', Recommend = '" + recommend + "', RegionID = '" + regionId + "', RegionType = '" + regionType + "', ItemType = '" + itemType + "', ZhuanTiID = '" + ztId + "', CardID = '" + cardId + "', Remark = '" + remark + "'"
 				    + " WHERE ItemID = " + result.getString(0);
 			} else if(itemAppId > 0) {
-				sql = " UPDATE " + ITEMTABNAME + " SET ItemName = '" + itemName + "', ItemPrice = '" + itemPrice + "', ItemBuyDate = '" + itemBuyDate + "', CategoryID = '" + catId + "', Synchronize = '0', Recommend = '" + recommend + "', RegionID = '" + regionId + "', RegionType = '" + regionType + "', ItemType = '" + itemType + "', ZhuanTiID = '" + ztId + "', CardID = '" + cardId + "'"
+				sql = " UPDATE " + ITEMTABNAME + " SET ItemName = '" + itemName + "', ItemPrice = '" + itemPrice + "', ItemBuyDate = '" + itemBuyDate + "', CategoryID = '" + catId + "', Synchronize = '0', Recommend = '" + recommend + "', RegionID = '" + regionId + "', RegionType = '" + regionType + "', ItemType = '" + itemType + "', ZhuanTiID = '" + ztId + "', CardID = '" + cardId + "', Remark = '" + remark + "'"
 					+ " WHERE ItemID = " + itemAppId;
 			} else {
-				sql = " INSERT INTO " + ITEMTABNAME + "(ItemWebID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Synchronize, Recommend, RegionID, RegionType, ItemType, ZhuanTiID, CardID)"
-					+ " VALUES('" + itemId + "', '" + itemName + "', '" + itemPrice + "', '" + itemBuyDate + "', '" + catId + "', '0', '" + recommend + "', '" + regionId + "', '" + regionType + "', '" + itemType + "', '" + ztId + "', '" + cardId + "')";
+				sql = " INSERT INTO " + ITEMTABNAME + "(ItemWebID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Synchronize, Recommend, RegionID, RegionType, ItemType, ZhuanTiID, CardID, Remark)"
+					+ " VALUES('" + itemId + "', '" + itemName + "', '" + itemPrice + "', '" + itemBuyDate + "', '" + catId + "', '0', '" + recommend + "', '" + regionId + "', '" + regionType + "', '" + itemType + "', '" + ztId + "', '" + cardId + "', '" + remark + "')";
 			}
 		    this.db.execSQL(sql);
 		} catch (Exception e) {
@@ -1203,8 +1211,8 @@ public class ItemTableAccess {
 	}
 	
 	//编辑消费
-	public boolean updateItem(int id, String itemType, String itemName, String itemPrice, String itemBuyDate, int catId, int ztId, int cardId) {
-		String sql = " UPDATE " + ITEMTABNAME + " SET ItemType = '" + itemType + "', ItemName = '" + itemName + "', ItemPrice = '" + itemPrice + "', ItemBuyDate = '" + itemBuyDate + "', CategoryID = '" + catId + "', ZhuanTiID = '" + ztId + "', CardID = '" + cardId + "', Synchronize = '1'"
+	public boolean updateItem(int id, String itemType, String itemName, String itemPrice, String itemBuyDate, int catId, int ztId, int cardId, String itemRemark) {
+		String sql = " UPDATE " + ITEMTABNAME + " SET ItemType = '" + itemType + "', ItemName = '" + itemName + "', ItemPrice = '" + itemPrice + "', ItemBuyDate = '" + itemBuyDate + "', CategoryID = '" + catId + "', ZhuanTiID = '" + ztId + "', CardID = '" + cardId + "', Synchronize = '1', Remark = '" + itemRemark + "'"
 				   + " WHERE ItemID = " + id;
 		Cursor result = null;
 		try {			
@@ -1477,7 +1485,7 @@ public class ItemTableAccess {
 	public List<Map<String, String>> findRankCountByDate(String date) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		
-		String sql = " SELECT ItemName, COUNT(ItemName) AS Count, SUM(ItemPrice) AS Price, IFNULL(ItemType,'zc') FROM " + ITEMTABNAME
+		String sql = " SELECT ItemName, COUNT(ItemName) AS Count, SUM(ItemPrice) AS Price, IFNULL(ItemType,'zc'), IFNULL(Remark,'') FROM " + ITEMTABNAME
 				   + " WHERE STRFTIME('%Y-%m-%d', ItemBuyDate) <= STRFTIME('%Y-%m-%d', datetime('now', '+8 hour'))"
 				   + " AND STRFTIME('%Y-%m', ItemBuyDate) = STRFTIME('%Y-%m', '" + date + "') GROUP BY ItemName, IFNULL(ItemType,'zc')"
 				   + " ORDER BY Count DESC, Price DESC, ItemBuyDate DESC";
@@ -1486,7 +1494,8 @@ public class ItemTableAccess {
 			result = this.db.rawQuery(sql, null);
 			while (result.moveToNext()) {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("itemname", result.getString(0));
+				map.put("itemname", result.getString(0) + getItemRemark(result.getString(4)));
+				map.put("itemnamevalue", result.getString(0));
 				map.put("count", result.getString(1) + " 次");
 				map.put("price", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
 				map.put("itemtype", getItemTypeName(result.getString(3), 1));
@@ -1507,7 +1516,7 @@ public class ItemTableAccess {
 	public List<Map<String, String>> findRankCountByDate(String date, int catId) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		
-		String sql = " SELECT ItemName, COUNT(ItemName) AS Count, SUM(ItemPrice) AS Price, IFNULL(ItemType,'zc'), CategoryID FROM " + ITEMTABNAME
+		String sql = " SELECT ItemName, COUNT(ItemName) AS Count, SUM(ItemPrice) AS Price, IFNULL(ItemType,'zc'), CategoryID, IFNULL(Remark,'') FROM " + ITEMTABNAME
 				   + " WHERE STRFTIME('%Y-%m-%d', ItemBuyDate) <= STRFTIME('%Y-%m-%d', datetime('now', '+8 hour'))"
 				   + " AND STRFTIME('%Y-%m', ItemBuyDate) = STRFTIME('%Y-%m', '" + date + "') AND CategoryID = '" + catId + "'"
 				   + " GROUP BY ItemName, IFNULL(ItemType,'zc'), CategoryID ORDER BY Count DESC, Price DESC";
@@ -1587,7 +1596,7 @@ public class ItemTableAccess {
 	public List<Map<String, String>> findRankPriceByDate(String date) {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		
-		String sql = " SELECT ItemName, ItemBuyDate, ItemPrice, IFNULL(ItemType,'zc') FROM " + ITEMTABNAME
+		String sql = " SELECT ItemName, ItemBuyDate, ItemPrice, IFNULL(ItemType,'zc'), IFNULL(Remark,'') FROM " + ITEMTABNAME
 				   + " WHERE STRFTIME('%Y-%m-%d', ItemBuyDate) <= STRFTIME('%Y-%m-%d', datetime('now', '+8 hour'))"
 				   + " AND STRFTIME('%Y-%m', ItemBuyDate) = STRFTIME('%Y-%m', '" + date + "') ORDER BY ItemPrice DESC, ItemBuyDate DESC";
 		Cursor result = null;
@@ -1595,7 +1604,7 @@ public class ItemTableAccess {
 			result = this.db.rawQuery(sql, null);
 			while (result.moveToNext()) {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("itemname", result.getString(0));
+				map.put("itemname", result.getString(0) + getItemRemark(result.getString(4)));
 				map.put("itembuydate", UtilityHelper.formatDate(result.getString(1), "m-d"));
 				map.put("datevalue", UtilityHelper.formatDate(result.getString(1), "y-m-d"));
 				map.put("itemprice", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
@@ -1648,14 +1657,14 @@ public class ItemTableAccess {
 	public List<Map<String, String>> findRankRecommend() {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		
-		String sql = " SELECT ItemName, ItemBuyDate, ItemPrice, IFNULL(ItemType,'zc') FROM " + ITEMTABNAME 
+		String sql = " SELECT ItemName, ItemBuyDate, ItemPrice, IFNULL(ItemType,'zc'), IFNULL(Remark,'') FROM " + ITEMTABNAME 
 				   + " WHERE STRFTIME('%Y-%m-%d', ItemBuyDate) <= STRFTIME('%Y-%m-%d', datetime('now', '+8 hour')) AND Recommend = '1' ORDER BY ItemBuyDate DESC";
 		Cursor result = null;
 		try {
 			result = this.db.rawQuery(sql, null);
 			while (result.moveToNext()) {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("itemname", result.getString(0));
+				map.put("itemname", result.getString(0) + getItemRemark(result.getString(4)));
 				map.put("itembuydate", UtilityHelper.formatDate(result.getString(1), "ys-m-d"));
 				map.put("datevalue", UtilityHelper.formatDate(result.getString(1), "y-m-d"));
 				map.put("itemprice", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
@@ -1815,7 +1824,7 @@ public class ItemTableAccess {
 			query = "STRFTIME('%Y-%m',ItemBuyDate)=STRFTIME('%Y-%m','" + curDate + "')";
 		}
 		
-		String sql = " SELECT ItemName, ItemBuyDate, ItemPrice, IFNULL(ItemType,'zc') FROM " + ITEMTABNAME 
+		String sql = " SELECT ItemName, ItemBuyDate, ItemPrice, IFNULL(ItemType,'zc'), IFNULL(Remark,'') FROM " + ITEMTABNAME 
 				   + " WHERE STRFTIME('%Y-%m-%d', ItemBuyDate) <= STRFTIME('%Y-%m-%d', datetime('now', '+8 hour'))"
 				   + " AND ItemName LIKE '%" + key + "%' AND " + query + " ORDER BY ItemBuyDate DESC";
 		Cursor result = null;
@@ -1823,7 +1832,7 @@ public class ItemTableAccess {
 			result = this.db.rawQuery(sql, null);
 			while (result.moveToNext()) {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("itemname", result.getString(0));
+				map.put("itemname", result.getString(0) + getItemRemark(result.getString(4)));
 				map.put("itembuydate", UtilityHelper.formatDate(result.getString(1), "ys-m-d"));
 				map.put("datevalue", UtilityHelper.formatDate(result.getString(1), "y-m-d"));
 				map.put("itemprice", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
@@ -1848,7 +1857,7 @@ public class ItemTableAccess {
 		List<Map<String, String>> list = new ArrayList<Map<String, String>>();
 		
 		String catSql = catId > 0 ? "CategoryID = " + catId : "1=1";
-		String sql = " SELECT ItemName, ItemBuyDate, ItemPrice, IFNULL(ItemType,'zc') FROM " + ITEMTABNAME
+		String sql = " SELECT ItemName, ItemBuyDate, ItemPrice, IFNULL(ItemType,'zc'), IFNULL(Remark,'') FROM " + ITEMTABNAME
 				   + " WHERE STRFTIME('%Y-%m-%d', ItemBuyDate) <= STRFTIME('%Y-%m-%d', datetime('now', '+8 hour'))"
 				   + " AND STRFTIME('%Y-%m', ItemBuyDate) = STRFTIME('%Y-%m', '" + date + "') AND ItemName = '" + itemName + "' AND " + catSql
 				   + " ORDER BY ItemPrice DESC, ItemBuyDate DESC";
@@ -1857,7 +1866,7 @@ public class ItemTableAccess {
 			result = this.db.rawQuery(sql, null);
 			while (result.moveToNext()) {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("itemname", result.getString(0));
+				map.put("itemname", result.getString(0) + getItemRemark(result.getString(4)));
 				map.put("itembuydate", UtilityHelper.formatDate(result.getString(1), "m-d"));
 				map.put("datevalue", UtilityHelper.formatDate(result.getString(1), "y-m-d"));
 				map.put("itemprice", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
@@ -1931,13 +1940,13 @@ public class ItemTableAccess {
 		List<CharSequence> list = new ArrayList<CharSequence>();
 		
 		//消费
-		String sql = "SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Recommend, Synchronize, RegionID, RegionType, ItemType, ZhuanTiID, CardID, ItemWebID FROM " + ITEMTABNAME;
+		String sql = "SELECT ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Recommend, Synchronize, RegionID, RegionType, ItemType, ZhuanTiID, CardID, ItemWebID, Remark FROM " + ITEMTABNAME;
 		Cursor result = null;
 		try {
 			result = this.db.rawQuery(sql, null);
 			list.add("DELETE FROM " + ITEMTABNAME + ";");
 			while (result.moveToNext()) {
-				list.add("INSERT INTO " + ITEMTABNAME + " (ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Recommend, Synchronize, RegionID, RegionType, ItemType, ZhuanTiID, CardID, ItemWebID) VALUES ('" 
+				list.add("INSERT INTO " + ITEMTABNAME + " (ItemID, ItemName, ItemPrice, ItemBuyDate, CategoryID, Recommend, Synchronize, RegionID, RegionType, ItemType, ZhuanTiID, CardID, ItemWebID, Remark) VALUES ('" 
 			             + result.getString(0)+ "', '" 
 						 + UtilityHelper.replaceLine(result.getString(1)) + "', '"
 					     + result.getString(2) + "', '" 
@@ -1950,7 +1959,8 @@ public class ItemTableAccess {
 						 + result.getString(9) + "', '" 
 					     + result.getString(10) + "', '" 
 					     + result.getString(11) + "', '"
-					     + result.getString(12) + "');");
+					     + result.getString(12) + "', '"
+					     + result.getString(13) + "');");
 			}
 			result.close();
 			list.add("");
@@ -2100,6 +2110,7 @@ public class ItemTableAccess {
 				result = str + getExportEmpty(20, str, flag);
 				break;
 			case 4:
+			case 11:
 				result = str + getExportEmpty(40, str, flag);
 				break;
 			case 5:
@@ -2145,5 +2156,10 @@ public class ItemTableAccess {
 			}
 		}
 		return valueLength;
+	}
+	
+	//取商品备注
+	protected String getItemRemark(String remark) {
+		return remark.trim().equals("") ? "" : " ★";
 	}
 }

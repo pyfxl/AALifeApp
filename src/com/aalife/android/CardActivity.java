@@ -392,7 +392,7 @@ public class CardActivity extends Activity {
 						categoryAccess.close();
 					
 						itemAccess = new ItemTableAccess(sqlHelper.getReadableDatabase());
-						result = itemAccess.addItem(itemType, itemName, itemPrice, itemBuyDate, catId, 0, 0, "", 0, saveId);
+						result = itemAccess.addItem(itemType, itemName, itemPrice, itemBuyDate, catId, 0, 0, "", 0, saveId, "差账");
 						itemAccess.close();
 					}
 				}				

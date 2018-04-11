@@ -80,6 +80,7 @@ public class AddActivity extends Activity {
 	private List<CharSequence> nameList = null;
 	private EditText etAddItemPrice = null;
 	private EditText etAddItemBuyDate = null;
+	private EditText etAddItemRemark = null;
 	private final int FIRST_REQUEST_CODE = 1;
 
 	private String curDate2 = "";
@@ -143,6 +144,9 @@ public class AddActivity extends Activity {
 		TextView tvItemBuyDate = (TextView) super.findViewById(R.id.tv_itembuydate);
 		textPaint = tvItemBuyDate.getPaint();
 		textPaint.setFakeBoldText(true);
+		TextView tvItemRemark = (TextView) super.findViewById(R.id.tv_itemremark);
+		textPaint = tvItemRemark.getPaint();
+		textPaint.setFakeBoldText(true);
 		TextView tvRegion = (TextView) super.findViewById(R.id.tv_region);
 		textPaint = tvRegion.getPaint();
 		textPaint.setFakeBoldText(true);
@@ -161,6 +165,7 @@ public class AddActivity extends Activity {
 		spinner = (Spinner) super.findViewById(R.id.sp_add_cattype);
 		etAddItemName = (AutoCompleteTextView) super.findViewById(R.id.et_add_itemname);
 		etAddItemPrice = (EditText) super.findViewById(R.id.et_add_itemprice);
+		etAddItemRemark = (EditText) super.findViewById(R.id.et_add_itemremark);
 		listAddSmart = (ListView) super.findViewById(R.id.list_add_smart);
 		sdAddSmart = (SlidingDrawer) super.findViewById(R.id.slidingDrawer1);
 		laySmartBack = (LinearLayout) super.findViewById(R.id.lay_smart_back);
@@ -788,6 +793,9 @@ public class AddActivity extends Activity {
 		
 		itemPrice = items.get("itemprice");
 		etAddItemPrice.setText(itemPrice);
+
+		String itemRemark = items.get("itemremark");
+		etAddItemRemark.setText(itemRemark);
 		
 		String[] date = items.get("itembuydate").split(" ");
 		curDate = date[0];
@@ -851,6 +859,7 @@ public class AddActivity extends Activity {
 			
 			String itemName = etAddItemName.getText().toString().trim();
 			String itemPrice = etAddItemPrice.getText().toString().trim();
+			String itemRemark = etAddItemRemark.getText().toString().trim();
 
 			int ztId = 0;
 			if(spZhuanTi.getSelectedItemPosition() > 0) {
@@ -896,7 +905,7 @@ public class AddActivity extends Activity {
 						continue;
 					}
 					
-				    result = itemAccess.addItem(itemType, itemName, itemPrice, itemBuyDate, catId, recommend, regionId, regionType, ztId, cardId);
+				    result = itemAccess.addItem(itemType, itemName, itemPrice, itemBuyDate, catId, recommend, regionId, regionType, ztId, cardId, itemRemark);
 				}
 				
 				//删除DeleteTable记录
@@ -904,9 +913,9 @@ public class AddActivity extends Activity {
 			} else {
 				itemBuyDate = curDate + " " + curTime;
 				if(itemId > 0) {
-					result = itemAccess.updateItem(itemId, itemType, itemName, itemPrice, itemBuyDate, catId, ztId, cardId);
+					result = itemAccess.updateItem(itemId, itemType, itemName, itemPrice, itemBuyDate, catId, ztId, cardId, itemRemark);
 				} else {
-					result = itemAccess.addItem(itemType, itemName, itemPrice, itemBuyDate, catId, recommend, regionId, regionType, ztId, cardId);
+					result = itemAccess.addItem(itemType, itemName, itemPrice, itemBuyDate, catId, recommend, regionId, regionType, ztId, cardId, itemRemark);
 				}
 			}
 			itemAccess.close();

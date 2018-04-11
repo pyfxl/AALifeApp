@@ -336,6 +336,37 @@
             </LinearLayout>
 
             <LinearLayout
+                style="@style/lay_add"
+                android:layout_width="match_parent" >
+
+                <TextView
+                    android:id="@+id/tv_itemremark"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_add_itemremark" />
+
+                <EditText
+                    android:id="@+id/et_add_itemremark"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:ems="100"
+                    android:imeOptions="actionDone"
+                    android:inputType="none"
+                    android:maxLength="100"
+                    android:textColor="@color/color_text" />
+
+                <TextView
+                    android:id="@+id/TextView02"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/txt_empty" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/lay_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

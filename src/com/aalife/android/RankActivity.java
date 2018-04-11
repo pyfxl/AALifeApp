@@ -252,7 +252,7 @@ public class RankActivity extends Activity {
 				ListView lv = (ListView) parent;
 				@SuppressWarnings("unchecked")
 				Map<String, String> map = (Map<String, String>) lv.getItemAtPosition(position);
-		        String itemName = map.get("itemname");
+		        String itemName = map.get("itemnamevalue");
 
 		        TextView tvItemType = (TextView) view.findViewById(R.id.tv_rank_itemtype);
 		        tvItemType.setBackgroundColor(RankActivity.this.getResources().getColor(R.color.color_tran_main));

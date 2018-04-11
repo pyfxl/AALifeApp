@@ -18,8 +18,7 @@ public class SyncHelper {
 	private SharedHelper sharedHelper = null;
 	private Context context = null;
 	private SQLiteOpenHelper sqlHelper = null;
-	//private static final String WEBURL = "http://192.168.1.105:81";
-	//private static final String WEBURL = "http://10.0.2.2:81";
+	//private static final String WEBURL = "http://192.168.1.102:81";
 	private static final String WEBURL = "http://www.fxlweb.com";
 	
 	public SyncHelper(Context context) {
@@ -83,7 +82,7 @@ public class SyncHelper {
 			}
 
 			//查看
-			ViewTableAccess viewAccess = new ViewTableAccess(sqlHelper.getReadableDatabase());			
+			/*ViewTableAccess viewAccess = new ViewTableAccess(sqlHelper.getReadableDatabase());			
 			list = viewAccess.findAllSyncView();
 			viewAccess.close();
 			if(list.size() > 0) {
@@ -92,7 +91,7 @@ public class SyncHelper {
 				} catch(Exception e) {
 					throw new Exception();
 				}
-			}
+			}*/
 
 			//删除
 			ItemTableAccess itemAccess = new ItemTableAccess(sqlHelper.getReadableDatabase());
@@ -253,6 +252,7 @@ public class SyncHelper {
 			params.add(new BasicNameValuePair("itemtype", map.get("itemtype")));
 			params.add(new BasicNameValuePair("ztid", map.get("ztid")));
 			params.add(new BasicNameValuePair("cardid", map.get("cardid")));
+			params.add(new BasicNameValuePair("remark", map.get("remark")));
 	
 			try {
 				JSONObject jsonObject = new JSONObject(HttpHelper.post(url, params));
@@ -594,6 +594,7 @@ public class SyncHelper {
 			map.put("itemtype", jsonObject.getString("itemtype"));
 			map.put("ztid", jsonObject.getString("ztid"));
 			map.put("cardid", jsonObject.getString("cardid"));
+			map.put("remark", jsonObject.getString("remark"));
 			list.add(map);
 		}
 		
@@ -621,13 +622,14 @@ public class SyncHelper {
 			String itemType = map.get("itemtype");
 			int ztId = Integer.parseInt(map.get("ztid"));
 			int cardId = Integer.parseInt(map.get("cardid"));
+			String remark = map.get("remark");
 
 			//用于首页实时更新
 			if(UtilityHelper.compareDate(itemBuyDate)) {
 				sharedHelper.setCurDate(UtilityHelper.formatDate(itemBuyDate, "y-m-d"));
 			}
 			
-			boolean success = itemAccess.addWebItem(itemId, itemAppId, itemName, itemPrice, itemBuyDate, catId, recommend, regionId, regionType, itemType, ztId, cardId);
+			boolean success = itemAccess.addWebItem(itemId, itemAppId, itemName, itemPrice, itemBuyDate, catId, recommend, regionId, regionType, itemType, ztId, cardId, remark);
 			if(!success) {
 				syncFlag = true;
 				continue;
