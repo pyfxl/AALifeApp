@@ -129,8 +129,10 @@ public class AnalyzeJieHuanDetailActivity extends Activity {
 		//设置empty
 		if(list.size() == 0) {
 			layNoItem.setVisibility(View.VISIBLE);
+			listAnalyzeJieHuanDetail.setVisibility(View.GONE);
 		} else {
 			layNoItem.setVisibility(View.GONE);
+			listAnalyzeJieHuanDetail.setVisibility(View.VISIBLE);
 		}
 	}
 	

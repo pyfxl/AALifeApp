@@ -62,6 +62,7 @@ public class AddActivity extends Activity {
 	private String itemName = "";
 	private String itemPrice = "";
 	private int saveType = 1;
+	private int isNew = 0;
 	
 	private String ztName = "";
 	private Spinner spZhuanTi = null;
@@ -485,6 +486,18 @@ public class AddActivity extends Activity {
 				}
 			}			
 		});	
+
+		//+1添加按钮
+		Button btnAddCopy = (Button) super.findViewById(R.id.btn_add_copy);
+		btnAddCopy.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+		        Intent intent = new Intent(AddActivity.this, AddActivity.class);
+				intent.putExtra("itemid", itemId);
+				intent.putExtra("isnew", 1);
+		        startActivityForResult(intent, FIRST_REQUEST_CODE);
+			}			
+		});	
 		
 		//编辑按钮
 		Button btnDayEdit = (Button) super.findViewById(R.id.btn_day_edit);
@@ -708,6 +721,7 @@ public class AddActivity extends Activity {
 		
 		//编辑初始
 		itemId = intent.getIntExtra("itemid", 0);
+		isNew = intent.getIntExtra("isnew", 0);
 		if(itemId > 0) {
 			itemAccess = new ItemTableAccess(sqlHelper.getReadableDatabase());
 			Map<String, String> items = itemAccess.findItemById(itemId);
@@ -718,8 +732,16 @@ public class AddActivity extends Activity {
 
 			LinearLayout layAdd = (LinearLayout) super.findViewById(R.id.lay_add);
 			LinearLayout layEdit = (LinearLayout) super.findViewById(R.id.lay_edit);
-			layAdd.setVisibility(View.GONE);
-			layEdit.setVisibility(View.VISIBLE);
+
+			//isNew:0编辑， 1新增
+			if(isNew == 0) {
+				layAdd.setVisibility(View.GONE);
+				layEdit.setVisibility(View.VISIBLE);				
+			} else {
+				layAdd.setVisibility(View.VISIBLE);
+				layEdit.setVisibility(View.GONE);
+				itemId = 0;
+			}
 			
 			//小米检测到不明bug
 			try {
@@ -796,6 +818,8 @@ public class AddActivity extends Activity {
 
 		String itemRemark = items.get("itemremark");
 		etAddItemRemark.setText(itemRemark);
+		
+		recommend = Integer.parseInt(items.get("recommend"));
 		
 		String[] date = items.get("itembuydate").split(" ");
 		curDate = date[0];
@@ -1033,6 +1057,7 @@ public class AddActivity extends Activity {
 			etAddItemName.setText("");
 			etAddItemName.requestFocus();
 			etAddItemPrice.setText("");
+			etAddItemRemark.setText("");
 			
 			setListSmartData(listCat);
 			smartFlag = 1;

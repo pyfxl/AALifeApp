@@ -70,6 +70,13 @@
         android:text="@string/txt_day_itemname" />
 
     <TextView
+        android:id="@+id/tv_day_itemremark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_day_remark"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/tv_day_itemtypevalue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

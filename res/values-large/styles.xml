@@ -15,9 +15,10 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/white</item>
-        <item name="android:textSize">21sp</item>
+        <item name="android:textSize">19sp</item>
     </style>
         
     <style name="title_style">
@@ -56,10 +57,15 @@
         <item name="android:gravity">center</item>
 		<item name="android:layout_width">match_parent</item>
 		<item name="android:layout_height">@dimen/list_item_height</item>
+		<item name="android:background">@android:color/white</item>
     </style>
     
     <style name="lay_total" parent="lay_item">
 		<item name="android:layout_height">@dimen/list_total_height</item>
+    </style>
+    
+    <style name="lay_total2" parent="lay_item">
+		<item name="android:layout_height">59dp</item>
     </style>
     
     <style name="lay_add">
@@ -93,8 +99,25 @@
         <item name="android:paddingLeft">@dimen/padding_medium</item>
     </style>
     
+    <style name="tv_item_total">
+        <item name="android:gravity">center|left</item>
+        <item name="android:paddingLeft">@dimen/padding_medium</item>
+        <item name="android:textSize">@dimen/text_size_total</item>
+    </style>
+        
+    <style name="tv_item_total2">
+        <item name="android:gravity">center|right</item>
+        <item name="android:paddingRight">@dimen/padding_medium</item>
+        <item name="android:textSize">@dimen/text_size_total</item>
+    </style>
+    
+    <style name="tv_item_total3">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_size_total</item>
+    </style>
+    
     <style name="list_bottom">
-        <item name="android:layout_marginBottom">@dimen/list_item_height</item>
+        <item name="android:layout_marginBottom">60dp</item>
     </style>
     
     <style name="calc_btn_style">

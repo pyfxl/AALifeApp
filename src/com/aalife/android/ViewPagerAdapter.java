@@ -51,7 +51,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 		Map<String, String> map = list.get(position);
 		String date = map.get("datevalue");
 		final MonthActivity activity = ((MonthActivity)context);
-		
+
 		//标题变粗
 		TextPaint textPaint = null;
 		TextView tvTitleZhiChu = (TextView) layMonthPager.findViewById(R.id.tv_title_zhichuprice);
@@ -71,6 +71,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 		itemAccess.close();
 		SimpleAdapter adapter = new SimpleAdapter(context, list, R.layout.list_month, new String[] { "zhichuprice", "shouruprice", "date" }, new int[] { R.id.tv_month_zhichuprice, R.id.tv_month_shouruprice, R.id.tv_month_date });
 		listMonth.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(context, listMonth, adapter.getCount());
 
 		//列表点击
 		listMonth.setOnItemClickListener(new OnItemClickListener() {

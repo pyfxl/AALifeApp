@@ -35,7 +35,7 @@ public class CategoryEditActivity extends Activity {
 	private CategoryTableAccess categoryAccess = null;
 	private EditText etCatName = null;
 	private EditText etCatPrice = null;
-	private int saveId = 0;
+	private int saveId = -1;
 	private int catId = 0;
 	private SharedHelper sharedHelper = null;
 	private LinearLayout layNoItem = null;
@@ -113,6 +113,7 @@ public class CategoryEditActivity extends Activity {
 						sharedHelper.setCategory(0);
 						categoryAccess.close();
 						if(result == 1) {
+							isClick = false;
 				        	CategoryEditActivity.this.onCreate(null);
 							Toast.makeText(CategoryEditActivity.this, getString(R.string.txt_day_deletesuccess), Toast.LENGTH_SHORT).show();
 						} else if(result == 2) {
@@ -147,7 +148,8 @@ public class CategoryEditActivity extends Activity {
 				return view;
 			}			
 		};
-		listCategory.setAdapter(adapter);			
+		listCategory.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listCategory, adapter.getCount());			
 		
 		//列表点击
 		listCategory.setOnItemClickListener(new OnItemClickListener() {
@@ -220,7 +222,7 @@ public class CategoryEditActivity extends Activity {
 		        	sharedHelper.setLocalSync(true);
 		        	sharedHelper.setSyncStatus(getString(R.string.txt_home_haslocalsync));
 		        	
-		        	saveId = 0;
+		        	saveId = -1;
 		        	Toast.makeText(CategoryEditActivity.this, getString(R.string.txt_add_addsuccess), Toast.LENGTH_SHORT).show();
 		        } else {
 		        	Toast.makeText(CategoryEditActivity.this, getString(R.string.txt_add_adderror), Toast.LENGTH_SHORT).show();
@@ -257,7 +259,7 @@ public class CategoryEditActivity extends Activity {
 		if(requestCode == FIRST_REQUEST_CODE) {	
 			isClick = false;
 			position = 0;
-			saveId = 0;
+			saveId = -1;
 			this.onCreate(null);
 		}
 	}
@@ -302,7 +304,8 @@ public class CategoryEditActivity extends Activity {
 						sharedHelper.setLocalSync(true);
 						sharedHelper.setSyncStatus(getString(R.string.txt_home_haslocalsync));
 					}
-					
+
+					isClick = false;
 					CategoryEditActivity.this.onCreate(null);
 				}
 			}).setNegativeButton(R.string.txt_cancel, new DialogInterface.OnClickListener() {

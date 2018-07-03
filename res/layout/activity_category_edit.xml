@@ -97,10 +97,10 @@
     <ListView
         android:id="@+id/list_category"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/LinearLayout3"
         android:layout_marginBottom="@dimen/cat_list_height"
-        android:background="@android:color/white"
+        android:background="@android:color/transparent"
         android:descendantFocusability="blocksDescendants"
         android:divider="@android:color/transparent"
         android:listSelector="@android:color/transparent" >

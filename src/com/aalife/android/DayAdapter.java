@@ -114,26 +114,30 @@ public class DayAdapter extends BaseAdapter {
 		activity.setTotalData(itemBuyDate, totalMap.get("shourupricevalue"), totalMap.get("zhichupricevalue"), totalMap.get("jiecunpricevalue"));
 		
 		//设置CheckBox选中
-		final boolean[] reCheck = new boolean[subList.size()];
+		final boolean[][] reCheck = new boolean[2][subList.size()];
 		for(int i=0; i < subList.size(); i++) {
 			Map<String, String> map = subList.get(i);
-			reCheck[i] = map.get("recommend").toString().equals("0") ? false : true;
+			reCheck[0][i] = map.get("recommend").toString().equals("0") ? false : true;
+			reCheck[1][i] = false;
 		}
 
 		//子ListView数据
-		simpleAdapter = new SimpleAdapter(this.context, subList, R.layout.list_day_sub, new String[] { "itemid", "itemname", "zhiprice", "pricevalue", "shouprice", "itemtypevalue", "regionname" }, new int[] { R.id.tv_day_itemid, R.id.tv_day_itemname, R.id.tv_day_zhiprice, R.id.tv_day_pricevalue, R.id.tv_day_shouprice, R.id.tv_day_itemtypevalue, R.id.tv_day_regionname }) {
+		simpleAdapter = new SimpleAdapter(this.context, subList, R.layout.list_day_sub, new String[] { "itemid", "itemname", "itemremark", "zhiprice", "pricevalue", "shouprice", "itemtypevalue", "regionname" }, new int[] { R.id.tv_day_itemid, R.id.tv_day_itemname, R.id.tv_day_itemremark, R.id.tv_day_zhiprice, R.id.tv_day_pricevalue, R.id.tv_day_shouprice, R.id.tv_day_itemtypevalue, R.id.tv_day_regionname }) {
 			@Override
-			public View getView(int arg0, View arg1, ViewGroup arg2) {
+			public View getView(int _position, View _convertView, ViewGroup _parent) {
 				View view = null;
-				if(arg1 != null) {
-					view = arg1;
+				if(_convertView != null) {
+					view = _convertView;
+					reCheck[1][_position] = false;
 				} else {
-					view = super.getView(arg0, arg1, arg2);
+					view = super.getView(_position, _convertView, _parent);
+					reCheck[1][_position] = true;
 				}
-				
-				if(arg2.getChildCount() == arg0) {
-					int ztId = Integer.parseInt(subList.get(arg0).get("ztid"));
-					int regionId = Integer.parseInt(subList.get(arg0).get("regionid"));
+
+				if(_parent.getChildCount()==_position && reCheck[1][_position]) {
+				    //System.out.println("parent:" + _parent.getChildCount() + ", position1:" + position + ", position2:" + _position);
+					int ztId = Integer.parseInt(subList.get(_position).get("ztid"));
+					int regionId = Integer.parseInt(subList.get(_position).get("regionid"));
 					TextView tvItemId = (TextView) view.findViewById(R.id.tv_day_itemid);
 					final int itemId = Integer.parseInt(tvItemId.getText().toString());
 					TextView tvZhuanTi = (TextView) view.findViewById(R.id.tv_day_zhuanti);
@@ -151,7 +155,7 @@ public class DayAdapter extends BaseAdapter {
 					
 					//推荐CheckBox
 					final CheckBox re = (CheckBox) view.findViewById(R.id.cb_day_recommend);
-					re.setChecked(reCheck[arg0]);
+					re.setChecked(reCheck[0][_position]);
 					re.setOnClickListener(new OnClickListener() {
 						@Override
 						public void onClick(View v) {
@@ -167,6 +171,15 @@ public class DayAdapter extends BaseAdapter {
 				        	sharedHelper.setSyncStatus(context.getString(R.string.txt_home_hassync));
 						}
 					});	
+
+					//如果有备注显示颜色
+					TextView tvItemName = (TextView) view.findViewById(R.id.tv_day_itemname);
+					TextView tvItemRemark = (TextView) view.findViewById(R.id.tv_day_itemremark);
+					if(!tvItemRemark.getText().equals("")) {
+						tvItemName.setTextColor(activity.getResources().getColor(R.color.color_back_main));
+					} else {
+						tvItemName.setTextColor(activity.getResources().getColor(android.R.color.secondary_text_light));
+					}
 				}
 				
 				return view;

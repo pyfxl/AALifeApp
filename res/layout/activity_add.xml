@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="7"
                     android:ems="10"
-                    android:imeOptions="actionDone"
+                    android:imeOptions="actionNext"
                     android:inputType="numberDecimal|numberSigned"
                     android:maxLength="10"
                     android:textColor="@color/color_text" />
@@ -244,6 +244,7 @@
                         android:ems="10"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
+                        android:imeOptions="actionNext"
                         android:inputType="date"
                         android:textColor="@color/color_text" />
 
@@ -264,9 +265,11 @@
                         android:ems="10"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
+                        android:imeOptions="actionNext"
                         android:inputType="date"
                         android:textColor="@color/color_text"
                         android:visibility="gone" />
+
                 </LinearLayout>
 
                 <ImageButton
@@ -353,7 +356,7 @@
                     android:layout_weight="7"
                     android:ems="100"
                     android:imeOptions="actionDone"
-                    android:inputType="none"
+                    android:inputType="textNoSuggestions"
                     android:maxLength="100"
                     android:textColor="@color/color_text" />
 
@@ -413,21 +416,28 @@
                 <Button
                     android:id="@+id/btn_day_delete"
                     style="@style/btn_style"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/padding_small"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:background="@drawable/main_btn_selector"
                     android:drawableLeft="@drawable/ic_add_delete"
                     android:text="@string/txt_day_delete" />
 
                 <Button
+                    android:id="@+id/btn_add_copy"
+                    style="@style/btn_base"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/second_btn_selector"
+                    android:text="@string/txt_add_addcopy" />
+
+                <Button
                     android:id="@+id/btn_day_edit"
                     style="@style/btn_style"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_small"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:background="@drawable/main_btn_selector"
                     android:drawableLeft="@drawable/ic_add_continue"
                     android:text="@string/txt_day_edit" />

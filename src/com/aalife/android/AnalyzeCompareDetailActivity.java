@@ -139,8 +139,10 @@ public class AnalyzeCompareDetailActivity extends Activity {
 		//设置empty
 		if(list.size() == 0) {
 			layNoItem.setVisibility(View.VISIBLE);
+			listAnalyzeCompareDetail.setVisibility(View.GONE);
 		} else {
 			layNoItem.setVisibility(View.GONE);
+			listAnalyzeCompareDetail.setVisibility(View.VISIBLE);
 		}
 	}
 	

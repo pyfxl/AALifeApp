@@ -63,6 +63,7 @@
         android:layout_height="wrap_content"
         android:focusable="false"
         android:focusableInTouchMode="false"
+        android:imeOptions="actionNext"
         android:inputType="date"
         android:textColor="@color/color_text" />
 
@@ -79,9 +80,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:imeOptions="actionDone"
+        android:imeOptions="actionNext"
         android:inputType="numberDecimal"
         android:maxLength="10"
+        android:textColor="@color/color_text" />
+
+    <TextView
+        style="@style/edit_title_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_add_dot"
+        android:text="@string/txt_card_note" />
+
+    <EditText
+        android:id="@+id/et_card_note"
+        style="@style/edit_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="100"
+        android:imeOptions="actionDone"
+        android:inputType="textNoSuggestions"
+        android:maxLength="100"
         android:textColor="@color/color_text" />
 
 </LinearLayout>

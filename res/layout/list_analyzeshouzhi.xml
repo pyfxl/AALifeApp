@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/tv_analyze_shouru"
-        style="@style/tv_item_price2"
+        style="@style/tv_item_price"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/list_border_size"
@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/tv_analyze_zhichu"
-        style="@style/tv_item_price2"
+        style="@style/tv_item_price"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/list_border_size"
@@ -55,7 +55,7 @@
 
     <TextView
         android:id="@+id/tv_analyze_jiecun"
-        style="@style/tv_item_price2"
+        style="@style/tv_item_price"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/list_border_size"

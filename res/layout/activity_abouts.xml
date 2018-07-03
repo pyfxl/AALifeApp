@@ -189,7 +189,7 @@
                     android:ems="10"
                     android:gravity="center"
                     android:imeOptions="actionDone"
-                    android:inputType="none"
+                    android:inputType="textNoSuggestions"
                     android:maxLength="50"
                     android:textColor="@color/color_text" />
 

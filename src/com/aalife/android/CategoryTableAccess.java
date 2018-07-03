@@ -286,7 +286,7 @@ public class CategoryTableAccess {
 		String sql = "";
 		Cursor result = null;
 		try {
-			if(saveId == 0) {
+			if(saveId == -1) {
 				catId = getMaxCategoryId();
 				sql = "INSERT INTO " + CATTABNAME + "(CategoryID, CategoryName, CategoryPrice, Synchronize, CategoryRank) "
 				   	+ "VALUES ('" + catId + "', '" + UtilityHelper.replaceLine(catName) + "', '" + catPrice + "', '1', '" + catId + "')";

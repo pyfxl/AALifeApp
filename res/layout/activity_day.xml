@@ -41,8 +41,9 @@
 
     <ListView
         android:id="@+id/list_day"
+        style="@style/list_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/LinearLayout1"
         android:background="@android:color/white"
         android:divider="@android:color/transparent"
@@ -90,13 +91,11 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            style="@style/lay_item"
-            android:background="@color/color_tran2_white" >
+        <LinearLayout style="@style/lay_total2" >
 
             <TextView
                 android:id="@+id/tv_total_label"
-                style="@style/tv_item_date"
+                style="@style/tv_item_total"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -105,7 +104,7 @@
 
             <TextView
                 android:id="@+id/tv_total_shouru"
-                style="@style/tv_item_price"
+                style="@style/tv_item_total2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -114,7 +113,7 @@
 
             <TextView
                 android:id="@+id/tv_total_zhichu"
-                style="@style/tv_item_price"
+                style="@style/tv_item_total2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -123,7 +122,7 @@
 
             <TextView
                 android:id="@+id/tv_total_jiecun"
-                style="@style/tv_item_price"
+                style="@style/tv_item_total2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

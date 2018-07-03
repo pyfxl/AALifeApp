@@ -98,12 +98,12 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/lay_total"
+            style="@style/lay_total2"
             android:background="@android:color/white" >
 
             <TextView
                 android:id="@+id/tv_total_jiecunprice"
-                style="@style/tv_item_price2"
+                style="@style/tv_item_total3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/list_border_size"
@@ -114,7 +114,7 @@
 
             <TextView
                 android:id="@+id/tv_total_shouruprice"
-                style="@style/tv_item_price2"
+                style="@style/tv_item_total2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/list_border_size"
@@ -125,7 +125,7 @@
 
             <TextView
                 android:id="@+id/tv_total_zhichuprice"
-                style="@style/tv_item_price2"
+                style="@style/tv_item_total2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/list_border_size"

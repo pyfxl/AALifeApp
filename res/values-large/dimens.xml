@@ -30,14 +30,15 @@
 
     <dimen name="calc_text_size">27sp</dimen>    
     <dimen name="cat_list_height">72dp</dimen>   
-    <dimen name="text_size_medium">27sp</dimen>   
+    <dimen name="text_size_medium">27sp</dimen>  
+    <dimen name="text_size_total">23sp</dimen>   
     <dimen name="cat_den_height">27dp</dimen>
     
     <dimen name="home_usermoney_width">180dp</dimen>
     <dimen name="home_usermoney_height">231dp</dimen>
     <dimen name="home_usermoney_size">72sp</dimen>
     
-    <dimen name="text_size_region">18sp</dimen>
+    <dimen name="text_size_region">12sp</dimen>
     <dimen name="edit_min_height">60dp</dimen>
     
     <dimen name="about_text_line">5dp</dimen>

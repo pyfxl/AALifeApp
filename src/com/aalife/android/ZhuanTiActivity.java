@@ -79,6 +79,9 @@ public class ZhuanTiActivity extends Activity {
 			layNoItem.setVisibility(View.VISIBLE);
 		}
 
+		//提示长按操作
+		Toast.makeText(ZhuanTiActivity.this, getString(R.string.txt_longedittext), Toast.LENGTH_SHORT).show();
+		
 		//列表数据源
 		adapter = new SimpleAdapter(this, list, R.layout.list_zhuanti, new String[] { "ztname", "ztdate", "ztjiecun" }, new int[] { R.id.tv_zhuanti_name, R.id.tv_zhuanti_date, R.id.tv_zhuanti_jiecun }) {
 			@Override
@@ -101,6 +104,7 @@ public class ZhuanTiActivity extends Activity {
 			}			
 		};
 		listZhuanTi.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listZhuanTi, adapter.getCount());
 		
 		//列表点击
 		listZhuanTi.setOnItemClickListener(new OnItemClickListener() {

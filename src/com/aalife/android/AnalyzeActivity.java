@@ -1,6 +1,7 @@
 package com.aalife.android;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -218,7 +219,10 @@ public class AnalyzeActivity extends Activity {
 				@SuppressWarnings("unchecked")
 				Map<String, String> map = (Map<String, String>) lv.getItemAtPosition(position);
 		        int catId = Integer.parseInt(map.get("catid"));
-		        
+		      
+		        //让总计不可点击
+				if(catId == -1) return;
+				
 		        TextView tvCatName = (TextView) view.findViewById(R.id.tv_analyze_catname);
 		        tvCatName.setBackgroundColor(AnalyzeActivity.this.getResources().getColor(R.color.color_tran_main));
 		        TextView tvShouPriceCur = (TextView) view.findViewById(R.id.tv_analyze_shoupricecur);
@@ -247,7 +251,10 @@ public class AnalyzeActivity extends Activity {
 				@SuppressWarnings("unchecked")
 				Map<String, String> map = (Map<String, String>) lv.getItemAtPosition(position);
 		        String date = map.get("datevalue");
-		        
+
+		        //让总计不可点击
+				if(date == "-1") return;
+				
 		        TextView tvItemBuyDate = (TextView) view.findViewById(R.id.tv_analyze_itembuydate);
 		        tvItemBuyDate.setBackgroundColor(AnalyzeActivity.this.getResources().getColor(R.color.color_tran_main));
 		        TextView tvShouRuPrice = (TextView) view.findViewById(R.id.tv_analyze_shouru);
@@ -274,6 +281,9 @@ public class AnalyzeActivity extends Activity {
 				Map<String, String> map = (Map<String, String>) lv.getItemAtPosition(position);
 		        String date = map.get("datevalue");
 
+		        //让总计不可点击
+				if(date == "-1") return;
+				
 		        TextView tvItemBuyDate = (TextView) view.findViewById(R.id.tv_analyze_itembuydate);
 		        tvItemBuyDate.setBackgroundColor(AnalyzeActivity.this.getResources().getColor(R.color.color_tran_main));
 		        TextView tvJieChuPrice = (TextView) view.findViewById(R.id.tv_analyze_jiechu);
@@ -520,6 +530,34 @@ public class AnalyzeActivity extends Activity {
 		
 		//比较
 		list = itemAccess.findCompareCatByDate(date);
+
+		double curshou = 0;
+		double curzhi = 0;
+		double curprice = 0;
+		double prevshou = 0;
+		double prevzhi = 0;
+		double prevprice = 0;
+		for(int i=0; i<list.size(); i++) {
+			Map<String, String> map = list.get(i);
+			curshou += Double.parseDouble(map.get("shoupricecur"));
+			curzhi += Double.parseDouble(map.get("zhipricecur"));
+			prevshou += Double.parseDouble(map.get("shoupriceprev"));
+			prevzhi += Double.parseDouble(map.get("zhipriceprev"));
+		}
+		curprice = curshou - curzhi;
+		prevprice = prevshou - prevzhi;
+		
+		if(list.size() > 0) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("catid", "-1");
+			map.put("catname", "合计");
+			map.put("zhipricecur", String.valueOf(curzhi));
+			map.put("shoupricecur", String.valueOf(curshou));
+			map.put("zhipriceprev", String.valueOf(prevzhi));
+			map.put("shoupriceprev", String.valueOf(prevshou));
+			list.add(map);
+		}
+		
 		adapter = new SimpleAdapter(this, list, R.layout.list_analyzecompare, new String[] { "catid", "catname", "shoupricecur", "zhipricecur", "shoupriceprev", "zhipriceprev" }, new int[] { R.id.tv_analyze_catid, R.id.tv_analyze_catname, R.id.tv_analyze_shoupricecur, R.id.tv_analyze_zhipricecur, R.id.tv_analyze_shoupriceprev, R.id.tv_analyze_zhipriceprev });
 		listAnalyzeCompare.setAdapter(adapter);
 		if(list.size() <= 0) {
@@ -529,28 +567,36 @@ public class AnalyzeActivity extends Activity {
 			layNoItemCompare.setVisibility(View.GONE);
 			layCompareTotal.setVisibility(View.VISIBLE);
 
-			double curshou = 0;
-			double curzhi = 0;
-			double curprice = 0;
-			double prevshou = 0;
-			double prevzhi = 0;
-			double prevprice = 0;
-			for(int i=0; i<list.size(); i++) {
-				Map<String, String> map = list.get(i);
-				curshou += Double.parseDouble(map.get("shoupricecur"));
-				curzhi += Double.parseDouble(map.get("zhipricecur"));
-				prevshou += Double.parseDouble(map.get("shoupriceprev"));
-				prevzhi += Double.parseDouble(map.get("zhipriceprev"));
-			}
-			curprice = curshou - curzhi;
-			prevprice = prevshou - prevzhi;
-			
 			tvTotalCurPrice.setText(getString(R.string.txt_analyze_curprice) + "  " + UtilityHelper.formatDouble(curprice, "0.0##"));
 			tvTotalPrevPrice.setText(getString(R.string.txt_analyze_prevprice) + "  " + UtilityHelper.formatDouble(prevprice, "0.0##"));
 		}
 
 		//收支
 		list = itemAccess.findAnalyzeShouZhi(date);
+		
+		double shouru = 0;
+		double zhichu = 0;
+		double jiecun = 0;
+		for(int i=0; i<list.size(); i++) {
+			Map<String, String> map = list.get(i);
+			shouru += Double.parseDouble(map.get("shouruvalue"));
+			zhichu += Double.parseDouble(map.get("zhichuvalue"));
+		}
+		jiecun = shouru - zhichu;
+		
+		if(list.size() > 0) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("zhichuprice", "");
+			map.put("zhichuvalue", UtilityHelper.formatDouble(zhichu, "0.0##"));
+			map.put("shouruprice", "");
+			map.put("shouruvalue", UtilityHelper.formatDouble(shouru, "0.0##"));
+			map.put("itembuydate", "合计");
+			map.put("datevalue", "-1");
+			map.put("jiecunprice", "");
+			map.put("jiecunvalue", UtilityHelper.formatDouble(jiecun, "0.0##"));
+			list.add(map);
+		}
+		
 		adapter = new SimpleAdapter(this, list, R.layout.list_analyzeshouzhi, new String[] { "itembuydate", "shouruvalue", "shouruvalue", "zhichuvalue", "zhichuvalue", "jiecunvalue", "jiecunvalue" }, new int[] { R.id.tv_analyze_itembuydate, R.id.tv_analyze_shouru, R.id.tv_analyze_shouruvalue, R.id.tv_analyze_zhichu, R.id.tv_analyze_zhichuvalue, R.id.tv_analyze_jiecun, R.id.tv_analyze_jiecunvalue });
 		listAnalyzeShouZhi.setAdapter(adapter);
 		if(list.size() <= 0) {
@@ -560,16 +606,6 @@ public class AnalyzeActivity extends Activity {
 			layNoItemShouZhi.setVisibility(View.GONE);
 			layShouZhiTotal.setVisibility(View.VISIBLE);
 			
-			double shouru = 0;
-			double zhichu = 0;
-			double jiecun = 0;
-			for(int i=0; i<list.size(); i++) {
-				Map<String, String> map = list.get(i);
-				shouru += Double.parseDouble(map.get("shouruvalue"));
-				zhichu += Double.parseDouble(map.get("zhichuvalue"));
-			}
-			jiecun = shouru - zhichu;
-			
 			tvTotalShouRu.setText(getString(R.string.txt_month_shou) + "  " + UtilityHelper.formatDouble(shouru, "0.0##"));
 			tvTotalZhiChu.setText(getString(R.string.txt_month_zhi) + "  " + UtilityHelper.formatDouble(zhichu, "0.0##"));
 			tvTotalJieCun.setText(getString(R.string.txt_month_cun) + "  " + UtilityHelper.formatDouble(jiecun, "0.0##"));
@@ -577,6 +613,30 @@ public class AnalyzeActivity extends Activity {
 		
 		//借还
 		list = itemAccess.findAnalyzeJieHuan(date);
+		
+		double jiechu = 0;
+		double huanru = 0;
+		double jieru = 0;
+		double huanchu = 0;
+		for(int i=0; i<list.size(); i++) {
+			Map<String, String> map = list.get(i);
+			jiechu += Double.parseDouble(map.get("jiechuprice"));
+			huanru += Double.parseDouble(map.get("huanruprice"));
+			jieru += Double.parseDouble(map.get("jieruprice"));
+			huanchu += Double.parseDouble(map.get("huanchuprice"));
+		}
+		
+		if(list.size() > 0) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("jiechuprice", String.valueOf(jiechu));
+			map.put("huanruprice", String.valueOf(huanru));
+			map.put("jieruprice", String.valueOf(jieru));
+			map.put("huanchuprice", String.valueOf(huanchu));
+			map.put("itembuydate", "合计");
+			map.put("datevalue", "-1");
+			list.add(map);
+		}
+				
 		adapter = new SimpleAdapter(this, list, R.layout.list_analyzejiehuan, new String[] { "itembuydate", "jiechuprice", "huanruprice", "jieruprice", "huanchuprice" }, new int[] { R.id.tv_analyze_itembuydate, R.id.tv_analyze_jiechu, R.id.tv_analyze_huanru, R.id.tv_analyze_jieru, R.id.tv_analyze_huanchu });
 		listAnalyzeJieHuan.setAdapter(adapter);
 		if(list.size() <= 0) {
@@ -585,18 +645,6 @@ public class AnalyzeActivity extends Activity {
 		} else {
 			layNoItemJieHuan.setVisibility(View.GONE);
 			layJieHuanTotal.setVisibility(View.VISIBLE);
-				
-			double jiechu = 0;
-			double huanru = 0;
-			double jieru = 0;
-			double huanchu = 0;
-			for(int i=0; i<list.size(); i++) {
-				Map<String, String> map = list.get(i);
-				jiechu += Double.parseDouble(map.get("jiechuprice"));
-				huanru += Double.parseDouble(map.get("huanruprice"));
-				jieru += Double.parseDouble(map.get("jieruprice"));
-				huanchu += Double.parseDouble(map.get("huanchuprice"));
-			}
 			
 			tvTotalJie.setText(getString(R.string.txt_analyze_weihuan) + "  " + UtilityHelper.formatDouble(jiechu-huanru, "0.##"));
 			tvTotalHuan.setText(getString(R.string.txt_analyze_qianhuan) + "  " + UtilityHelper.formatDouble(jieru-huanchu, "0.##"));

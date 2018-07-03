@@ -67,7 +67,7 @@ public class ItemTableAccess {
 				map.put("itemtype", result.getString(9));
 				map.put("ztid", result.getString(10).equals("") ? "0" : result.getString(10));
 				map.put("cardid", result.getString(11));
-				map.put("itemremark", result.getString(12));
+				map.put("itemremark", result.getString(12).replace("null", ""));
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -166,7 +166,7 @@ public class ItemTableAccess {
 				Map<String, String> map = new HashMap<String, String>();
 				//map.put("id", String.valueOf(result.getPosition() + 1));
 				map.put("itemid", result.getString(0));
-				map.put("itemname", result.getString(1) + getItemRemark(result.getString(10)));
+				map.put("itemname", result.getString(1));
 				map.put("itemprice", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
 				map.put("zhiprice", getItemPrice("zc", result.getString(8), UtilityHelper.formatDouble(result.getDouble(2), "0.0##")));
 				map.put("shouprice", getItemPrice("sr", result.getString(8), UtilityHelper.formatDouble(result.getDouble(2), "0.0##")));
@@ -180,6 +180,7 @@ public class ItemTableAccess {
 				map.put("itemtype", getItemTypeName(result.getString(8), type));
 				map.put("itemtypevalue", result.getString(8));
 				map.put("ztid", result.getString(9).equals("") ? "0" : result.getString(9));
+				map.put("itemremark", result.getString(10).replace("null", ""));
 				list.add(map);
 			}
 		} catch(Exception e) {
@@ -967,7 +968,7 @@ public class ItemTableAccess {
 				map.put("itemtype", result.getString(9));
 				map.put("ztid", result.getString(10).equals("") ? "0" : result.getString(10));
 				map.put("cardid", result.getString(11).equals("") ? "0" : result.getString(11));
-				map.put("remark", result.getString(12));
+				map.put("remark", result.getString(12).replace("null", ""));
 				list.add(map);
 			}
 		} catch(Exception e) {
@@ -1494,7 +1495,7 @@ public class ItemTableAccess {
 			result = this.db.rawQuery(sql, null);
 			while (result.moveToNext()) {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("itemname", result.getString(0) + getItemRemark(result.getString(4)));
+				map.put("itemname", result.getString(0));
 				map.put("itemnamevalue", result.getString(0));
 				map.put("count", result.getString(1) + " 次");
 				map.put("price", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
@@ -1604,7 +1605,7 @@ public class ItemTableAccess {
 			result = this.db.rawQuery(sql, null);
 			while (result.moveToNext()) {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("itemname", result.getString(0) + getItemRemark(result.getString(4)));
+				map.put("itemname", result.getString(0));
 				map.put("itembuydate", UtilityHelper.formatDate(result.getString(1), "m-d"));
 				map.put("datevalue", UtilityHelper.formatDate(result.getString(1), "y-m-d"));
 				map.put("itemprice", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
@@ -1664,7 +1665,7 @@ public class ItemTableAccess {
 			result = this.db.rawQuery(sql, null);
 			while (result.moveToNext()) {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("itemname", result.getString(0) + getItemRemark(result.getString(4)));
+				map.put("itemname", result.getString(0));
 				map.put("itembuydate", UtilityHelper.formatDate(result.getString(1), "ys-m-d"));
 				map.put("datevalue", UtilityHelper.formatDate(result.getString(1), "y-m-d"));
 				map.put("itemprice", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
@@ -1826,19 +1827,20 @@ public class ItemTableAccess {
 		
 		String sql = " SELECT ItemName, ItemBuyDate, ItemPrice, IFNULL(ItemType,'zc'), IFNULL(Remark,'') FROM " + ITEMTABNAME 
 				   + " WHERE STRFTIME('%Y-%m-%d', ItemBuyDate) <= STRFTIME('%Y-%m-%d', datetime('now', '+8 hour'))"
-				   + " AND ItemName LIKE '%" + key + "%' AND " + query + " ORDER BY ItemBuyDate DESC";
+				   + " AND (ItemName LIKE '%" + key + "%' OR Remark LIKE '%" + key + "%') AND " + query + " ORDER BY ItemBuyDate DESC";
 		Cursor result = null;
 		try {
 			result = this.db.rawQuery(sql, null);
 			while (result.moveToNext()) {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("itemname", result.getString(0) + getItemRemark(result.getString(4)));
+				map.put("itemname", result.getString(0));
 				map.put("itembuydate", UtilityHelper.formatDate(result.getString(1), "ys-m-d"));
 				map.put("datevalue", UtilityHelper.formatDate(result.getString(1), "y-m-d"));
 				map.put("itemprice", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
 				map.put("pricevalue", UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));
 				map.put("itemtype", getItemTypeName(result.getString(3), 1));
 				map.put("itemtypevalue", result.getString(3));
+				map.put("itemremark", result.getString(4).replace("null", ""));
 				list.add(map);
 			}
 		} catch (Exception e) {
@@ -1866,7 +1868,7 @@ public class ItemTableAccess {
 			result = this.db.rawQuery(sql, null);
 			while (result.moveToNext()) {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("itemname", result.getString(0) + getItemRemark(result.getString(4)));
+				map.put("itemname", result.getString(0));
 				map.put("itembuydate", UtilityHelper.formatDate(result.getString(1), "m-d"));
 				map.put("datevalue", UtilityHelper.formatDate(result.getString(1), "y-m-d"));
 				map.put("itemprice", "￥ " + UtilityHelper.formatDouble(result.getDouble(2), "0.0##"));

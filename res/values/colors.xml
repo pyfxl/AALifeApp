@@ -5,11 +5,10 @@
     <color name="color_tran3_main">#8FE84620</color>
     <color name="color_tran_main">#4FE84620</color>
     <color name="color_tran2_main">#2FE84620</color>
-    <color name="color_item_bg">#FFFAFAFA</color>
+    <color name="color_item_bg">#FFF6F6F6</color>
     <color name="color_item2_bg">#FFF4F4F4</color>
     <color name="color_title_bg">#FFEAEAEA</color>
     <color name="color_tran_white">#6FFFFFFF</color>
-    <color name="color_tran2_white">#BFFFFFFF</color>
     <color name="color_back_main">#FF0099CC</color>
     <color name="color_back2_main">#8F0099CC</color>
     <color name="color_back3_main">#BF0099CC</color>

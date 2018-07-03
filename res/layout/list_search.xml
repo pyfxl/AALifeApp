@@ -33,6 +33,13 @@
         android:text="@string/txt_rank_itemname" />
 
     <TextView
+        android:id="@+id/tv_rank_itemremark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_day_remark"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/tv_rank_itembuydate"
         style="@style/tv_item"
         android:layout_width="0dp"

@@ -125,12 +125,15 @@ public class RankCatDetailActivity extends Activity {
 		itemAccess.close();
 		adapter = new SimpleAdapter(this, list, R.layout.list_rankcount, new String[] { "itemtype", "catid", "itemname", "count", "price" }, new int[] { R.id.tv_rank_itemtype, R.id.tv_rank_catid, R.id.tv_rank_itemname, R.id.tv_rank_count, R.id.tv_rank_price });
 		listRankCatDetail.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listRankCatDetail, adapter.getCount());
 
 		//设置empty
 		if(list.size() == 0) {
 			layNoItem.setVisibility(View.VISIBLE);
+			listRankCatDetail.setVisibility(View.GONE);
 		} else {
 			layNoItem.setVisibility(View.GONE);
+			listRankCatDetail.setVisibility(View.VISIBLE);
 		}
 	}
 	

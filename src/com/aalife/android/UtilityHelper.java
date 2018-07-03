@@ -49,12 +49,14 @@ import android.os.Environment;
 import android.os.Vibrator;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ListView;
 
 
 public class UtilityHelper {
-	//private static final String WEBURL = "http://192.168.1.102:81";
+	//private static final String WEBURL = "http://192.168.1.106:81";
 	private static final String WEBURL = "http://www.fxlweb.com";
 	
 	public UtilityHelper() {
@@ -152,7 +154,7 @@ public class UtilityHelper {
 		else if(type.equals("y-m-w"))
 			return year + "-" + month + "  " + week;
 		else if(type.equals("y2-m2"))
-			return year + "年" + month + "月";
+			return year + "-" + month + "月";
 		else if(type.equals("ys-m"))
 			return year.substring(2) + "-" + month;
 		else if(type.equals("ys-m-d"))
@@ -1554,4 +1556,12 @@ public class UtilityHelper {
 		return type;
 	}
 	
+	//设置listview高度
+	public static void setListViewHeight(Context context, ListView listView, int num) {
+        int totalHeight = context.getResources().getDimensionPixelSize(R.dimen.list_item_height) * num;
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (num - 1));
+        listView.setLayoutParams(params);
+    }
 }

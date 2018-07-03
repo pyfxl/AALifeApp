@@ -9,6 +9,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextPaint;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ZhuanZhangDetailActivity extends Activity {
 	private ListView listZhuanZhangDetail = null;
@@ -37,6 +39,7 @@ public class ZhuanZhangDetailActivity extends Activity {
 	private CardTableAccess cardAccess = null;
 	private int position = 0;
 	private boolean isClick = false;
+	private Handler handler = new Handler();
 
 	private View myView = null;
 	private DatePicker datePicker = null;
@@ -80,6 +83,9 @@ public class ZhuanZhangDetailActivity extends Activity {
 		
 		//绑定列表
 		setListData(curDate, type);
+		
+		//提示长按操作
+		Toast.makeText(ZhuanZhangDetailActivity.this, getString(R.string.txt_longedittext), Toast.LENGTH_SHORT).show();
 		
 		//返回按钮
 		ImageButton btnTitleBack = (ImageButton) super.findViewById(R.id.btn_title_back);
@@ -142,16 +148,43 @@ public class ZhuanZhangDetailActivity extends Activity {
 		listZhuanZhangDetail.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				ListView lv = (ListView) parent;
+				@SuppressWarnings("unchecked")
+				Map<String, String> map = (Map<String, String>) lv.getItemAtPosition(position);
+				final String fCardNote = map.get("zhangnote");
+				
 				//点击选中取消选择
-				if(isClick && ZhuanZhangDetailActivity.this.position == position) {
+				/*if(isClick && ZhuanZhangDetailActivity.this.position == position) {
 					isClick = false;
 					adapter.notifyDataSetChanged();
 					return;
-				}
+				}*/
 				
 		        isClick = true;
 		        ZhuanZhangDetailActivity.this.position = position;
-		        adapter.notifyDataSetChanged();	
+		        adapter.notifyDataSetChanged();
+				
+				if(!fCardNote.equals("")) {
+					Dialog dialog = new AlertDialog.Builder(ZhuanZhangDetailActivity.this)
+					    .setTitle(R.string.txt_card_note)
+		                .setMessage(fCardNote + "\n")
+		                .setNegativeButton(R.string.txt_day_cancel, new DialogInterface.OnClickListener() {
+	                        public void onClick(DialogInterface dialog, int whichButton) {
+	                            dialog.cancel();
+	                            isClick = false;
+	        					adapter.notifyDataSetChanged();
+	                        }
+	                    }).create();
+			        dialog.show();
+				} else {
+					handler.postDelayed(new Runnable() {
+				        @Override
+				        public void run() {
+				        	isClick = false;
+        					adapter.notifyDataSetChanged();
+				        }
+				    }, 1000);
+				}
 			}
 		});
 		
@@ -164,8 +197,13 @@ public class ZhuanZhangDetailActivity extends Activity {
 				Map<String, String> map = (Map<String, String>) lv.getItemAtPosition(position);
 				final String tCardName = map.get("zhangto");
 				final String fCardName = map.get("zhangfrom");
+				//final String fCardNote = map.get("zhangnote");
 				final String cardMoney = map.get("zhangmoneyvalue");
 				final int zzId = Integer.parseInt(map.get("zzid"));
+
+		        isClick = true;
+		        ZhuanZhangDetailActivity.this.position = position;
+		        adapter.notifyDataSetChanged();
 				
 				Dialog dialog = new AlertDialog.Builder(ZhuanZhangDetailActivity.this)
 				    .setTitle(R.string.txt_tips)
@@ -194,6 +232,8 @@ public class ZhuanZhangDetailActivity extends Activity {
 	                }).setNegativeButton(R.string.txt_day_cancel, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
                             dialog.cancel();
+                            isClick = false;
+        					adapter.notifyDataSetChanged();
                         }
                     }).create();
 		        dialog.show();
@@ -216,9 +256,10 @@ public class ZhuanZhangDetailActivity extends Activity {
 		} else {
 			layNoItem.setVisibility(View.VISIBLE);
 		}
-		adapter = new SimpleAdapter(this, list, R.layout.list_zhuanzhang_detail, new String[] { "zzid", "zhangfrom", "zhangto", "zhangmoney", "zhangmoneyvalue", "zhangdate" }, new int[] { R.id.tv_zhang_id, R.id.tv_zhang_from, R.id.tv_zhang_to, R.id.tv_zhang_money, R.id.tv_zhang_moneyvalue, R.id.tv_zhang_date }){
+		adapter = new SimpleAdapter(this, list, R.layout.list_zhuanzhang_detail, new String[] { "zzid", "zhangfrom", "zhangto", "zhangmoney", "zhangmoneyvalue", "zhangdate", "zhangnote" }, new int[] { R.id.tv_zhang_id, R.id.tv_zhang_from, R.id.tv_zhang_to, R.id.tv_zhang_money, R.id.tv_zhang_moneyvalue, R.id.tv_zhang_date, R.id.tv_zhang_note }){
 			@Override
 			public View getView(final int position, View convertView, ViewGroup parent) {
+				//System.out.println("position:" + position + ", convertView:" + convertView);
 				View view = super.getView(position, convertView, parent);
 				TextView zhangFrom = (TextView) view.findViewById(R.id.tv_zhang_from);
 		        TextView zhangTo = (TextView) view.findViewById(R.id.tv_zhang_to);
@@ -235,10 +276,26 @@ public class ZhuanZhangDetailActivity extends Activity {
 					zhangMoney.setBackgroundColor(ZhuanZhangDetailActivity.this.getResources().getColor(R.color.color_item_bg));
 					zhangDate.setBackgroundColor(ZhuanZhangDetailActivity.this.getResources().getColor(R.color.color_item_bg));
 				}
+
+				//如果有备注显示颜色
+				TextView tvItemRemark = (TextView) view.findViewById(R.id.tv_zhang_note);
+				if(!tvItemRemark.getText().equals("")) {
+					zhangFrom.setTextColor(getResources().getColor(R.color.color_back_main));
+					zhangTo.setTextColor(getResources().getColor(R.color.color_back_main));
+					zhangMoney.setTextColor(getResources().getColor(R.color.color_back_main));
+					zhangDate.setTextColor(getResources().getColor(R.color.color_back_main));
+				} else {
+					zhangFrom.setTextColor(getResources().getColor(android.R.color.secondary_text_light));
+					zhangTo.setTextColor(getResources().getColor(android.R.color.secondary_text_light));
+					zhangMoney.setTextColor(getResources().getColor(android.R.color.secondary_text_light));
+					zhangDate.setTextColor(getResources().getColor(android.R.color.secondary_text_light));
+				}
+				
 				return view;
 			}
 		};
 		listZhuanZhangDetail.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listZhuanZhangDetail, adapter.getCount());
 	}
 	
 	//关闭this

@@ -29,7 +29,7 @@
 
     <TextView
         android:id="@+id/tv_card_money"
-        style="@style/tv_item_price2"
+        style="@style/tv_item_price"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/list_border_size"

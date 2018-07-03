@@ -150,9 +150,9 @@
         android:id="@+id/list_day_detail"
         style="@style/list_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/LinearLayout3"
-        android:background="@android:color/white"
+        android:background="@android:color/transparent"
         android:descendantFocusability="blocksDescendants"
         android:divider="@android:color/transparent"
         android:listSelector="@android:color/transparent" >
@@ -190,12 +190,12 @@
         </LinearLayout>
 
         <LinearLayout
-            style="@style/lay_total"
+            style="@style/lay_total2"
             android:background="@android:color/white" >
 
             <TextView
                 android:id="@+id/tv_total_label"
-                style="@style/tv_item"
+                style="@style/tv_item_total3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/list_border_size"
@@ -206,7 +206,7 @@
 
             <TextView
                 android:id="@+id/tv_total_shouru"
-                style="@style/tv_item_price"
+                style="@style/tv_item_total2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/list_border_size"
@@ -217,7 +217,7 @@
 
             <TextView
                 android:id="@+id/tv_total_zhichu"
-                style="@style/tv_item_price"
+                style="@style/tv_item_total2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/list_border_size"

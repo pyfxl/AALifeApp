@@ -615,6 +615,7 @@ public class RankActivity extends Activity {
 			}	
 		};
 		listRankCat.setAdapter(catAdapter);
+		//UtilityHelper.setListViewHeight(this, listRankCat, catAdapter.getCount());
 		if(catList.size() <= 0) {
 			layNoItemCat.setVisibility(View.VISIBLE);
 		} else {
@@ -625,50 +626,65 @@ public class RankActivity extends Activity {
 		list = itemAccess.findRankCountByDate(date);
 		adapter = new SimpleAdapter(this, list, R.layout.list_rankcount, new String[] { "itemtype", "itemname", "count", "price" }, new int[] { R.id.tv_rank_itemtype, R.id.tv_rank_itemname, R.id.tv_rank_count, R.id.tv_rank_price });
 		listRankCount.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listRankCount, adapter.getCount());
 		if(list.size() <= 0) {
 			layNoItemCount.setVisibility(View.VISIBLE);
+			listRankCount.setVisibility(View.GONE);
 		} else {
 			layNoItemCount.setVisibility(View.GONE);
+			listRankCount.setVisibility(View.VISIBLE);
 		}
 		
 		//单价
 		list = itemAccess.findRankPriceByDate(date);
 		adapter = new SimpleAdapter(this, list, R.layout.list_rankprice, new String[] { "itemtype", "itemname", "itembuydate", "itemprice" }, new int[] { R.id.tv_rank_itemtype, R.id.tv_rank_itemname, R.id.tv_rank_itembuydate, R.id.tv_rank_itemprice });
 		listRankPrice.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listRankPrice, adapter.getCount());
 		if(list.size() <= 0) {
 			layNoItemPrice.setVisibility(View.VISIBLE);
+			listRankPrice.setVisibility(View.GONE);
 		} else {
 			layNoItemPrice.setVisibility(View.GONE);
+			listRankPrice.setVisibility(View.VISIBLE);
 		}
 		
 		//日期
 		list = itemAccess.findRankDateByDate(date);
 		adapter = new SimpleAdapter(this, list, R.layout.list_rankdate, new String[] { "id", "itembuydate", "price" }, new int[] { R.id.tv_rank_id, R.id.tv_rank_itembuydate, R.id.tv_rank_price });
 		listRankDate.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listRankDate, adapter.getCount());
 		if(list.size() <= 0) {
 			layNoItemDate.setVisibility(View.VISIBLE);
+			listRankDate.setVisibility(View.GONE);
 		} else {
 			layNoItemDate.setVisibility(View.GONE);
+			listRankDate.setVisibility(View.VISIBLE);
 		}
 
 		//区间
 		list = itemAccess.findRankRegion();
 		adapter = new SimpleAdapter(this, list, R.layout.list_rankregion, new String[] { "itemtype", "itemname", "itembuydate", "datevalue", "itemprice", "regiontype" }, new int[] { R.id.tv_rank_itemtype, R.id.tv_rank_itemname, R.id.tv_rank_itembuydate, R.id.tv_rank_datevalue, R.id.tv_rank_itemprice, R.id.tv_rank_regiontype });
 		listRankRegion.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listRankRegion, adapter.getCount());
 		if(list.size() <= 0) {
 			layNoItemRegion.setVisibility(View.VISIBLE);
+			listRankRegion.setVisibility(View.GONE);
 		} else {
 			layNoItemRegion.setVisibility(View.GONE);
+			listRankRegion.setVisibility(View.VISIBLE);
 		}
 		
 		//推荐
 		list = itemAccess.findRankRecommend();
 		adapter = new SimpleAdapter(this, list, R.layout.list_rankrecommend, new String[] { "itemtype", "itemname", "itembuydate", "itemprice" }, new int[] { R.id.tv_rank_itemtype, R.id.tv_rank_itemname, R.id.tv_rank_itembuydate, R.id.tv_rank_itemprice });
 		listRankRecommend.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listRankRecommend, adapter.getCount());
 		if(list.size() <= 0) {
 			layNoItemRecommend.setVisibility(View.VISIBLE);
+			listRankRecommend.setVisibility(View.GONE);
 		} else {
 			layNoItemRecommend.setVisibility(View.GONE);
+			listRankRecommend.setVisibility(View.VISIBLE);
 		}
 				
 		itemAccess.close();

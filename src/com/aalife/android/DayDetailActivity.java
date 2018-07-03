@@ -220,14 +220,17 @@ public class DayDetailActivity extends Activity {
 		list = itemAccess.findItemByDate(date, 1);
 		itemAccess.close();
 		
-		final boolean[][] listCheck = new boolean[2][list.size()];
+		final boolean[][] listCheck = new boolean[3][list.size()];
 		for(int i=0; i<list.size(); i++) {
 			Map<String, String> map = list.get(i);
 			listCheck[1][i] = map.get("recommend").toString().equals("0") ? false : true;
+			//listCheck[2][i] = map.get("itemremark").toString().equals("") ? false : true;
 		}
-		adapter = new SimpleAdapter(this, list, R.layout.list_day_detail, new String[] { "", "itemname", "regionname", "itemprice", "pricevalue", "", "itemid", "itemtype", "itemtypevalue" }, new int[] { R.id.cb_day_select, R.id.tv_day_itemname, R.id.tv_day_regiontype, R.id.tv_day_itemprice, R.id.tv_day_pricevalue, R.id.cb_day_recommend, R.id.tv_day_itemid, R.id.tv_day_itemtype, R.id.tv_day_itemtypevalue }) {
+		
+		adapter = new SimpleAdapter(this, list, R.layout.list_day_detail, new String[] { "", "itemname", "itemremark", "regionname", "itemprice", "pricevalue", "", "itemid", "itemtype", "itemtypevalue" }, new int[] { R.id.cb_day_select, R.id.tv_day_itemname, R.id.tv_day_itemremark, R.id.tv_day_regiontype, R.id.tv_day_itemprice, R.id.tv_day_pricevalue, R.id.cb_day_recommend, R.id.tv_day_itemid, R.id.tv_day_itemtype, R.id.tv_day_itemtypevalue }) {
 			@Override
 			public View getView(final int position, View convertView, ViewGroup parent) {
+				//System.out.println("position:" + position);//使用match_parent解决问题，但是背景不会显示
 				View view = super.getView(position, convertView, parent);
 				TextView tv = (TextView) view.findViewById(R.id.tv_day_itemid);
 				final int itemId = Integer.parseInt(tv.getText().toString());
@@ -281,10 +284,28 @@ public class DayDetailActivity extends Activity {
 					}						
 				});
 				
+				//备注文字颜色
+				/*TextView itemName = (TextView) view.findViewById(R.id.tv_day_itemname);
+				if(listCheck[2][position]) {
+					itemName.setTextColor(getResources().getColor(R.color.color_back_main));
+				} else {
+					itemName.setTextColor(getResources().getColor(android.R.color.secondary_text_light));
+				}*/
+				
+				//如果有备注显示颜色
+				TextView tvItemName = (TextView) view.findViewById(R.id.tv_day_itemname);
+				TextView tvItemRemark = (TextView) view.findViewById(R.id.tv_day_itemremark);
+				if(!tvItemRemark.getText().equals("")) {
+					tvItemName.setTextColor(getResources().getColor(R.color.color_back_main));
+				} else {
+					tvItemName.setTextColor(getResources().getColor(android.R.color.secondary_text_light));
+				}
+				
 				return view;
 			}			
 		};
 		listDay.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listDay, adapter.getCount());
 		
 		//设置empty
 		if(list.size() <= 0) {

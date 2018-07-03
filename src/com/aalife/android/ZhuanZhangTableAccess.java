@@ -53,7 +53,7 @@ public class ZhuanZhangTableAccess {
 		}
 		
 		String sql = " SELECT CASE a.ZhangFrom WHEN 0 THEN '我的钱包' ELSE b.CardName END AS ZhangFrom, "
-				   + " CASE a.ZhangTo WHEN 0 THEN '我的钱包' ELSE c.CardName END AS ZhangTo, ZhangMoney, ZhangDate, ZZID FROM " + ZZTABNAME + " a "
+				   + " CASE a.ZhangTo WHEN 0 THEN '我的钱包' ELSE c.CardName END AS ZhangTo, ZhangMoney, ZhangDate, ZZID, ZhangNote FROM " + ZZTABNAME + " a "
 				   + " LEFT JOIN " + CARDTABNAME + " b ON a.ZhangFrom = b.CDID "
 				   + " LEFT JOIN " + CARDTABNAME + " c ON a.ZhangTo = c.CDID "
 				   + " WHERE ZhangLive = '1' AND " + query + " ORDER BY a.ZhangDate DESC";
@@ -68,6 +68,7 @@ public class ZhuanZhangTableAccess {
 				map.put("zhangmoneyvalue", result.getString(2));
 				map.put("zhangdate", UtilityHelper.formatDate(result.getString(3), "ys-m-d"));
 				map.put("zzid", result.getString(4));
+				map.put("zhangnote", result.getString(5));
 				list.add(map);
 			}
 		} catch(Exception e) {

@@ -124,12 +124,15 @@ public class RankCountDetailActivity extends Activity {
 		itemAccess.close();
 		adapter = new SimpleAdapter(this, list, R.layout.list_rankprice, new String[] { "itemtype", "itemname", "itembuydate", "itemprice" }, new int[] { R.id.tv_rank_itemtype, R.id.tv_rank_itemname, R.id.tv_rank_itembuydate, R.id.tv_rank_itemprice });
 		listRankCountDetail.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listRankCountDetail, adapter.getCount());
 		
 		//设置empty
 		if(list.size() == 0) {
 			layNoItem.setVisibility(View.VISIBLE);
+			listRankCountDetail.setVisibility(View.GONE);
 		} else {
 			layNoItem.setVisibility(View.GONE);
+			listRankCountDetail.setVisibility(View.VISIBLE);
 		}
 	}
 	

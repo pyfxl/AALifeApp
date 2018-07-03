@@ -60,6 +60,7 @@ public class CardActivity extends Activity {
 	private List<CharSequence> cardList = null;
 	private EditText cardMoneyEdit = null;
 	private EditText cardDateEdit = null;
+	private EditText cardNoteEdit = null;
 	private String curDate = "";
 
 	@SuppressLint("InflateParams")
@@ -163,6 +164,7 @@ public class CardActivity extends Activity {
 						sharedHelper.setCardId(0);
 						cardAccess.close();
 						if(result == 1) {
+							isClick = false;
 				        	CardActivity.this.onCreate(null);
 							Toast.makeText(CardActivity.this, getString(R.string.txt_day_deletesuccess), Toast.LENGTH_SHORT).show();
 						} else if(result == 2) {
@@ -195,6 +197,7 @@ public class CardActivity extends Activity {
 			}			
 		};
 		listCard.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listCard, adapter.getCount());
 		
 		//钱包余额设置
 		tvTitleCardMoney.setOnClickListener(new OnClickListener() {
@@ -263,6 +266,7 @@ public class CardActivity extends Activity {
 				spinerCardOut.setAdapter(cardAdapter);
 				cardMoneyEdit = (EditText) transView.findViewById(R.id.et_card_money);
 				cardDateEdit = (EditText) transView.findViewById(R.id.et_card_date);
+				cardNoteEdit = (EditText) transView.findViewById(R.id.et_card_note);
 				cardDateEdit.setText(UtilityHelper.formatDate(curDate, "y-m-d-w"));
 				cardDateEdit.setOnClickListener(new DateClickListenerImpl());
 				
@@ -272,6 +276,7 @@ public class CardActivity extends Activity {
 					.setPositiveButton(R.string.txt_sure, new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int whichButton) {
 							String tCardMoney = cardMoneyEdit.getText().toString();
+							String tCardNote = cardNoteEdit.getText().toString();
 							if (!UtilityHelper.checkDouble(tCardMoney)) {
 								Toast.makeText(CardActivity.this, getString(R.string.txt_card_jinetext), Toast.LENGTH_SHORT).show();
 								return;
@@ -290,12 +295,13 @@ public class CardActivity extends Activity {
 							cardAccess.close();
 							//存转账							
 							zhangAccess = new ZhuanZhangTableAccess(sqlHelper.getReadableDatabase());
-							zhangAccess.addZhuanZhang(fCardId, tCardId, tCardMoney, curDate, "");
+							zhangAccess.addZhuanZhang(fCardId, tCardId, tCardMoney, curDate, tCardNote);
 							zhangAccess.close();
 							
 							sharedHelper.setLocalSync(true);
 				        	sharedHelper.setSyncStatus(getString(R.string.txt_home_haslocalsync));
 				        	
+				        	isClick = false;
 							CardActivity.this.onCreate(null);
 						}
 					}).setNegativeButton(R.string.txt_cancel, new DialogInterface.OnClickListener() {
@@ -392,7 +398,7 @@ public class CardActivity extends Activity {
 						categoryAccess.close();
 					
 						itemAccess = new ItemTableAccess(sqlHelper.getReadableDatabase());
-						result = itemAccess.addItem(itemType, itemName, itemPrice, itemBuyDate, catId, 0, 0, "", 0, saveId, "差账");
+						result = itemAccess.addItem(itemType, itemName, itemPrice, itemBuyDate, catId, 0, 0, "", 0, saveId, "");
 						itemAccess.close();
 					}
 				}				
@@ -450,7 +456,7 @@ public class CardActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if(requestCode == FIRST_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-			//isClick = false;
+			isClick = false;
 			this.onCreate(null);
 		}
 	}

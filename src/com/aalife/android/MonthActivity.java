@@ -115,7 +115,7 @@ public class MonthActivity extends Activity {
 		if(listAll.size() > 0) {
 			layMonthTotal.setVisibility(View.VISIBLE);
 	        viewPagerAdapter = new ViewPagerAdapter(this, listAll);
-	        viewPager.setAdapter(viewPagerAdapter);			
+	        viewPager.setAdapter(viewPagerAdapter);
 	        viewPager.setCurrentItem(pagerPosition);
 	        setTotalPrice(listAll.get(pagerPosition));
 		} else {
@@ -127,7 +127,7 @@ public class MonthActivity extends Activity {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
 				View view = super.getView(position, convertView, parent);
-
+				//System.out.println("position:" + position);
 				if(parent.getChildCount() == position) {
 					TextView tv = (TextView) view.findViewById(R.id.tv_nav_main);
 					if(position == pagerPosition) {

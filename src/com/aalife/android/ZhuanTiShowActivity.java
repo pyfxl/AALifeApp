@@ -201,6 +201,7 @@ public class ZhuanTiShowActivity extends Activity {
 		
 		adapter = new SimpleAdapter(this, list, R.layout.list_zhuanti_show, new String[] { "itembuydatetext", "itemname", "itemtype", "itemprice" }, new int[] { R.id.tv_day_itembuydate, R.id.tv_day_itemname, R.id.tv_day_itemtype, R.id.tv_day_itemprice });
 		listZhuanTiShow.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listZhuanTiShow, adapter.getCount());
 		
 		if(list.size() > 0) {
 			//绑定总计

@@ -62,7 +62,7 @@ public class ViewTableAccess {
 				map.put("height", result.getString(8));
 				map.put("ip", result.getString(9));
 				map.put("network", result.getString(10));
-				map.put("remark", result.getString(11));
+				map.put("remark", result.getString(11).replace("null", ""));
 				list.add(map);
 			}
 		} catch(Exception e) {

@@ -220,30 +220,49 @@ public class SearchActivity extends Activity {
 		itemAccess.close();
 		
 		final boolean[] listCheck = new boolean[list.size()];
-		adapter = new SimpleAdapter(this, list, R.layout.list_search, new String[] { "itemtype", "itemtypevalue", "itemname", "itembuydate", "itemprice", "pricevalue" }, new int[] { R.id.tv_rank_itemtype, R.id.tv_rank_itemtypevalue, R.id.tv_rank_itemname, R.id.tv_rank_itembuydate, R.id.tv_rank_itemprice, R.id.tv_rank_pricevalue }){
+		adapter = new SimpleAdapter(this, list, R.layout.list_search, new String[] { "itemtype", "itemtypevalue", "itemname", "itemremark", "itembuydate", "itemprice", "pricevalue" }, new int[] { R.id.tv_rank_itemtype, R.id.tv_rank_itemtypevalue, R.id.tv_rank_itemname, R.id.tv_rank_itemremark, R.id.tv_rank_itembuydate, R.id.tv_rank_itemprice, R.id.tv_rank_pricevalue }){
 			@Override
 			public View getView(final int position, View convertView, ViewGroup parent) {
-				View view = super.getView(position, convertView, parent);
-				final TextView priceValue = (TextView) view.findViewById(R.id.tv_rank_pricevalue);
-				final TextView typeValue = (TextView) view.findViewById(R.id.tv_rank_itemtypevalue);
-				//选择
-				final CheckBox sel = (CheckBox) view.findViewById(R.id.cb_rank_select);
-				sel.setChecked(!listCheck[position]);
-				sel.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						listCheck[position] = sel.isChecked() ? false : true;
-						if(sel.isChecked()) {
-						    updateTotal(Double.parseDouble(priceValue.getText().toString()), typeValue.getText().toString());
-						} else {
-							updateTotal(-Double.parseDouble(priceValue.getText().toString()), typeValue.getText().toString());
-						}
-					}					
-				});
+				View view = null;
+				if(convertView != null) {
+					view = convertView;
+				} else {
+					view = super.getView(position, convertView, parent);
+				}
+				
+				if(parent.getChildCount() == position) {	
+					final TextView priceValue = (TextView) view.findViewById(R.id.tv_rank_pricevalue);
+					final TextView typeValue = (TextView) view.findViewById(R.id.tv_rank_itemtypevalue);
+					//选择
+					final CheckBox sel = (CheckBox) view.findViewById(R.id.cb_rank_select);
+					sel.setChecked(!listCheck[position]);
+					sel.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							listCheck[position] = sel.isChecked() ? false : true;
+							if(sel.isChecked()) {
+							    updateTotal(Double.parseDouble(priceValue.getText().toString()), typeValue.getText().toString());
+							} else {
+								updateTotal(-Double.parseDouble(priceValue.getText().toString()), typeValue.getText().toString());
+							}
+						}					
+					});
+	
+					//如果有备注显示颜色
+					TextView tvItemName = (TextView) view.findViewById(R.id.tv_rank_itemname);
+					TextView tvItemRemark = (TextView) view.findViewById(R.id.tv_rank_itemremark);
+					if(!tvItemRemark.getText().equals("")) {
+						tvItemName.setTextColor(getResources().getColor(R.color.color_back_main));
+					} else {
+						tvItemName.setTextColor(getResources().getColor(android.R.color.secondary_text_light));
+					}
+				}
+				
 				return view;
 			}
 		};
 		listSearch.setAdapter(adapter);
+		//UtilityHelper.setListViewHeight(this, listSearch, adapter.getCount());
 
 		//设置empty
 		if(list.size() > 0) {

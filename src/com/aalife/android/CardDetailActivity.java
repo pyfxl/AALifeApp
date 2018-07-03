@@ -155,7 +155,6 @@ public class CardDetailActivity extends Activity {
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
 				int itemsLastIndex = adapter.getCount() - 1;
 			    if (scrollState == OnScrollListener.SCROLL_STATE_IDLE && visibleLastIndex == itemsLastIndex) { 
-					System.out.println("scrool end.");
 					if(!loading) {
 				    	pbDay.setVisibility(View.VISIBLE);
 						loading = true;

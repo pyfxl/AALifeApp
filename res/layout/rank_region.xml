@@ -46,7 +46,7 @@
 
         <TextView
             android:id="@+id/tv_title_itemprice"
-            style="@style/tv_item_price2"
+            style="@style/tv_item_price"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="@dimen/list_border_size"
@@ -58,8 +58,8 @@
     <ListView
         android:id="@+id/list_rankregion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
         android:descendantFocusability="blocksDescendants"
         android:divider="@android:color/transparent"
         android:listSelector="@android:color/transparent" >
