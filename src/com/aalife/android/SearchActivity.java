@@ -223,14 +223,16 @@ public class SearchActivity extends Activity {
 		adapter = new SimpleAdapter(this, list, R.layout.list_search, new String[] { "itemtype", "itemtypevalue", "itemname", "itemremark", "itembuydate", "itemprice", "pricevalue" }, new int[] { R.id.tv_rank_itemtype, R.id.tv_rank_itemtypevalue, R.id.tv_rank_itemname, R.id.tv_rank_itemremark, R.id.tv_rank_itembuydate, R.id.tv_rank_itemprice, R.id.tv_rank_pricevalue }){
 			@Override
 			public View getView(final int position, View convertView, ViewGroup parent) {
-				View view = null;
+				View view = super.getView(position, convertView, parent);
+				/*View view = null;
 				if(convertView != null) {
 					view = convertView;
 				} else {
 					view = super.getView(position, convertView, parent);
-				}
+				}*/
 				
-				if(parent.getChildCount() == position) {	
+				//System.out.println("position:" + position);
+				//if(parent.getChildCount() == position) {	//去掉防止备注颜色重复
 					final TextView priceValue = (TextView) view.findViewById(R.id.tv_rank_pricevalue);
 					final TextView typeValue = (TextView) view.findViewById(R.id.tv_rank_itemtypevalue);
 					//选择
@@ -256,7 +258,7 @@ public class SearchActivity extends Activity {
 					} else {
 						tvItemName.setTextColor(getResources().getColor(android.R.color.secondary_text_light));
 					}
-				}
+				//}
 				
 				return view;
 			}
