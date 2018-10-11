@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
 <resources>
     <string name="app_name">AA生活记账</string>
-    <string name="app_version">6.0.4</string>
-    <string name="app_client">mz</string>
+    <string name="app_version">6.0.5</string>
+    <string name="app_client">web</string>
     <string name="app_description">AA生活记账是一款记录收入、支出、借还消费，使用简单的手机记账APP。包括类别排行、次数排行、单价排行、日期排行、区间统计、推荐统计，比较分析、收支分析、借还分析、趣味统计，和区间记账、专题记账、语音记账、数据同步、数据导出、云备份，我的钱包、钱包转账、转账明细、类别预警、搜索等实用功能。</string>
     <string name="app_keywords">简单记账，AA生活记账。</string>
     <string name="app_website">www.fxlweb.com</string>

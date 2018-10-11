@@ -551,10 +551,10 @@ public class AnalyzeActivity extends Activity {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("catid", "-1");
 			map.put("catname", "合计");
-			map.put("zhipricecur", String.valueOf(curzhi));
-			map.put("shoupricecur", String.valueOf(curshou));
-			map.put("zhipriceprev", String.valueOf(prevzhi));
-			map.put("shoupriceprev", String.valueOf(prevshou));
+			map.put("zhipricecur", UtilityHelper.formatDouble(curzhi, "0.0##"));
+			map.put("shoupricecur", UtilityHelper.formatDouble(curshou, "0.0##"));
+			map.put("zhipriceprev", UtilityHelper.formatDouble(prevzhi, "0.0##"));
+			map.put("shoupriceprev", UtilityHelper.formatDouble(prevshou, "0.0##"));
 			list.add(map);
 		}
 		
@@ -628,10 +628,10 @@ public class AnalyzeActivity extends Activity {
 		
 		if(list.size() > 0) {
 			Map<String, String> map = new HashMap<String, String>();
-			map.put("jiechuprice", String.valueOf(jiechu));
-			map.put("huanruprice", String.valueOf(huanru));
-			map.put("jieruprice", String.valueOf(jieru));
-			map.put("huanchuprice", String.valueOf(huanchu));
+			map.put("jiechuprice", UtilityHelper.formatDouble(jiechu, "0.##"));
+			map.put("huanruprice", UtilityHelper.formatDouble(huanru, "0.##"));
+			map.put("jieruprice", UtilityHelper.formatDouble(jieru, "0.##"));
+			map.put("huanchuprice", UtilityHelper.formatDouble(huanchu, "0.##"));
 			map.put("itembuydate", "合计");
 			map.put("datevalue", "-1");
 			list.add(map);
